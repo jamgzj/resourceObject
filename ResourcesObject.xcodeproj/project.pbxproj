@@ -25,7 +25,6 @@
 		8F089B011CFC17F400A37815 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F089B001CFC17F400A37815 /* TestViewController.m */; settings = {ASSET_TAGS = (); }; };
 		8F089B031CFC186B00A37815 /* 登录2_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F089B021CFC186B00A37815 /* 登录2_03.png */; settings = {ASSET_TAGS = (); }; };
 		8F40755B1D35CC7300F0C4F7 /* UITextField+JM.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F40755A1D35CC7300F0C4F7 /* UITextField+JM.m */; settings = {ASSET_TAGS = (); }; };
-		8F4B37851D7673620095FE69 /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4B37841D7673620095FE69 /* ico_make.png */; settings = {ASSET_TAGS = (); }; };
 		8F7716D01D755E2C0087BA67 /* iphone6Pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8F7716CF1D755E2C0087BA67 /* iphone6Pic.jpg */; settings = {ASSET_TAGS = (); }; };
 		8F7FD5EA1D34950100678DB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7FD5E91D34950100678DB1 /* main.m */; settings = {ASSET_TAGS = (); }; };
 		8FAD5F2B1D518216003EA152 /* JMView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD5F2A1D518216003EA152 /* JMView.m */; settings = {ASSET_TAGS = (); }; };
@@ -73,7 +72,6 @@
 		8F089B021CFC186B00A37815 /* 登录2_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录2_03.png"; sourceTree = "<group>"; };
 		8F4075591D35CC7300F0C4F7 /* UITextField+JM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+JM.h"; sourceTree = "<group>"; };
 		8F40755A1D35CC7300F0C4F7 /* UITextField+JM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+JM.m"; sourceTree = "<group>"; };
-		8F4B37841D7673620095FE69 /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
 		8F7716CF1D755E2C0087BA67 /* iphone6Pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone6Pic.jpg; sourceTree = "<group>"; };
 		8F7FD5E91D34950100678DB1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8FAD5F291D518216003EA152 /* JMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMView.h; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				8F0761F71D3474960013238C /* JMAlertView.m */,
 				8FAD5F291D518216003EA152 /* JMView.h */,
 				8FAD5F2A1D518216003EA152 /* JMView.m */,
-				8F4B37841D7673620095FE69 /* ico_make.png */,
 				8F0761F81D3474960013238C /* JMButton.h */,
 				8F0761F91D3474960013238C /* JMButton.m */,
 				8F0761FA1D3474960013238C /* JMLabel.h */,
@@ -274,7 +271,6 @@
 				8FDB1EB31D1A240D005DE5B6 /* 引导页1.png in Resources */,
 				8F7716D01D755E2C0087BA67 /* iphone6Pic.jpg in Resources */,
 				8F089AF01CFBE4EB00A37815 /* Assets.xcassets in Resources */,
-				8F4B37851D7673620095FE69 /* ico_make.png in Resources */,
 				8F089B031CFC186B00A37815 /* 登录2_03.png in Resources */,
 				8F089AFE1CFC093000A37815 /* podfile in Resources */,
 				8FDB1EB41D1A240D005DE5B6 /* 引导页2.png in Resources */,

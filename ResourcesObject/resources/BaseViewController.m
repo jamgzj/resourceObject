@@ -72,9 +72,11 @@
 - (void)requestWithThePath:(NSString *)path Params:(NSDictionary *)params Method:(NSString *)method Success:(HttpSuccessBlock)success Failure:(HttpFailureBlock)failure{
     NSString *urlStr = [JMTool isStringLegal:path ByJudgeString:@"^http://.*"]?path:[NSString stringWithFormat:@"%@",IP_ADRESS_URL(path)];
     
-    if ([method isEqualToString:@"POST"]) {   //发送post请求
-        
+    dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showMessage:@"loading..." toView:self.view];
+    });
+    
+    if ([method isEqualToString:@"POST"]) {   //发送post请求
         
         [self.manager POST:urlStr parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
@@ -98,8 +100,6 @@
         }];
         
     }else if ([method isEqualToString:@"GET"]){   //发送get请求
-        
-        [MBProgressHUD showMessage:@"loading..." toView:self.view];
         
         [self.manager GET:urlStr parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
@@ -133,7 +133,9 @@
     
     NSString *urlStr = [JMTool isStringLegal:path ByJudgeString:@"^http://.*"]?path:[NSString stringWithFormat:@"%@",IP_ADRESS_URL(path)];
     
-    [MBProgressHUD showMessage:@"loading" toView:self.view];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD showMessage:@"loading..." toView:self.view];
+    });
     
     [self.manager POST:urlStr parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
@@ -180,7 +182,9 @@
     
     NSString *urlStr = [JMTool isStringLegal:path ByJudgeString:@"^http://.*"]?path:[NSString stringWithFormat:@"%@",IP_ADRESS_URL(path)];
     
-    [MBProgressHUD showMessage:@"loading" toView:self.view];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD showMessage:@"loading..." toView:self.view];
+    });
     
     [self.manager POST:urlStr parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (int i = 0; i < (imgArray.count > kNameArray.count?kNameArray.count:imgArray.count) ; i++) {

@@ -21,6 +21,17 @@
 }
 
 /**
+ *  设置tabbar高度
+ */
+//- (void)viewWillLayoutSubviews{
+//    CGRect tabFrame = self.tabBar.frame; //self.TabBar is IBOutlet of your TabBar
+//    tabFrame.size.height = 60;
+//    tabFrame.origin.y = self.view.frame.size.height - 60;
+//    self.tabBar.frame = tabFrame;
+//    
+//}
+
+/**
  *  设置选中背景图片
  *
  *  @param image <#image description#>
