@@ -32,13 +32,17 @@
 
 #define iPhone6plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size)) : NO)
 
+// NSUserdefault Keys
+static NSString *const IS_NETCONNECT_LOST = @"isNetConnectLost";
+
+static NSString *const REFRESH_UI = @"refreshUI";
 
 // URL
 
 // IP 正式地址
 #define IP_ADRESS_URL(...)          [NSString stringWithFormat:@"http://soft.lvtaosoft.com/duanxinInterface/%@",##__VA_ARGS__]
 
-// static NSString const *
+// static NSString *const
 
 
 

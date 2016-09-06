@@ -13,7 +13,6 @@
 #import "SDCycleScrollView.h"
 #import "UIImageView+WebCache.h"
 #import "JMTool.h"
-#import "Header.h"
 
 typedef void(^HttpSuccessBlock)(id JSON);
 typedef void(^HttpFailureBlock)(id Error);

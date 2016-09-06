@@ -59,18 +59,25 @@ static const short base64DecodingTable[256] = {
             {
                 //基本上监测到无连接 给出友好提示就够了
                 [MBProgressHUD showError:@"当前无网络"];
+                [self setObject:@YES ForKey:IS_NETCONNECT_LOST];
             }
                 break;
                 
             case AFNetworkReachabilityStatusReachableViaWWAN://3G
             {
-                
+                if ([self getObjectForKey:IS_NETCONNECT_LOST] && [[self getObjectForKey:IS_NETCONNECT_LOST] boolValue]) {
+                    [self setObject:@NO ForKey:IS_NETCONNECT_LOST];
+                    [[NSNotificationCenter defaultCenter]postNotificationName:REFRESH_UI object:nil userInfo:nil];
+                }
             }
                 break;
                 
             case AFNetworkReachabilityStatusReachableViaWiFi://WiFi
             {
-                
+                if ([self getObjectForKey:IS_NETCONNECT_LOST] && [[self getObjectForKey:IS_NETCONNECT_LOST] boolValue]) {
+                    [self setObject:@NO ForKey:IS_NETCONNECT_LOST];
+                    [[NSNotificationCenter defaultCenter]postNotificationName:REFRESH_UI object:nil userInfo:nil];
+                }
             }
                 break;
                 

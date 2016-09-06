@@ -15,6 +15,7 @@
 #import "MBProgressHUD+NJ.h"
 #import "PopoverView.h"
 #import "JMView.h"
+#import "Header.h"
 #import "UIButton+ImageTitleSpacing.h"
 
 @interface JMTool : NSObject
