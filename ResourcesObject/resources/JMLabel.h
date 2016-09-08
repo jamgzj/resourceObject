@@ -10,7 +10,7 @@
 
 @interface JMLabel : UILabel
 
-typedef enum {
+typedef enum : NSUInteger {
     JMLabelNormal = 0,
     JMLabelRect,
     JMLabelRound
