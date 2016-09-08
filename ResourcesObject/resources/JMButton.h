@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    JMButtonNormal = 0,
+    JMButtonRect,
+    JMButtonRound
+}JMButtonType;
+
 @interface JMButton : UIButton
 
 @property (assign,nonatomic)float title_X;
@@ -19,12 +25,6 @@
 @property (assign,nonatomic)float img_Y;
 @property (assign,nonatomic)float img_W;
 @property (assign,nonatomic)float img_H;
-
-typedef enum {
-    JMButtonNormal = 0,
-    JMButtonRect,
-    JMButtonRound
-}JMButtonType;
 
 @property (assign,nonatomic)JMButtonType jmType;
 
@@ -73,6 +73,27 @@ typedef enum {
                 JMButtonType:(JMButtonType)type;
 
 /**
+ *  普通纯文字按钮的初始化
+ *
+ *  @param title         <#title description#>
+ *  @param selectedTitle <#selectedTitle description#>
+ *  @param font          <#font description#>
+ *  @param color         <#color description#>
+ *  @param type          <#type description#>
+ *  @param delegate      <#delegate description#>
+ *  @param action        <#action description#>
+ *
+ *  @return <#return value description#>
+ */
++ (JMButton *)JMButtonWithTitle:(NSString *)title
+                  SelectedTitle:(NSString *)selectedTitle
+                           Font:(CGFloat)font
+                     TitleColor:(UIColor *)color
+                   JMButtonType:(JMButtonType)type
+                       Delegate:(id)delegate
+                         Action:(SEL)action;
+
+/**
  *  普通纯图片按钮的初始化
  *
  *  @param imgName    图片
@@ -84,6 +105,23 @@ typedef enum {
 + (JMButton *)JMButtonWithImage:(NSString *)imgName
                   SelectedImage:(NSString *)selImgName
                    JMButtonType:(JMButtonType)type;
+
+/**
+ *  普通纯图片按钮的初始化
+ *
+ *  @param imgName    <#imgName description#>
+ *  @param selImgName <#selImgName description#>
+ *  @param type       <#type description#>
+ *  @param delegate   <#delegate description#>
+ *  @param action     <#action description#>
+ *
+ *  @return <#return value description#>
+ */
++ (JMButton *)JMButtonWithImage:(NSString *)imgName
+                  SelectedImage:(NSString *)selImgName
+                   JMButtonType:(JMButtonType)type
+                       Delegate:(id)delegate
+                         Action:(SEL)action;
 
 /**
  *  设置按钮类型

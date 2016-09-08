@@ -23,23 +23,27 @@
     // 快速显示一个提示信息
     
     NSLog(@"%@",view);
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.labelText = text;
-//    hud.labelColor = [UIColor blackColor];
-    /*图片加文字提示 */
-    // 设置图片ycf 去除图片
-    //hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    
+        hud.labelText = text;
+    //    hud.labelColor = [UIColor blackColor];
+        /*图片加文字提示 */
+        // 设置图片ycf 去除图片
+        //hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
         hud.mode = MBProgressHUDModeCustomView;
-    // 再设置模式
-//    hud.mode =  MBProgressHUDModeText;
+        // 再设置模式
+    //    hud.mode =  MBProgressHUDModeText;
 
-    
-    // 隐藏时候从父控件中移除
-    hud.removeFromSuperViewOnHide = YES;
-    
-    // 1秒之后再消失
-    [hud hide:YES afterDelay:1.0];
-//    [hud hideAnimated:YES afterDelay:1.f];
+        
+        // 隐藏时候从父控件中移除
+        hud.removeFromSuperViewOnHide = YES;
+        
+        // 1秒之后再消失
+        [hud hide:YES afterDelay:1.0];
+    //    [hud hideAnimated:YES afterDelay:1.f];
+    });
 }
 
 /**
@@ -55,21 +59,36 @@
         isViewExist = NO;
     }
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.square = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // hud初始化
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+        
+        // 设置hud模式
+        hud.mode = MBProgressHUDModeCustomView;
+        
+        // 设置hud宽高相等
+        hud.square = YES;
+        
+        // 设置页面动画
+        UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 120)];
+        imgView.animationImages = imgArray;
+        imgView.animationDuration = 1.f;
+        imgView.animationRepeatCount = 0;
+        [imgView startAnimating];
+        
+        hud.customView = imgView;
+        
+        // 设置hud文字
+        hud.labelText = @"loading...";
+        
+        // 设置hud隐藏时从父视图移除
+        hud.removeFromSuperViewOnHide = YES;
+        
+        if (!isViewExist) {
+            [hud hide:YES afterDelay:2.f];
+        }
+    });
     
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 120)];
-    imgView.animationImages = imgArray;
-    imgView.animationDuration = 1.f;
-    imgView.animationRepeatCount = 0;
-    [imgView startAnimating];
-    hud.customView = imgView;
-    hud.labelText = @"loading...";
-    hud.removeFromSuperViewOnHide = YES;
-    if (!isViewExist) {
-        [hud hide:YES afterDelay:2.f];
-    }
 }
 
 /**
@@ -164,7 +183,9 @@
 + (void)hideHUDForView:(UIView *)view
 {
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
-    [self hideHUDForView:view animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self hideHUDForView:view animated:YES];
+    });
 }
 
 @end

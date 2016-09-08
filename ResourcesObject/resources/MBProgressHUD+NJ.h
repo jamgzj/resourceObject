@@ -22,7 +22,7 @@
 //+ (MBProgressHUD *)showMessage:(NSString *)message;
 
 /**
- *  view不能为nil
+ *  view不能为nil,需要使用GCD在主线程
  *
  *  @param message <#message description#>
  *  @param view    <#view description#>

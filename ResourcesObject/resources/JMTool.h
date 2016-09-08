@@ -76,6 +76,25 @@
  */
 + (void)removeAllNSUserdefaultObject;
 
+#pragma mark - NSKeyedArchiver 归档
+
+/**
+ *  存储数据
+ *
+ *  @param object <#object description#>
+ *  @param key    <#key description#>
+ */
++ (void)archiveObject:(id)object ForKey:(NSString *)key;
+
+/**
+ *  取出数据
+ *
+ *  @param key <#key description#>
+ *
+ *  @return <#return value description#>
+ */
++ (id)archiveObjectForKey:(NSString *)key;
+
 #pragma mark - MD5加密
 
 /**

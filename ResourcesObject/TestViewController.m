@@ -21,6 +21,9 @@
     UITableView *_tableView;
     UITableView *_tableView1;
     JMView *switchView;
+    
+    UIView *green;
+    UIView *red;
 }
 @end
 
@@ -171,12 +174,7 @@
 //    [rongClould addTarget:self action:@selector(ClickRongClould) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:rongClould];
     
-    NSString *string = @"http://isishajbs";
-    if ([JMTool isStringLegal:string ByJudgeString:@"^http://.*"]) {
-        NSLog(@"yes");
-    }else {
-        NSLog(@"no");
-    }
+    
     
 }
 

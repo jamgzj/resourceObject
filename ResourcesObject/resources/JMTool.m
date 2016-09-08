@@ -112,12 +112,13 @@ static const short base64DecodingTable[256] = {
     return contentSize.height;
 }
 
-#pragma mark - NSUserdefault
+#pragma mark - NSUserdefault 偏好设置
 
 // 将信息写入本地
 + (void)setObject:(id)object ForKey:(NSString *)key {
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setObject:object forKey:key];
+    [defaults synchronize];
 }
 
 + (id)getObjectForKey:(NSString *)key {
@@ -129,6 +130,24 @@ static const short base64DecodingTable[256] = {
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+}
+
+#pragma mark - NSKeyedArchiver 归档
+
++ (void)archiveObject:(id)object ForKey:(NSString *)key {
+    //获取文件路径
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.achiver",[key description]]];
+    NSLog(@"path=%@",path);
+
+    //将数据保存到文件中
+    [NSKeyedArchiver archiveRootObject:object toFile:path];
+}
+
++ (id)archiveObjectForKey:(NSString *)key {
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.achiver",[key description]]];
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 }
 
 #pragma mark - md5
