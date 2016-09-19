@@ -95,6 +95,35 @@
  */
 + (id)archiveObjectForKey:(NSString *)key;
 
+#pragma mark - 清理url cookies
+
+/**
+ *  清除某个url的所有cookies
+ *
+ *  @param url <#url description#>
+ */
++ (void)clearCookiesForURL:(NSURL *)url;
+
+/**
+ *  清除某个url的某个cookie
+ *
+ *  @param name <#name description#>
+ *  @param url  <#url description#>
+ */
++ (void)clearCookieWithCookieName:(NSString *)name ForURL:(NSURL *)url;
+
+/**
+ *  清理某个url缓存
+ *
+ *  @param url <#url description#>
+ */
++ (void)removeCacheForURL:(NSURL *)url;
+
+/**
+ *  清空所有缓存
+ */
++ (void)removeAllCachedResponses;
+
 #pragma mark - MD5加密
 
 /**

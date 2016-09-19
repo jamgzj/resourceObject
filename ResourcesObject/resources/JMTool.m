@@ -150,6 +150,43 @@ static const short base64DecodingTable[256] = {
     return [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 }
 
+#pragma mark - 清理url cookies
+
++ (void)clearCookiesForURL:(NSURL *)url {
+    if (url) {
+        NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url];
+        for (int i = 0; i < [cookies count]; i++) {
+            NSHTTPCookie *cookie = (NSHTTPCookie *)[cookies objectAtIndex:i];
+            NSLog(@"cookie---->%@",cookie);
+            NSLog(@"cookieArray   before------>%@",cookies);
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+            NSLog(@"cookieArray   later ------>%@",[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]);
+        }
+    }
+}
+
++ (void)clearCookieWithCookieName:(NSString *)name ForURL:(NSURL *)url {
+    if (url) {
+        NSArray * cookArray = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url];
+        
+        for (NSHTTPCookie *cookie in cookArray) {
+            if ([cookie.name isEqualToString:name]) {
+                [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+            }
+        }
+    }
+}
+
++ (void)removeCacheForURL:(NSURL *)url {
+    if (url) {
+        [[NSURLCache sharedURLCache] removeCachedResponseForRequest:[NSURLRequest requestWithURL:url]];
+    }
+}
+
++ (void)removeAllCachedResponses {
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+}
+
 #pragma mark - md5
 
 + (NSString *)md5String:(NSString *)sourceString {

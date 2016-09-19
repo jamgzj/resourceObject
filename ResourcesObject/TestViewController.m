@@ -174,8 +174,6 @@
 //    [rongClould addTarget:self action:@selector(ClickRongClould) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:rongClould];
     
-    
-    
 }
 
 - (void)ClickRongClould {

@@ -12,6 +12,7 @@
 
 static const int tableView1Tag = 0;
 static const int tableView2Tag = 1;
+static const int buttonTag = 800;
 
 @interface JMView ()<UIScrollViewDelegate,UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -78,7 +79,7 @@ static const int tableView2Tag = 1;
         
         [button setTitle:[NSString stringWithFormat:@"%@",_buttonTitles[i]] forState:UIControlStateNormal];
         button.frame = CGRectMake(i*buttonWidth, 0, buttonWidth, _switchHeight);
-        button.tag = i;
+        button.tag = i + buttonTag;
         [button addTarget:self action:@selector(ClickSwitchBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
         [_btnArray addObject:button];
@@ -122,12 +123,12 @@ static const int tableView2Tag = 1;
     UIButton *button = sender;
     
     if (_style == JMSwitchViewStyleHorizontal) {
-        [_scrollView setContentOffset:CGPointMake(button.tag * self.frame.size.width, 0) animated:YES];
+        [_scrollView setContentOffset:CGPointMake((button.tag-buttonTag) * self.frame.size.width, 0) animated:YES];
         
     }else {
         if (_selextedIndex == -1) {
             
-            _selextedIndex = button.tag;
+            _selextedIndex = button.tag-buttonTag;
             
             UIView *cover = [self coverAtIndex:_selextedIndex];
             [self bringSubviewToFront:cover];
@@ -137,14 +138,14 @@ static const int tableView2Tag = 1;
             } completion:^(BOOL finished) {
                 
             }];
-        }else if (_selextedIndex == button.tag) {
+        }else if (_selextedIndex == button.tag-buttonTag) {
             [self tapCover];
             
         }else {
             
             UIView *cover1 = [self coverAtIndex:_selextedIndex];
             
-            _selextedIndex = button.tag;
+            _selextedIndex = button.tag-buttonTag;
             
             UIView *cover2 = [self coverAtIndex:_selextedIndex];
             
@@ -163,7 +164,7 @@ static const int tableView2Tag = 1;
         }
         
         if (self.SwitchDelegate && [self.SwitchDelegate respondsToSelector:@selector(JMSwitchView:didSelectButtonAtIndex:)]) {
-            [self.SwitchDelegate JMSwitchView:self didSelectButtonAtIndex:button.tag];
+            [self.SwitchDelegate JMSwitchView:self didSelectButtonAtIndex:button.tag-buttonTag];
         }
     }
     
