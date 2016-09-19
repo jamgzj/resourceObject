@@ -112,7 +112,7 @@ typedef enum : NSUInteger {
  *  @param jmSwitchView <#jmSwitchView description#>
  *  @param indexPath    <#indexPath description#>
  */
-- (void)JMSwitchView:(JMView *)jmSwitchView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)JMSwitchView:(JMView *)jmSwitchView didSelectRowAtIndexPath:(NSIndexPath *)indexPath WithText:(NSString *)text;
 
 @end
 

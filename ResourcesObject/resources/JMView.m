@@ -351,8 +351,8 @@ static const int buttonTag = 800;
             UIButton *button = [self buttonAtIndex:_selextedIndex];
             [button setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text forState:UIControlStateNormal];
             [self tapCover];
-            if (self.SwitchDelegate && [self.SwitchDelegate respondsToSelector:@selector(JMSwitchView:didSelectRowAtIndexPath:)]) {
-                [self.SwitchDelegate JMSwitchView:self didSelectRowAtIndexPath:indexPath];
+            if (self.SwitchDelegate && [self.SwitchDelegate respondsToSelector:@selector(JMSwitchView:didSelectRowAtIndexPath:WithText:)]) {
+                [self.SwitchDelegate JMSwitchView:self didSelectRowAtIndexPath:indexPath WithText:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
             }
         }else {
             [_selectedRow setObject:[NSString stringWithFormat:@"%d",indexPath.row] forKey:[NSString stringWithFormat:@"%d",(int)(tableView.tag/1000)-1]];
@@ -365,8 +365,8 @@ static const int buttonTag = 800;
         UIButton *button = [self buttonAtIndex:_selextedIndex];
         [button setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text forState:UIControlStateNormal];
         [self tapCover];
-        if (self.SwitchDelegate && [self.SwitchDelegate respondsToSelector:@selector(JMSwitchView:didSelectRowAtIndexPath:)]) {
-            [self.SwitchDelegate JMSwitchView:self didSelectRowAtIndexPath:indexPath];
+        if (self.SwitchDelegate && [self.SwitchDelegate respondsToSelector:@selector(JMSwitchView:didSelectRowAtIndexPath:WithText:)]) {
+            [self.SwitchDelegate JMSwitchView:self didSelectRowAtIndexPath:indexPath WithText:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
         }
     }
 }
