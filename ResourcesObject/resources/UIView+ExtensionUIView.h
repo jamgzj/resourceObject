@@ -16,7 +16,17 @@
 @property (nonatomic,assign)CGFloat height;
 @property (nonatomic,assign)CGSize size;
 @property (nonatomic)CGPoint origin;
-@property (nonatomic, assign, readonly) CGFloat bottom;
+@property (nonatomic, assign, readonly) CGFloat left;
+@property (nonatomic, assign, readonly) CGFloat top;
 @property (nonatomic, assign, readonly) CGFloat right;
+@property (nonatomic, assign, readonly) CGFloat bottom;
+
+
+/**
+ *  添加view四周的阴影
+ *
+ *  @param cornerRadius <#cornerRadius description#>
+ */
+- (void)addShadowAroundWithCornerRadius:(float)cornerRadius;
 
 @end

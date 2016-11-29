@@ -35,6 +35,8 @@
 		8FDB1EB51D1A240D005DE5B6 /* 引导页3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB21D1A240D005DE5B6 /* 引导页3.png */; settings = {ASSET_TAGS = (); }; };
 		8FF27B691D922EAD0091B437 /* UIView+ExtensionUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF27B681D922EAD0091B437 /* UIView+ExtensionUIView.m */; settings = {ASSET_TAGS = (); }; };
 		8FFB4A931D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */; settings = {ASSET_TAGS = (); }; };
+		8FFE9AD31DED705100329FBA /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE9AD21DED705100329FBA /* UserInfo.m */; settings = {ASSET_TAGS = (); }; };
+		8FFE9AD61DED725400329FBA /* JMNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE9AD51DED725400329FBA /* JMNavView.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +91,10 @@
 		8FF27B681D922EAD0091B437 /* UIView+ExtensionUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ExtensionUIView.m"; sourceTree = "<group>"; };
 		8FFB4A911D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CustomHeight.h"; sourceTree = "<group>"; };
 		8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+CustomHeight.m"; sourceTree = "<group>"; };
+		8FFE9AD11DED705100329FBA /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		8FFE9AD21DED705100329FBA /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		8FFE9AD41DED725400329FBA /* JMNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMNavView.h; sourceTree = "<group>"; };
+		8FFE9AD51DED725400329FBA /* JMNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMNavView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +135,12 @@
 				8F0761F31D3474960013238C /* BaseViewController.h */,
 				8F0761F41D3474960013238C /* BaseViewController.m */,
 				8F0761F51D3474960013238C /* Header.h */,
+				8FFE9AD11DED705100329FBA /* UserInfo.h */,
+				8FFE9AD21DED705100329FBA /* UserInfo.m */,
 				8F0761F61D3474960013238C /* JMAlertView.h */,
 				8F0761F71D3474960013238C /* JMAlertView.m */,
+				8FFE9AD41DED725400329FBA /* JMNavView.h */,
+				8FFE9AD51DED725400329FBA /* JMNavView.m */,
 				8FAD5F291D518216003EA152 /* JMView.h */,
 				8FAD5F2A1D518216003EA152 /* JMView.m */,
 				8F0761F81D3474960013238C /* JMButton.h */,
@@ -344,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F7FD5EA1D34950100678DB1 /* main.m in Sources */,
+				8FFE9AD61DED725400329FBA /* JMNavView.m in Sources */,
 				8F0762081D3474960013238C /* JMButton.m in Sources */,
 				8F07620C1D3474960013238C /* MBProgressHUD+NJ.m in Sources */,
 				8F0762041D3474960013238C /* JMNavController.m in Sources */,
@@ -351,6 +362,7 @@
 				8F0762091D3474960013238C /* JMLabel.m in Sources */,
 				8F0762061D3474960013238C /* BaseViewController.m in Sources */,
 				8F07620D1D3474960013238C /* PopoverView.m in Sources */,
+				8FFE9AD31DED705100329FBA /* UserInfo.m in Sources */,
 				8FC2DB7F1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m in Sources */,
 				8FBA1D461D6FE86300B4F4F2 /* UIButton+ImageTitleSpacing.m in Sources */,
 				8F089AE81CFBE4EB00A37815 /* AppDelegate.m in Sources */,
@@ -469,7 +481,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = ResourcesObject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -488,7 +500,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = ResourcesObject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

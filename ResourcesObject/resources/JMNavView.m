@@ -35,9 +35,9 @@
 - (void)addJmLeftBarBtnWithImage:(UIImage *)image Target:(id)target {
     CGSize size = image.size;
     float btnHeight = navHeight-20;
-    float imgHeight = 17*COEFFICIENT;
+    float imgHeight = 17*coefficient;
     float imgWidth = imgHeight*size.width/size.height;
-    UIButton *JmLeftBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(5*COEFFICIENT, 20, btnHeight, btnHeight)];
+    UIButton *JmLeftBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(5*coefficient, 20, btnHeight, btnHeight)];
     [JmLeftBarBtn setImage:image forState:UIControlStateNormal];
     [JmLeftBarBtn addTarget:target action:@selector(ClickJmLeftBarBtn:) forControlEvents:UIControlEventTouchUpInside];
     if (imgWidth > btnHeight) {
@@ -52,9 +52,9 @@
 - (void)addJmRightBarBtnWithImage:(UIImage *)image Target:(id)target {
     CGSize size = image.size;
     float btnHeight = navHeight-20;
-    float imgHeight = 17*COEFFICIENT;
+    float imgHeight = 17*coefficient;
     float imgWidth = imgHeight*size.width/size.height;
-    UIButton *JmRightBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-5*COEFFICIENT-btnHeight, 20, btnHeight, btnHeight)];
+    UIButton *JmRightBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-5*coefficient-btnHeight, 20, btnHeight, btnHeight)];
     [JmRightBarBtn setImage:image forState:UIControlStateNormal];
     [JmRightBarBtn addTarget:target action:@selector(ClickJmRightBarBtn:) forControlEvents:UIControlEventTouchUpInside];
     if (imgWidth > btnHeight) {
@@ -69,7 +69,7 @@
 - (UIButton *)addButtonWithImage:(UIImage *)image OriginX:(float)originX {
     CGSize size = image.size;
     float btnHeight = navHeight-20;
-    float imgHeight = 17*COEFFICIENT;
+    float imgHeight = 17*coefficient;
     float imgWidth = imgHeight*size.width/size.height;
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(originX, 20, btnHeight, btnHeight)];
     [button setImage:image forState:UIControlStateNormal];
@@ -84,7 +84,7 @@
 
 - (void)addGrayShadow {
     self.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-    self.layer.shadowOffset = CGSizeMake(0, 1.5*COEFFICIENT);
+    self.layer.shadowOffset = CGSizeMake(0, 1.5*coefficient);
     self.layer.shadowRadius = 0;
     self.layer.shadowOpacity = 1.f;
 }

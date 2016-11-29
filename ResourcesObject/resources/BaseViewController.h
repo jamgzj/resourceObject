@@ -13,8 +13,8 @@
 #import "SDCycleScrollView.h"
 #import "UIImageView+WebCache.h"
 #import "JMTool.h"
-#import <UMSocialCore/UMSocialCore.h>
-#import <UMMobClick/MobClick.h>
+//#import <UMSocialCore/UMSocialCore.h>
+//#import <UMMobClick/MobClick.h>
 
 typedef void(^HttpSuccessBlock)(id JSON);
 typedef void(^HttpFailureBlock)(id Error);
@@ -48,7 +48,9 @@ typedef void(^HttpFailureBlock)(id Error);
  */
 @property (strong,nonatomic)AFHTTPSessionManager *manager;
 
-
+/**
+ *  强制跳转登录界面
+ */
 - (void)forceToPushLoginVC;
 
 #pragma mark - 自定义 alertView
@@ -230,16 +232,16 @@ typedef void(^HttpFailureBlock)(id Error);
  */
 -(void)shadowWithView:(UIView *)view Radius:(CGFloat)Radius;
 
-#pragma mark - 分享
-
-/**
- *  网页分享
- *
- *  @param platformType 平台类型
- *  @param type         0 邀请好友 1下载
- *  @param isActivity   有无积分获取
- */
-- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType WithType:(int)type WithActivity:(BOOL)isActivity;
+//#pragma mark - 分享
+//
+///**
+// *  网页分享
+// *
+// *  @param platformType 平台类型
+// *  @param type         0 邀请好友 1下载
+// *  @param isActivity   有无积分获取
+// */
+//- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType WithType:(int)type WithActivity:(BOOL)isActivity;
 
 
 

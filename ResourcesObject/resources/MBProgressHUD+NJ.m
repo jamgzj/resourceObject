@@ -66,7 +66,7 @@
         // 设置页面动画
         hud.label.text = text;
         hud.label.numberOfLines = 0;
-        hud.label.preferredMaxLayoutWidth = 150.f*COEFFICIENT;
+        hud.label.preferredMaxLayoutWidth = 150.f*coefficient;
         
 //        // 设置hud文字
 //        hud.labelText = @"loading...";

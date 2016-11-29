@@ -7,6 +7,7 @@
 //
 
 #import "UIView+ExtensionUIView.h"
+#import "Header.h"
 
 @implementation UIView (ExtensionUIView)
 
@@ -83,12 +84,28 @@
     return self.frame.origin;
 }
 
-- (CGFloat)bottom {
-    return self.origin.y + self.height;
+- (CGFloat)left {
+    return self.origin.x;
+}
+
+- (CGFloat)top {
+    return self.origin.y;
 }
 
 - (CGFloat)right {
     return self.origin.x + self.width;
+}
+
+- (CGFloat)bottom {
+    return self.origin.y + self.height;
+}
+
+- (void)addShadowAroundWithCornerRadius:(float)cornerRadius {
+    self.layer.cornerRadius = cornerRadius;
+    self.layer.shadowColor = [UIColor colorWithWhite:0.3 alpha:0.3].CGColor;
+    self.layer.shadowRadius = 2*coefficient;
+    self.layer.shadowOpacity = 1.f;
+    self.layer.shadowOffset = CGSizeZero;
 }
 
 @end

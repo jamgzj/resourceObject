@@ -14,9 +14,10 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - BaiduMapKit (3.0.0)
   - IQKeyboardManager (3.3.7)
   - Masonry (1.0.1)
-  - MBProgressHUD (0.9.2)
+  - MBProgressHUD (1.0.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
   - RongCloudIMKit (2.6.11)
@@ -25,29 +26,34 @@ PODS:
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
+  - TZImagePickerController (1.7.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - BaiduMapKit (~> 3.0.0)
   - IQKeyboardManager (~> 3.3.7)
   - Masonry (~> 1.0.1)
-  - MBProgressHUD (~> 0.9)
+  - MBProgressHUD (~> 1.0.0)
   - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.12)
   - RongCloudIMKit (~> 2.6.11)
   - SDCycleScrollView (~> 1.65)
   - SDWebImage (~> 3.8.1)
+  - TZImagePickerController (~> 1.7.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BaiduMapKit: de2a726d5296d6b2dc0e974b683af73153608dcd
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RongCloudIMKit: 880e0eefb689051a754f1e10a19c735fcf3049a4
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  TZImagePickerController: cbfd57ba947263759b860f74132dd1bc33125afc
 
-PODFILE CHECKSUM: 53469422c473f89e57af35924f6a2a713b8de8c4
+PODFILE CHECKSUM: 7feb292e084396e776334661ffc8fd0e0d30e4d4
 
 COCOAPODS: 1.0.1

@@ -7,6 +7,8 @@
 //
 
 #import "JMNavController.h"
+#import "Header.h"
+#import "UINavigationBar+CustomHeight.h"
 
 @interface JMNavController ()
 
