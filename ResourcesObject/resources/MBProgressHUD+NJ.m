@@ -7,6 +7,7 @@
 //
 
 #import "MBProgressHUD+NJ.h"
+#import "Header.h"
 
 @implementation MBProgressHUD (NJ)
 
@@ -22,7 +23,6 @@
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     // 快速显示一个提示信息
     
-    NSLog(@"%@",view);
     dispatch_async(dispatch_get_main_queue(), ^{
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
@@ -44,6 +44,41 @@
         [hud hide:YES afterDelay:1.0];
     //    [hud hideAnimated:YES afterDelay:1.f];
     });
+}
+
++ (void)showText:(NSString *)text ToView:(UIView *)view {
+    BOOL isViewExist = YES;
+    if (!view) {
+        view = [UIApplication sharedApplication].windows.lastObject;
+        isViewExist = NO;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // hud初始化
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+        
+        // 设置hud模式
+        hud.mode = MBProgressHUDModeCustomView;
+        
+        // 设置hud宽高相等
+        hud.square = YES;
+        
+        // 设置页面动画
+        hud.label.text = text;
+        hud.label.numberOfLines = 0;
+        hud.label.preferredMaxLayoutWidth = 150.f*COEFFICIENT;
+        
+//        // 设置hud文字
+//        hud.labelText = @"loading...";
+        
+        // 设置hud隐藏时从父视图移除
+        hud.removeFromSuperViewOnHide = YES;
+        
+        if (!isViewExist) {
+            [hud hide:YES afterDelay:2.f];
+        }
+    });
+    
 }
 
 /**

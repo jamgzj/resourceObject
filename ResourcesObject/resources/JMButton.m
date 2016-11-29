@@ -127,8 +127,7 @@
 - ( CGRect )titleRectForContentRect:( CGRect )contentRect
 {
     if (_title_H == 0) {
-        [super titleRectForContentRect:contentRect];
-        return contentRect;
+        return [super titleRectForContentRect:contentRect];;
     }
     contentRect = ( CGRect ){{_title_X,_title_Y},{_title_W,_title_H}};
     return contentRect;
@@ -137,8 +136,7 @@
 - ( CGRect )imageRectForContentRect:( CGRect )contentRect
 {
     if (_img_H == 0) {
-        [super imageRectForContentRect:contentRect];
-        return contentRect;
+        return [super imageRectForContentRect:contentRect];;
     }
     contentRect = ( CGRect ){{_img_X,_img_Y},{_img_W,_img_H}};
     return contentRect;

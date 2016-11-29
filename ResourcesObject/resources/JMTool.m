@@ -31,6 +31,11 @@ static const short base64DecodingTable[256] = {
 
 @implementation JMTool
 
++ (BOOL)isLogin {
+    NSDictionary *userInfoDict = [JMTool getObjectForKey:USER_INFO_KEY];
+    return userInfoDict?YES:NO;
+}
+
 + (BOOL)isHttpRequestStatusOK:(NSDictionary *)dict {
     if ([dict[@"status"] integerValue] == 200) {
         return YES;
@@ -97,10 +102,31 @@ static const short base64DecodingTable[256] = {
     [_tableView setTableFooterView:view];
 }
 
++ (void)resetLabel:(UILabel *)label ContentOffsetX:(float)width {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:label.text];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+    paragraphStyle.alignment = NSTextAlignmentLeft;
+    //    paragraphStyle.maximumLineHeight = 60;  //最大的行高
+    //    paragraphStyle.lineSpacing = 5;  //行自定义行高度
+    [paragraphStyle setFirstLineHeadIndent:width + 5];//首行缩进 根据用户昵称宽度在加5个像素
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [label.text length])];
+    label.attributedText = attributedString;
+    [label sizeToFit];
+//    CGSize size = [label sizeThatFits:CGSizeZero];
+//    NSLog(@"%f,%f",size.width,size.height);
+//    label.size = CGSizeMake(size.width, size.height);
+}
+
++ (CGSize)string:(NSString *)string sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize {
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return [string boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
+
 + (CGFloat)heightOfContent:(NSString *)content Font:(UIFont *)font WithWidth:(CGFloat)width {
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
+    [paragraphStyle setFirstLineHeadIndent:width + 5];
     
     NSDictionary * attributes = @{NSFontAttributeName : font,
                                   NSParagraphStyleAttributeName : paragraphStyle};
@@ -341,6 +367,40 @@ static const short base64DecodingTable[256] = {
     return [string dataUsingEncoding:NSUTF8StringEncoding];
 }
 
++ (NSString *)transformToJsonString:(id)object {
+    
+    BOOL isYes = [NSJSONSerialization isValidJSONObject:object];
+    NSString *JsonDataStr;
+    
+    if (isYes) {
+        NSLog(@"可以转换");
+        
+        /* JSON data for obj, or nil if an internal error occurs. The resulting data is a encoded in UTF-8.
+         */
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:NULL];
+        
+        /*
+         Writes the bytes in the receiver to the file specified by a given path.
+         YES if the operation succeeds, otherwise NO
+         */
+        // 将JSON数据写成文件
+        // 文件添加后缀名: 告诉别人当前文件的类型.
+        // 注意: AFN是通过文件类型来确定数据类型的!如果不添加类型,有可能识别不了! 自己最好添加文件类型.
+        [jsonData writeToFile:[NSString stringWithFormat:@"/Users/%@.json",[object description]] atomically:YES];
+        
+        NSLog(@"%@", [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
+        JsonDataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
+        return JsonDataStr;
+        
+    } else {
+        
+        NSLog(@"JSON数据生成失败，请检查数据格式");
+        
+    }
+    return nil;
+}
+
 #pragma mark - 汉字转拼音
 
 //+ (NSString *)transformToPinyin:(NSString *)chineseString {
@@ -473,6 +533,61 @@ static const short base64DecodingTable[256] = {
     }else {
         return NO;
     }
+}
+
+#pragma mark - 16进制颜色转换
+
+// 透明度固定为1，以0x开头的十六进制转换成的颜色
++ (UIColor*)colorWithHex:(long)hexColor {
+    return [self colorWithHex:hexColor alpha:1.];
+}
+
+// 0x开头的十六进制转换成的颜色,透明度可调整
++ (UIColor *)colorWithHex:(long)hexColor alpha:(float)opacity {
+    float red = ((float)((hexColor & 0xFF0000) >> 16))/255.0;
+    float green = ((float)((hexColor & 0xFF00) >> 8))/255.0;
+    float blue = ((float)(hexColor & 0xFF))/255.0;
+    return [UIColor colorWithRed:red green:green blue:blue alpha:opacity];
+}
+
+// 颜色转换三：iOS中十六进制的颜色（以#开头）转换为UIColor
++ (UIColor *) colorWithHexString:(NSString *)color {
+    NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    // String should be 6 or 8 characters
+    if ([cString length] < 6) {
+        return [UIColor clearColor];
+    }
+    
+    // 判断前缀并剪切掉
+    if ([cString hasPrefix:@"0X"])
+        cString = [cString substringFromIndex:2];
+    if ([cString hasPrefix:@"#"])
+        cString = [cString substringFromIndex:1];
+    if ([cString length] != 6)
+        return [UIColor clearColor];
+    
+    // 从六位数值中找到RGB对应的位数并转换
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    
+    //R、G、B
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    // Scan values
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1.0f];
 }
 
 #pragma mark - 设置view背景渐变色
@@ -966,6 +1081,8 @@ static const short base64DecodingTable[256] = {
     
     UIImageView *imgView = [[UIImageView alloc]initWithFrame:view1.frame];
     imgView.image = image;
+    imgView.layer.cornerRadius = imgView.height/2;
+    imgView.layer.masksToBounds = YES;
     [[UIApplication sharedApplication].keyWindow addSubview:imgView];
     
     UIBezierPath *path = [UIBezierPath bezierPath];
@@ -977,28 +1094,28 @@ static const short base64DecodingTable[256] = {
     animation.rotationMode = kCAAnimationRotateAuto;
     
     CABasicAnimation *expandAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    expandAnimation.duration = 0.25f;
+    expandAnimation.duration = 0.15f;
     expandAnimation.fromValue = [NSNumber numberWithFloat:1];
     expandAnimation.toValue = [NSNumber numberWithFloat:2.0f];
     expandAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     CABasicAnimation *narrowAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    narrowAnimation.beginTime = 0.25f;
+    narrowAnimation.beginTime = 0.15f;
     narrowAnimation.fromValue = [NSNumber numberWithFloat:2.0f];
-    narrowAnimation.duration = 0.5f;
+    narrowAnimation.duration = 0.3f;
     narrowAnimation.toValue = [NSNumber numberWithFloat:0.5f];
     
     narrowAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
     CAAnimationGroup *groups = [CAAnimationGroup animation];
     groups.animations = @[animation,expandAnimation,narrowAnimation];
-    groups.duration = 0.75f;
+    groups.duration = 0.45f;
     groups.removedOnCompletion=NO;
     groups.fillMode=kCAFillModeForwards;
     groups.delegate = delegate;
     [imgView.layer addAnimation:groups forKey:@"group"];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.75 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [imgView removeFromSuperview];
         superView.userInteractionEnabled = YES;
     });
@@ -1006,11 +1123,21 @@ static const short base64DecodingTable[256] = {
 
 + (void)addShakeAnimation:(UIView *)view {
     CABasicAnimation *shakeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
-    shakeAnimation.duration = 0.25f;
+    shakeAnimation.duration = 0.15f;
     shakeAnimation.fromValue = [NSNumber numberWithFloat:-5];
     shakeAnimation.toValue = [NSNumber numberWithFloat:5];
     shakeAnimation.autoreverses = YES;
     [view.layer addAnimation:shakeAnimation forKey:nil];
+}
+
+#pragma mark - 对价格进行处理
+
++ (float)getRealPriceWithPrice:(float)price {
+    NSString *priceStr = [NSString stringWithFormat:@"%.2f",price];
+    if ([priceStr floatValue]<price) {
+        return [priceStr floatValue]+0.01;
+    }
+    return [priceStr floatValue];
 }
 
 

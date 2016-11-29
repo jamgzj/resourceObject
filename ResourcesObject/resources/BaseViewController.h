@@ -13,14 +13,21 @@
 #import "SDCycleScrollView.h"
 #import "UIImageView+WebCache.h"
 #import "JMTool.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import <UMMobClick/MobClick.h>
 
 typedef void(^HttpSuccessBlock)(id JSON);
 typedef void(^HttpFailureBlock)(id Error);
 
-@interface BaseViewController : UIViewController<UINavigationControllerDelegate ,UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
+@interface BaseViewController : UIViewController<UINavigationControllerDelegate ,UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate, UIAlertViewDelegate>
 
 @property (strong,nonatomic)UITableView *tableView;
+@property (strong,nonatomic)UITableView *groupedTableView;
 @property (strong,nonatomic)UIScrollView *scrollView;
+@property (strong,nonatomic)JMNavView *jmNavigationView;
+@property (strong,nonatomic)UIView *jmCover;
+@property (weak,nonatomic)UITextField *payTextField;
+@property (weak,nonatomic)UIButton *closeBtn;
 
 /**
  *  `AFHTTPSessionManager` is a subclass of `AFURLSessionManager` with convenience methods for making HTTP requests. When a `baseURL` is provided, requests made with the `GET` / `POST` / et al. convenience methods can be made with relative paths.
@@ -40,6 +47,48 @@ typedef void(^HttpFailureBlock)(id Error);
  Warning: Managers for background sessions must be owned for the duration of their use. This can be accomplished by creating an application-wide or shared singleton instance.
  */
 @property (strong,nonatomic)AFHTTPSessionManager *manager;
+
+
+- (void)forceToPushLoginVC;
+
+#pragma mark - 自定义 alertView
+
+- (void)showAlertViewWithTextFieldWithTitle:(NSString *)title;
+
+/**
+ *  自定义提示框
+ *
+ *  @param title   <#title description#>
+ *  @param message <#message description#>
+ *  @param image   <#image description#>
+ */
+- (void)showAlertViewWithTitle:(NSString *)title
+                       Message:(NSString *)message
+                         Image:(UIImage *)image;
+
+/**
+ *  自定义提示选择
+ *
+ *  @param title       <#title description#>
+ *  @param message     <#message description#>
+ *  @param actionTitle <#actionTitle description#>
+ *  @param cancelTitle <#cancelTitle description#>
+ *  @param action      <#action description#>
+ */
+- (void)showAlertViewWithTitle:(NSString *)title
+                       Message:(NSString *)message
+                   ActionTitle:(NSString *)actionTitle
+                   CancelTitle:(NSString *)cancelTitle
+                           Sel:(SEL)action;
+
+/**
+ *  alertView的关闭按钮事件
+ *
+ *  @param sender <#sender description#>
+ */
+- (void)ClickAlertCloseBtn:(id)sender;
+
+#pragma mark - 网络请求
 
 /**
  *  get请求
@@ -145,16 +194,52 @@ typedef void(^HttpFailureBlock)(id Error);
                                 Frame:(CGRect)frame;
 
 /**
+ *  自定义navView左侧按钮点击事件
+ *
+ *  @param sender <#sender description#>
+ */
+- (void)ClickJmLeftBarBtn:(id)sender;
+
+/**
+ *  自定义navView右侧按钮点击事件
+ *
+ *  @param sender <#sender description#>
+ */
+- (void)ClickJmRightBarBtn:(id)sender;
+
+/**
  *  重设self.view的frame(当frame不在nav下方时使用,不是很好用)
  */
 - (void)resetViewFrame;
 
 
+/**
+ *  cell的自定义title
+ *
+ *  @param title 提示标题
+ *
+ *  @return 返回一个cell 适用于当前section的第一个row
+ */
+- (UITableViewCell *)RecommendTitleCellWithTitle:(NSString *)title;
 
+/**
+ *  View的周围阴影方法
+ *
+ *  @param view   需要阴影的视图
+ *  @param Radius 视图的四个角的弧度值
+ */
+-(void)shadowWithView:(UIView *)view Radius:(CGFloat)Radius;
 
+#pragma mark - 分享
 
-
-
+/**
+ *  网页分享
+ *
+ *  @param platformType 平台类型
+ *  @param type         0 邀请好友 1下载
+ *  @param isActivity   有无积分获取
+ */
+- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType WithType:(int)type WithActivity:(BOOL)isActivity;
 
 
 

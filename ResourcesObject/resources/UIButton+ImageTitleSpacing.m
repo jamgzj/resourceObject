@@ -23,8 +23,8 @@
 
     
     // 1. 得到imageView和titleLabel的宽、高
-    CGFloat imageWith = self.imageView.frame.size.width;
-    CGFloat imageHeight = self.imageView.frame.size.height;
+    CGFloat imageWith = [UIDevice currentDevice].systemVersion.floatValue >= 8.0?self.imageView.intrinsicContentSize.width:self.imageView.frame.size.width;
+    CGFloat imageHeight = [UIDevice currentDevice].systemVersion.floatValue >= 8.0?self.imageView.intrinsicContentSize.height:self.imageView.frame.size.height;
     
     CGFloat labelWidth = 0.0;
     CGFloat labelHeight = 0.0;

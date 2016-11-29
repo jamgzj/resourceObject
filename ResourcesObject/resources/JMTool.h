@@ -15,10 +15,22 @@
 #import "MBProgressHUD+NJ.h"
 #import "PopoverView.h"
 #import "JMView.h"
+#import "JMNavView.h"
 #import "Header.h"
 #import "UIButton+ImageTitleSpacing.h"
+#import "UIView+ExtensionUIView.h"
+#import "UINavigationBar+CustomHeight.h"
+#import "UserInfo.h"
+#import "TextLimit.h"
 
 @interface JMTool : NSObject
+
+/**
+ *  是否登陆
+ *
+ *  @return <#return value description#>
+ */
++ (BOOL)isLogin;
 
 /**
  *  判断网络请求返回值
@@ -40,6 +52,25 @@
  *  @param _tableView
  */
 + (void)setExtraCellLineHidden: (UITableView *)_tableView;
+
+/**
+ *  label首行缩进
+ *
+ *  @param label <#label description#>
+ *  @param width <#width description#>
+ */
++ (void)resetLabel:(UILabel *)label ContentOffsetX:(float)width;
+
+/**
+ *  获取文本size
+ *
+ *  @param string  <#string description#>
+ *  @param font    <#font description#>
+ *  @param maxSize <#maxSize description#>
+ *
+ *  @return <#return value description#>
+ */
++ (CGSize)string:(NSString *)string sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize;
 
 /**
  *  获取文本高度
@@ -184,6 +215,15 @@
  */
 + (NSString *)stringWithBase64EncodedString:(NSString *)base64EncodedString;
 
+/**
+ *  转换成jsonstring
+ *
+ *  @param object <#object description#>
+ *
+ *  @return return value description
+ */
++ (NSString *)transformToJsonString:(id)object;
+
 #pragma mark - 汉字转拼音
 
 /**
@@ -315,6 +355,36 @@
                                                  评注：可以监测当前字符串是否为纯空格或为空
 
 */
+
+#pragma mark - 16进制颜色转换
+
+/**
+ *  透明度固定为1，以0x开头的十六进制转换成的颜色
+ *
+ *  @param hexColor 以0x开头的十六进制
+ *
+ *  @return <#return value description#>
+ */
++ (UIColor *)colorWithHex:(long)hexColor;
+
+/**
+ *  0x开头的十六进制转换成的颜色,透明度可调整
+ *
+ *  @param hexColor 以0x开头的十六进制
+ *  @param opacity  <#opacity description#>
+ *
+ *  @return <#return value description#>
+ */
++ (UIColor *)colorWithHex:(long)hexColor alpha:(float)opacity;
+
+/**
+ *  iOS中十六进制的颜色（以#开头）转换为UIColor
+ *
+ *  @param color 十六进制的颜色（以#开头）
+ *
+ *  @return <#return value description#>
+ */
++ (UIColor *)colorWithHexString:(NSString *)color;
 
 #pragma mark - 设置view背景渐变色
 
@@ -484,8 +554,14 @@
  */
 + (void)addShakeAnimation:(UIView *)view;
 
-
-
+/**
+ *  对价格进行处理获得真实价格
+ *
+ *  @param price <#price description#>
+ *
+ *  @return <#return value description#>
+ */
++ (float)getRealPriceWithPrice:(float)price;
 
 
 

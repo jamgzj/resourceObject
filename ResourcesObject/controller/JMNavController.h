@@ -10,6 +10,7 @@
 
 @interface JMNavController : UINavigationController
 
+- (void)setTitleVerticalOffset:(float)offset;
 - (void)setNavigationBarColor:(UIColor *)color;
 - (void)setTitleColor:(UIColor *)color;
 

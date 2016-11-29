@@ -41,6 +41,12 @@
         UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(i*frame.size.width, 0, frame.size.width, frame.size.height)];
         imgView.image = imgArray[i];
         [_scrollView addSubview:imgView];
+        
+        if (i== count-1) {
+            imgView.userInteractionEnabled = YES;
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lastPageTaaped:)];
+            [imgView addGestureRecognizer:tap];
+        }
     }
 }
 
@@ -56,6 +62,11 @@
     }
 }
 
+
+-(void)lastPageTaaped:(UITapGestureRecognizer *)tap
+{
+    [self.scrollViewDelegate lastPageClick];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

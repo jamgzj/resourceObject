@@ -33,6 +33,8 @@
 		8FDB1EB31D1A240D005DE5B6 /* 引导页1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB01D1A240D005DE5B6 /* 引导页1.png */; settings = {ASSET_TAGS = (); }; };
 		8FDB1EB41D1A240D005DE5B6 /* 引导页2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB11D1A240D005DE5B6 /* 引导页2.png */; settings = {ASSET_TAGS = (); }; };
 		8FDB1EB51D1A240D005DE5B6 /* 引导页3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB21D1A240D005DE5B6 /* 引导页3.png */; settings = {ASSET_TAGS = (); }; };
+		8FF27B691D922EAD0091B437 /* UIView+ExtensionUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF27B681D922EAD0091B437 /* UIView+ExtensionUIView.m */; settings = {ASSET_TAGS = (); }; };
+		8FFB4A931D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,10 @@
 		8FDB1EB01D1A240D005DE5B6 /* 引导页1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页1.png"; sourceTree = "<group>"; };
 		8FDB1EB11D1A240D005DE5B6 /* 引导页2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页2.png"; sourceTree = "<group>"; };
 		8FDB1EB21D1A240D005DE5B6 /* 引导页3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页3.png"; sourceTree = "<group>"; };
+		8FF27B671D922EAD0091B437 /* UIView+ExtensionUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ExtensionUIView.h"; sourceTree = "<group>"; };
+		8FF27B681D922EAD0091B437 /* UIView+ExtensionUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ExtensionUIView.m"; sourceTree = "<group>"; };
+		8FFB4A911D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CustomHeight.h"; sourceTree = "<group>"; };
+		8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+CustomHeight.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +149,10 @@
 				8F0762011D3474960013238C /* MBProgressHUD+NJ.m */,
 				8F0762021D3474960013238C /* PopoverView.h */,
 				8F0762031D3474960013238C /* PopoverView.m */,
+				8FF27B671D922EAD0091B437 /* UIView+ExtensionUIView.h */,
+				8FF27B681D922EAD0091B437 /* UIView+ExtensionUIView.m */,
+				8FFB4A911D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.h */,
+				8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -344,11 +354,13 @@
 				8FC2DB7F1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m in Sources */,
 				8FBA1D461D6FE86300B4F4F2 /* UIButton+ImageTitleSpacing.m in Sources */,
 				8F089AE81CFBE4EB00A37815 /* AppDelegate.m in Sources */,
+				8FF27B691D922EAD0091B437 /* UIView+ExtensionUIView.m in Sources */,
 				8F0762051D3474960013238C /* JMTabBarController.m in Sources */,
 				8F0762071D3474960013238C /* JMAlertView.m in Sources */,
 				8F07620A1D3474960013238C /* JMScrollView.m in Sources */,
 				8F089B011CFC17F400A37815 /* TestViewController.m in Sources */,
 				8F07620B1D3474960013238C /* JMTool.m in Sources */,
+				8FFB4A931D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m in Sources */,
 				8FAD5F2B1D518216003EA152 /* JMView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

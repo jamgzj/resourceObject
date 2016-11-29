@@ -16,6 +16,8 @@
 + (void)showError:(NSString *)error;
 + (void)showError:(NSString *)error toView:(UIView *)view;
 
++ (void)showText:(NSString *)text ToView:(UIView *)view;
+
 ///**
 // *  （废弃）
 // */
