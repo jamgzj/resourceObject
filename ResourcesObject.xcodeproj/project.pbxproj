@@ -27,6 +27,7 @@
 		8F40755B1D35CC7300F0C4F7 /* UITextField+JM.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F40755A1D35CC7300F0C4F7 /* UITextField+JM.m */; settings = {ASSET_TAGS = (); }; };
 		8F7716D01D755E2C0087BA67 /* iphone6Pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8F7716CF1D755E2C0087BA67 /* iphone6Pic.jpg */; settings = {ASSET_TAGS = (); }; };
 		8F7FD5EA1D34950100678DB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7FD5E91D34950100678DB1 /* main.m */; settings = {ASSET_TAGS = (); }; };
+		8FA4A5CD1DED8108002F6435 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4A5CC1DED8108002F6435 /* BaseTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		8FAD5F2B1D518216003EA152 /* JMView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD5F2A1D518216003EA152 /* JMView.m */; settings = {ASSET_TAGS = (); }; };
 		8FBA1D461D6FE86300B4F4F2 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA1D451D6FE86300B4F4F2 /* UIButton+ImageTitleSpacing.m */; settings = {ASSET_TAGS = (); }; };
 		8FC2DB7F1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC2DB7E1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -78,6 +79,8 @@
 		8F40755A1D35CC7300F0C4F7 /* UITextField+JM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+JM.m"; sourceTree = "<group>"; };
 		8F7716CF1D755E2C0087BA67 /* iphone6Pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone6Pic.jpg; sourceTree = "<group>"; };
 		8F7FD5E91D34950100678DB1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8FA4A5CB1DED8108002F6435 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
+		8FA4A5CC1DED8108002F6435 /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		8FAD5F291D518216003EA152 /* JMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMView.h; sourceTree = "<group>"; };
 		8FAD5F2A1D518216003EA152 /* JMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMView.m; sourceTree = "<group>"; };
 		8FBA1D441D6FE86300B4F4F2 /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 			children = (
 				8F0761F31D3474960013238C /* BaseViewController.h */,
 				8F0761F41D3474960013238C /* BaseViewController.m */,
+				8FA4A5CB1DED8108002F6435 /* BaseTableViewCell.h */,
+				8FA4A5CC1DED8108002F6435 /* BaseTableViewCell.m */,
 				8F0761F51D3474960013238C /* Header.h */,
 				8FFE9AD11DED705100329FBA /* UserInfo.h */,
 				8FFE9AD21DED705100329FBA /* UserInfo.m */,
@@ -367,6 +372,7 @@
 				8FBA1D461D6FE86300B4F4F2 /* UIButton+ImageTitleSpacing.m in Sources */,
 				8F089AE81CFBE4EB00A37815 /* AppDelegate.m in Sources */,
 				8FF27B691D922EAD0091B437 /* UIView+ExtensionUIView.m in Sources */,
+				8FA4A5CD1DED8108002F6435 /* BaseTableViewCell.m in Sources */,
 				8F0762051D3474960013238C /* JMTabBarController.m in Sources */,
 				8F0762071D3474960013238C /* JMAlertView.m in Sources */,
 				8F07620A1D3474960013238C /* JMScrollView.m in Sources */,
