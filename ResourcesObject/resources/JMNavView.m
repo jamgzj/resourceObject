@@ -16,7 +16,7 @@
     if (self = [super initWithFrame:frame]) {
         UILabel *titleL = [[UILabel alloc]init];
         [self addSubview:titleL];
-        self.title = titleL;
+        self.titleLabel = titleL;
     }
     return self;
 }
@@ -24,12 +24,22 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self);
         make.centerY.mas_equalTo(self).with.offset(10);
         make.top.mas_greaterThanOrEqualTo(0);
         make.bottom.mas_lessThanOrEqualTo(0);
     }];
+}
+
+- (void)setTitle:(NSString *)title {
+    if (title) {
+        _title = title;
+        for (int i = 0; i < title.length; i++) {
+            _title = [_title stringByReplacingCharactersInRange:NSMakeRange(2*i, 0) withString:@" "];
+        }
+        self.titleLabel.text = _title;
+    }
 }
 
 - (void)addJmLeftBarBtnWithImage:(UIImage *)image Target:(id)target {

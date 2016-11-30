@@ -10,7 +10,9 @@
 
 @interface JMNavView : UIView
 
-@property (weak,nonatomic)UILabel *title;
+@property (copy,nonatomic)NSString *title;
+
+@property (weak,nonatomic)UILabel *titleLabel;
 
 @property (weak,nonatomic)UIButton *jmLeftBarBtn;
 

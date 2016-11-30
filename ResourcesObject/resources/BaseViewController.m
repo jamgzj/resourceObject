@@ -45,8 +45,8 @@
 - (JMNavView *)jmNavigationView {
     if (!_jmNavigationView) {
         _jmNavigationView = [[JMNavView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, navHeight)];
-        self.jmNavigationView.title.textColor = MainFontColor;
-        self.jmNavigationView.title.font = MAIN_BOLD_FONT(13*coefficient);
+        self.jmNavigationView.titleLabel.textColor = MainFontColor;
+        self.jmNavigationView.titleLabel.font = MAIN_BOLD_FONT(13*coefficient);
         [self.view addSubview:_jmNavigationView];
     }
     return _jmNavigationView;
