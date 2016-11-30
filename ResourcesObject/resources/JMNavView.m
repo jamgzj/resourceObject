@@ -36,7 +36,9 @@
     if (title) {
         _title = title;
         for (int i = 0; i < title.length; i++) {
-            _title = [_title stringByReplacingCharactersInRange:NSMakeRange(2*i, 0) withString:@" "];
+            if (i != title.length-1) {
+                _title = [_title stringByReplacingCharactersInRange:NSMakeRange(2*i, 0) withString:@" "];
+            }
         }
         self.titleLabel.text = _title;
     }
