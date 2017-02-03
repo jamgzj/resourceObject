@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
-#import "JMButton.h"
-#import "JMLabel.h"
+#import "UIButton+JM.h"
+#import "UILabel+JM.h"
 #import "JMScrollView.h"
 #import "JMAlertView.h"
 #import "MBProgressHUD+NJ.h"
