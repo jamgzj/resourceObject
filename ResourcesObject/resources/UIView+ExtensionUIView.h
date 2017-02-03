@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 
 @interface UIView (ExtensionUIView)
 
@@ -15,18 +16,21 @@
 @property (nonatomic,assign)CGFloat width;
 @property (nonatomic,assign)CGFloat height;
 @property (nonatomic,assign)CGSize size;
-@property (nonatomic)CGPoint origin;
+@property (nonatomic,assign)CGPoint origin;
 @property (nonatomic, assign, readonly) CGFloat left;
 @property (nonatomic, assign, readonly) CGFloat top;
 @property (nonatomic, assign, readonly) CGFloat right;
 @property (nonatomic, assign, readonly) CGFloat bottom;
+@property (nonatomic, copy) NSString *badgeValue;
 
-
+@property (strong,nonatomic)UILabel *badgeView;
 /**
  *  添加view四周的阴影
  *
  *  @param cornerRadius <#cornerRadius description#>
  */
 - (void)addShadowAroundWithCornerRadius:(float)cornerRadius;
+
+- (void)removeBadge;
 
 @end

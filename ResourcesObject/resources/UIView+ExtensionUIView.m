@@ -8,6 +8,10 @@
 
 #import "UIView+ExtensionUIView.h"
 #import "Header.h"
+#import <Masonry/Masonry.h>
+
+static const void *badgeViewKey = &badgeViewKey;
+static const void *badgeValueKey = &badgeValueKey;
 
 @implementation UIView (ExtensionUIView)
 
@@ -106,6 +110,54 @@
     self.layer.shadowRadius = 2*coefficient;
     self.layer.shadowOpacity = 1.f;
     self.layer.shadowOffset = CGSizeZero;
+}
+
+- (NSString *)badgeValue {
+    return objc_getAssociatedObject(self, badgeValueKey);
+}
+
+- (void)setBadgeValue:(NSString *)badgeValue {
+    if (badgeValue) {
+        if ([badgeValue isEqualToString:@"0"]) {
+            [self.badgeView removeFromSuperview];
+        }else {
+            self.badgeView = [[UILabel alloc]init];
+            self.badgeView.text = badgeValue;
+            self.badgeView.font = [UIFont systemFontOfSize:11];
+            self.badgeView.textColor = [UIColor whiteColor];
+            self.badgeView.textAlignment = NSTextAlignmentCenter;
+            self.badgeView.backgroundColor = [UIColor redColor];
+            [self addSubview:self.badgeView];
+            [self.badgeView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.mas_equalTo(self.mas_right);
+                make.centerY.mas_equalTo(self.mas_top);
+                if (self.width>self.height) {
+                    make.width.height.mas_equalTo(self.mas_height).multipliedBy(0.3);
+                }else {
+                    make.width.height.mas_equalTo(self.mas_width).multipliedBy(0.3);
+                }
+            }];
+            [self setNeedsLayout];
+            [self layoutIfNeeded];
+            self.badgeView.layer.cornerRadius = self.badgeView.width/2.f;
+            self.badgeView.layer.masksToBounds = YES;
+        }
+    }
+    objc_setAssociatedObject(self, badgeValueKey, badgeValue, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (UILabel *)badgeView {
+    return objc_getAssociatedObject(self, badgeViewKey);
+}
+
+- (void)setBadgeView:(UILabel *)badgeView {
+    if (!self.badgeView) {
+        objc_setAssociatedObject(self, badgeViewKey, badgeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+}
+
+- (void)removeBadge {
+    [self.badgeView removeFromSuperview];
 }
 
 @end

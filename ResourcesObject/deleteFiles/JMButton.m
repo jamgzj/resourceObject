@@ -38,8 +38,7 @@
 + (JMButton *)JMButtonWithTitle:(NSString *)title
                   SelectedTitle:(NSString *)selectedTitle
                            Font:(CGFloat)font
-                     TitleColor:(UIColor *)color
-                   JMButtonType:(JMButtonType)type {
+                     TitleColor:(UIColor *)color {
     JMButton *jmBtn = [[JMButton alloc]init];
     [jmBtn setTitle:title forState:UIControlStateNormal];
     [jmBtn setTitle:selectedTitle forState:UIControlStateSelected];
@@ -47,7 +46,6 @@
     jmBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     [jmBtn setTitleColor:color forState:UIControlStateNormal];
     jmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    jmBtn.jmType = type;
     return jmBtn;
 }
 
@@ -55,7 +53,6 @@
                   SelectedTitle:(NSString *)selectedTitle
                            Font:(CGFloat)font
                      TitleColor:(UIColor *)color
-                   JMButtonType:(JMButtonType)type
                        Delegate:(id)delegate
                          Action:(SEL)action{
     JMButton *jmBtn = [[JMButton alloc]init];
@@ -65,7 +62,6 @@
     jmBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     [jmBtn setTitleColor:color forState:UIControlStateNormal];
     jmBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    jmBtn.jmType = type;
     [jmBtn addTarget:delegate action:action forControlEvents:UIControlEventTouchUpInside];
     
     return jmBtn;
@@ -73,7 +69,6 @@
 
 + (JMButton *)JMButtonWithImage:(NSString *)imgName
                   SelectedImage:(NSString *)selImgName
-                   JMButtonType:(JMButtonType)type
                        Delegate:(id)delegate
                          Action:(SEL)action{
     JMButton *jmBtn = [[JMButton alloc]init];
@@ -81,19 +76,14 @@
     [jmBtn setImage:[UIImage imageNamed:selImgName] forState:UIControlStateSelected];
     [jmBtn addTarget:delegate action:action forControlEvents:UIControlEventTouchUpInside];
     
-    jmBtn.jmType = type;
-    
     return jmBtn;
 }
 
 + (JMButton *)JMButtonWithImage:(NSString *)imgName
-                  SelectedImage:(NSString *)selImgName
-                   JMButtonType:(JMButtonType)type {
+                  SelectedImage:(NSString *)selImgName {
     JMButton *jmBtn = [[JMButton alloc]init];
     [jmBtn setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
     [jmBtn setImage:[UIImage imageNamed:selImgName] forState:UIControlStateSelected];
-    
-    jmBtn.jmType = type;
     
     return jmBtn;
 }

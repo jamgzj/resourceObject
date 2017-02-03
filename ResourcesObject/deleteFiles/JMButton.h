@@ -62,15 +62,13 @@ typedef enum : NSUInteger {
  *  @param selectedTitle 被选中时的标题
  *  @param font          标题大小
  *  @param color         标题颜色
- *  @param type          按钮类型
  *
  *  @return 自定义Btn
  */
 + (JMButton *)JMButtonWithTitle:(NSString *)title
                 SelectedTitle:(NSString *)selectedTitle
                         Font:(CGFloat)font
-                TitleColor:(UIColor *)color
-                JMButtonType:(JMButtonType)type;
+                TitleColor:(UIColor *)color;
 
 /**
  *  普通纯文字按钮的初始化
@@ -79,7 +77,6 @@ typedef enum : NSUInteger {
  *  @param selectedTitle <#selectedTitle description#>
  *  @param font          <#font description#>
  *  @param color         <#color description#>
- *  @param type          <#type description#>
  *  @param delegate      <#delegate description#>
  *  @param action        <#action description#>
  *
@@ -89,7 +86,6 @@ typedef enum : NSUInteger {
                   SelectedTitle:(NSString *)selectedTitle
                            Font:(CGFloat)font
                      TitleColor:(UIColor *)color
-                   JMButtonType:(JMButtonType)type
                        Delegate:(id)delegate
                          Action:(SEL)action;
 
@@ -98,20 +94,17 @@ typedef enum : NSUInteger {
  *
  *  @param imgName    图片
  *  @param selImgName 选中时的图片
- *  @param type       按钮类型
  *
  *  @return 自定义Btn
  */
 + (JMButton *)JMButtonWithImage:(NSString *)imgName
-                  SelectedImage:(NSString *)selImgName
-                   JMButtonType:(JMButtonType)type;
+                  SelectedImage:(NSString *)selImgName;
 
 /**
  *  普通纯图片按钮的初始化
  *
  *  @param imgName    <#imgName description#>
  *  @param selImgName <#selImgName description#>
- *  @param type       <#type description#>
  *  @param delegate   <#delegate description#>
  *  @param action     <#action description#>
  *
@@ -119,7 +112,6 @@ typedef enum : NSUInteger {
  */
 + (JMButton *)JMButtonWithImage:(NSString *)imgName
                   SelectedImage:(NSString *)selImgName
-                   JMButtonType:(JMButtonType)type
                        Delegate:(id)delegate
                          Action:(SEL)action;
 
