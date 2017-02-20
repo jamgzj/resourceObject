@@ -112,30 +112,14 @@
         [self addSubview:imageView4];
         _imageView4 = imageView4;
         
-    }
-    return self;
-}
-
-- (UITableView *)tableView
-{
-    if(!_tableView)
-    {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_tableView setIndicatorStyle:UIScrollViewIndicatorStyleWhite];
         _tableView.scrollEnabled = YES;
         _tableView.userInteractionEnabled = YES;
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
         [JMTool setExtraCellLineHidden:_tableView];
         [self addSubview:_tableView];
-    }
-    return _tableView;
-}
-
-- (UIScrollView *)scrollView
-{
-    if (!_scrollView) {
+        
         _scrollView = [[UIScrollView alloc] init];
         _scrollView.delegate = self;
         _scrollView.showsVerticalScrollIndicator = NO;
@@ -143,7 +127,7 @@
         _scrollView.userInteractionEnabled = YES;
         [self addSubview:_scrollView];
     }
-    return _scrollView;
+    return self;
 }
 
 - (void)awakeFromNib {

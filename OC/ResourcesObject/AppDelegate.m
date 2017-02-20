@@ -5,7 +5,7 @@
 //  Created by zhengxingxia on 16/9/21.
 //  Copyright © 2016年 zhengxingxia. All rights reserved.
 //
-
+#import "TestViewController.h"
 #import "AppDelegate.h"
 #import "JMTabBarController.h"
 #import "IQKeyboardManager/IQKeyboardManager.h"
@@ -47,6 +47,7 @@
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     // 设置根视图控制器
 //    [ChooseRootTool chooseRootViewController:self.window];
+    self.window.rootViewController = [[TestViewController alloc]init];
     [self.window makeKeyAndVisible];
     
     // 设置键盘管理

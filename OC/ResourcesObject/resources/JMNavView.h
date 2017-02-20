@@ -18,12 +18,48 @@
 
 @property (weak,nonatomic)UIButton *jmRightBarBtn;
 
+
+- (void)addJmLeftBarBtnWithTitle:(NSString *)title Target:(id)target;
+
+/**
+ *  添加左侧按钮
+ *
+ *  @param image    图片
+ *  @param target   代理目标
+ *
+ *  @return
+ */
 - (void)addJmLeftBarBtnWithImage:(UIImage *)image Target:(id)target;
 
+- (void)addJmRightBarBtnWithTitle:(NSString *)title Target:(id)target;
+
+/**
+ *  添加右侧按钮
+ *
+ *  @param image    图片
+ *  @param target   代理目标
+ *
+ *  @return
+ */
 - (void)addJmRightBarBtnWithImage:(UIImage *)image Target:(id)target;
 
+- (UIButton *)addButtonWithTitle:(NSString *)title OriginX:(float)originX;
+
+/**
+ *  添加其余按钮
+ *
+ *  @param image        图片
+ *  @param originX      x位置
+ *
+ *  @return
+ */
 - (UIButton *)addButtonWithImage:(UIImage *)image OriginX:(float)originX;
 
+/**
+ *  添加底部阴影
+ *
+ *  @return
+ */
 - (void)addGrayShadow;
 
 @end

@@ -1140,36 +1140,319 @@ static const short base64DecodingTable[256] = {
     return [priceStr floatValue];
 }
 
+@end
 
+@implementation UIButton (JM)
 
++ (UIButton *)buttonWithTitle:(NSString *)title
+                        Image:(UIImage *)image
+                         Font:(UIFont *)font
+                   TitleColor:(UIColor *)color
+                     Delegate:(id)delegate
+                       Action:(SEL)action {
+    UIButton *button = [[UIButton alloc]init];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setImage:image forState:UIControlStateNormal];
+    button.titleLabel.font = font;
+    button.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [button setTitleColor:color forState:UIControlStateNormal];
+    button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [button addTarget:delegate action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    return button;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- (void)layoutButtonWithEdgeInsetsStyle:(MKButtonEdgeInsetsStyle)style
+                        imageTitleSpace:(CGFloat)space
+{
+    //    self.backgroundColor = [UIColor cyanColor];
+    
+    /**
+     *  前置知识点：titleEdgeInsets是title相对于其上下左右的inset，跟tableView的contentInset是类似的，
+     *  如果只有title，那它上下左右都是相对于button的，image也是一样；
+     *  如果同时有image和label，那这时候image的上左下是相对于button，右边是相对于label的；title的上右下是相对于button，左边是相对于image的。
+     */
+    
+    
+    // 1. 得到imageView和titleLabel的宽、高
+    CGFloat imageWith = [UIDevice currentDevice].systemVersion.floatValue >= 8.0?self.imageView.intrinsicContentSize.width:self.imageView.frame.size.width;
+    CGFloat imageHeight = [UIDevice currentDevice].systemVersion.floatValue >= 8.0?self.imageView.intrinsicContentSize.height:self.imageView.frame.size.height;
+    
+    CGFloat labelWidth = 0.0;
+    CGFloat labelHeight = 0.0;
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+        // 由于iOS8中titleLabel的size为0，用下面的这种设置
+        labelWidth = self.titleLabel.intrinsicContentSize.width;
+        labelHeight = self.titleLabel.intrinsicContentSize.height;
+    } else {
+        labelWidth = self.titleLabel.frame.size.width;
+        labelHeight = self.titleLabel.frame.size.height;
+    }
+    
+    // 2. 声明全局的imageEdgeInsets和labelEdgeInsets
+    UIEdgeInsets imageEdgeInsets = UIEdgeInsetsZero;
+    UIEdgeInsets labelEdgeInsets = UIEdgeInsetsZero;
+    
+    // 3. 根据style和space得到imageEdgeInsets和labelEdgeInsets的值
+    switch (style) {
+        case MKButtonEdgeInsetsStyleTop:
+        {
+            imageEdgeInsets = UIEdgeInsetsMake(-labelHeight-space/2.0, 0, 0, -labelWidth);
+            labelEdgeInsets = UIEdgeInsetsMake(0, -imageWith, -imageHeight-space/2.0, 0);
+        }
+            break;
+        case MKButtonEdgeInsetsStyleLeft:
+        {
+            imageEdgeInsets = UIEdgeInsetsMake(0, -space/2.0, 0, space/2.0);
+            labelEdgeInsets = UIEdgeInsetsMake(0, space/2.0, 0, -space/2.0);
+        }
+            break;
+        case MKButtonEdgeInsetsStyleBottom:
+        {
+            imageEdgeInsets = UIEdgeInsetsMake(0, 0, -labelHeight-space/2.0, -labelWidth);
+            labelEdgeInsets = UIEdgeInsetsMake(-imageHeight-space/2.0, -imageWith, 0, 0);
+        }
+            break;
+        case MKButtonEdgeInsetsStyleRight:
+        {
+            imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth+space/2.0, 0, -labelWidth-space/2.0);
+            labelEdgeInsets = UIEdgeInsetsMake(0, -imageWith-space/2.0, 0, imageWith+space/2.0);
+        }
+            break;
+        default:
+            break;
+    }
+    
+    // 4. 赋值
+    self.titleEdgeInsets = labelEdgeInsets;
+    self.imageEdgeInsets = imageEdgeInsets;
+}
 
 
 @end
 
+@implementation UILabel (JM)
+
++ (UILabel *)labelWithText:(NSString *)text
+                      Font:(UIFont *)font
+                 textColor:(UIColor *)color {
+    
+    UILabel *label      = [[UILabel alloc]init];
+    label.text          = text;
+    label.font          = font;
+    label.textColor     = color;
+    
+    return label;
+}
+
+- (CGFloat)heightOfContentWithWidth:(CGFloat)width {
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = self.lineBreakMode;
+    paragraphStyle.alignment = self.textAlignment;
+    
+    NSDictionary * attributes = @{NSFontAttributeName : self.font,
+                                  NSParagraphStyleAttributeName : paragraphStyle};
+    
+    CGSize contentSize = [self.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                                 options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                              attributes:attributes
+                                                 context:nil].size;
+    return contentSize.height;
+}
+
+@end
+
+@implementation UITextField (JM)
+
++ (UITextField *)textfieldWithPlaceholder:(NSString *)placeholder
+                             KeyboardType:(UIKeyboardType)keyboardType
+                          SecureTextEntry:(BOOL)isSecure
+                                 Delegate:(id)delegate  {
+    UITextField *textfield = [[UITextField alloc]init];
+    textfield.placeholder = placeholder;
+    textfield.keyboardType = keyboardType;
+    if (isSecure) {
+        textfield.secureTextEntry = YES;
+        textfield.clearsOnBeginEditing = YES;
+    }
+    textfield.delegate = delegate;
+    return textfield;
+}
+
++ (UITextField *)textfieldWithFrame:(CGRect)frame
+                        Placeholder:(NSString *)placeholder
+                       KeyboardType:(UIKeyboardType)keyboardType
+                    SecureTextEntry:(BOOL)isSecure
+                           Delegate:(id)delegate  {
+    UITextField *textfield = [[UITextField alloc]initWithFrame:frame];
+    textfield.placeholder = placeholder;
+    textfield.keyboardType = keyboardType;
+    if (isSecure) {
+        textfield.secureTextEntry = YES;
+        textfield.clearsOnBeginEditing = YES;
+    }
+    textfield.delegate = delegate;
+    return textfield;
+}
 
 
+@end
 
+static const void *badgeViewKey = &badgeViewKey;
+static const void *badgeValueKey = &badgeValueKey;
 
+@implementation UIView (ExtensionUIView)
 
+- (void)setX:(CGFloat)x
+{
+    CGRect frame = self.frame;
+    frame.origin.x =x;
+    self.frame = frame;
+}
 
+- (void)setY:(CGFloat)y
+{
+    CGRect frame = self.frame;
+    frame.origin.y =y;
+    self.frame = frame;
+    
+}
 
+- (CGFloat)x
+{
+    return self.frame.origin.x;
+}
+
+- (CGFloat)y
+{
+    return self.frame.origin.y;
+}
+
+- (void)setWidth:(CGFloat)width
+{
+    CGRect frame = self.frame;
+    frame.size.width = width;
+    self.frame = frame;
+}
+
+- (CGFloat)width
+{
+    return self.frame.size.width;
+}
+
+-(void)setHeight:(CGFloat)height
+{
+    CGRect frame = self.frame;
+    frame.size.height =height;
+    self.frame = frame;
+}
+
+- (CGFloat)height
+{
+    return self.frame.size.height;
+}
+
+- (void)setSize:(CGSize)size
+{
+    CGRect frame = self.frame;
+    frame.size =size;
+    self.frame = frame;
+}
+
+- (CGSize)size
+{
+    return self.frame.size;
+}
+
+- (void)setOrigin:(CGPoint)origin
+{
+    CGRect frame = self.frame;
+    frame.origin =origin;
+    self.frame = frame;
+}
+
+- (CGPoint)origin
+{
+    return self.frame.origin;
+}
+
+- (CGFloat)left {
+    return self.origin.x;
+}
+
+- (CGFloat)top {
+    return self.origin.y;
+}
+
+- (CGFloat)right {
+    return self.origin.x + self.width;
+}
+
+- (CGFloat)bottom {
+    return self.origin.y + self.height;
+}
+
+- (void)addShadowAroundWithCornerRadius:(float)cornerRadius {
+    self.layer.cornerRadius = cornerRadius;
+    self.layer.shadowColor = [UIColor colorWithWhite:0.3 alpha:0.3].CGColor;
+    self.layer.shadowRadius = 2*coefficient;
+    self.layer.shadowOpacity = 1.f;
+    self.layer.shadowOffset = CGSizeZero;
+}
+
+- (NSString *)badgeValue {
+    return objc_getAssociatedObject(self, badgeValueKey);
+}
+
+- (void)setBadgeValue:(NSString *)badgeValue {
+    if (badgeValue) {
+        if ([badgeValue isEqualToString:@"0"]) {
+            [self.badgeView removeFromSuperview];
+        }else {
+            if (self.badgeView) {
+                self.badgeView.text = badgeValue;
+            }else {
+                self.badgeView = [[UILabel alloc]init];
+                self.badgeView.text = badgeValue;
+                self.badgeView.font = [UIFont systemFontOfSize:11];
+                self.badgeView.textColor = [UIColor whiteColor];
+                self.badgeView.textAlignment = NSTextAlignmentCenter;
+                self.badgeView.backgroundColor = [UIColor redColor];
+                [self addSubview:self.badgeView];
+                [self.badgeView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.centerX.mas_equalTo(self.mas_right);
+                    make.centerY.mas_equalTo(self.mas_top);
+                    if (self.width>self.height) {
+                        make.width.height.mas_equalTo(self.mas_height).multipliedBy(0.3);
+                    }else {
+                        make.width.height.mas_equalTo(self.mas_width).multipliedBy(0.3);
+                    }
+                }];
+                [self setNeedsLayout];
+                [self layoutIfNeeded];
+                self.badgeView.layer.cornerRadius = self.badgeView.width/2.f;
+                self.badgeView.layer.masksToBounds = YES;
+            }
+        }
+    }
+    objc_setAssociatedObject(self, badgeValueKey, badgeValue, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (UILabel *)badgeView {
+    return objc_getAssociatedObject(self, badgeViewKey);
+}
+
+- (void)setBadgeView:(UILabel *)badgeView {
+    if (!self.badgeView) {
+        objc_setAssociatedObject(self, badgeViewKey, badgeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+}
+
+- (void)removeBadge {
+    [self.badgeView removeFromSuperview];
+}
+
+@end
 
 
 

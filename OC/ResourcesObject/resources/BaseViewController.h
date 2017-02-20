@@ -26,140 +26,101 @@ typedef void(^HttpFailureBlock)(id Error);
 @property (strong,nonatomic)UIScrollView *scrollView;
 @property (strong,nonatomic)JMNavView *jmNavigationView;
 @property (strong,nonatomic)UIView *jmCover;
-@property (weak,nonatomic)UITextField *payTextField;
-@property (weak,nonatomic)UIButton *closeBtn;
 
-/**
- *  `AFHTTPSessionManager` is a subclass of `AFURLSessionManager` with convenience methods for making HTTP requests. When a `baseURL` is provided, requests made with the `GET` / `POST` / et al. convenience methods can be made with relative paths.
- ## Subclassing Notes
- Developers targeting iOS 7 or Mac OS X 10.9 or later that deal extensively with a web service are encouraged to subclass `AFHTTPSessionManager`, providing a class method that returns a shared singleton object on which authentication and other configuration can be shared across the application.
- For developers targeting iOS 6 or Mac OS X 10.8 or earlier, `AFHTTPRequestOperationManager` may be used to similar effect.
- ## Methods to Override
- To change the behavior of all data task operation construction, which is also used in the `GET` / `POST` / et al. convenience methods, override `dataTaskWithRequest:completionHandler:`.
- ## Serialization
- Requests created by an HTTP client will contain default headers and encode parameters according to the `requestSerializer` property, which is an object conforming to `<AFURLRequestSerialization>`.
- Responses received from the server are automatically validated and serialized by the `responseSerializers` property, which is an object conforming to `<AFURLResponseSerialization>`
- ## URL Construction Using Relative Paths
- For HTTP convenience methods, the request serializer constructs URLs from the path relative to the `-baseURL`, using `NSURL +URLWithString:relativeToURL:`, when provided. If `baseURL` is `nil`, `path` needs to resolve to a valid `NSURL` object using `NSURL +URLWithString:`.
- Below are a few examples of how `baseURL` and relative paths interact:
- NSURL *baseURL = [NSURL URLWithString:"http://example.com/v1/"]; [NSURL URLWithString:"foo" relativeToURL:baseURL]; // http://example.com/v1/foo [NSURL URLWithString:"foo?bar=baz" relativeToURL:baseURL]; // http://example.com/v1/foo?bar=baz [NSURL URLWithString:"/foo" relativeToURL:baseURL]; // http://example.com/foo [NSURL URLWithString:"foo/" relativeToURL:baseURL]; // http://example.com/v1/foo [NSURL URLWithString:"/foo/" relativeToURL:baseURL]; // http://example.com/foo/ [NSURL URLWithString:"http://example2.com/" relativeToURL:baseURL]; // http://example2.com/
- Also important to note is that a trailing slash will be added to any `baseURL` without one. This would otherwise cause unexpected behavior when constructing URLs using paths without a leading slash.
- Warning: Managers for background sessions must be owned for the duration of their use. This can be accomplished by creating an application-wide or shared singleton instance.
- */
-@property (strong,nonatomic)AFHTTPSessionManager *manager;
+///**
+// *  `AFHTTPSessionManager` is a subclass of `AFURLSessionManager` with convenience methods for making HTTP requests. When a `baseURL` is provided, requests made with the `GET` / `POST` / et al. convenience methods can be made with relative paths.
+// ## Subclassing Notes
+// Developers targeting iOS 7 or Mac OS X 10.9 or later that deal extensively with a web service are encouraged to subclass `AFHTTPSessionManager`, providing a class method that returns a shared singleton object on which authentication and other configuration can be shared across the application.
+// For developers targeting iOS 6 or Mac OS X 10.8 or earlier, `AFHTTPRequestOperationManager` may be used to similar effect.
+// ## Methods to Override
+// To change the behavior of all data task operation construction, which is also used in the `GET` / `POST` / et al. convenience methods, override `dataTaskWithRequest:completionHandler:`.
+// ## Serialization
+// Requests created by an HTTP client will contain default headers and encode parameters according to the `requestSerializer` property, which is an object conforming to `<AFURLRequestSerialization>`.
+// Responses received from the server are automatically validated and serialized by the `responseSerializers` property, which is an object conforming to `<AFURLResponseSerialization>`
+// ## URL Construction Using Relative Paths
+// For HTTP convenience methods, the request serializer constructs URLs from the path relative to the `-baseURL`, using `NSURL +URLWithString:relativeToURL:`, when provided. If `baseURL` is `nil`, `path` needs to resolve to a valid `NSURL` object using `NSURL +URLWithString:`.
+// Below are a few examples of how `baseURL` and relative paths interact:
+// NSURL *baseURL = [NSURL URLWithString:"http://example.com/v1/"]; [NSURL URLWithString:"foo" relativeToURL:baseURL]; // http://example.com/v1/foo [NSURL URLWithString:"foo?bar=baz" relativeToURL:baseURL]; // http://example.com/v1/foo?bar=baz [NSURL URLWithString:"/foo" relativeToURL:baseURL]; // http://example.com/foo [NSURL URLWithString:"foo/" relativeToURL:baseURL]; // http://example.com/v1/foo [NSURL URLWithString:"/foo/" relativeToURL:baseURL]; // http://example.com/foo/ [NSURL URLWithString:"http://example2.com/" relativeToURL:baseURL]; // http://example2.com/
+// Also important to note is that a trailing slash will be added to any `baseURL` without one. This would otherwise cause unexpected behavior when constructing URLs using paths without a leading slash.
+// Warning: Managers for background sessions must be owned for the duration of their use. This can be accomplished by creating an application-wide or shared singleton instance.
+// */
+//@property (strong,nonatomic)AFHTTPSessionManager *manager;
+//
+///**
+// *  强制跳转登录界面
+// */
+//- (void)forceToPushLoginVC;
 
-/**
- *  强制跳转登录界面
- */
-- (void)forceToPushLoginVC;
-
-#pragma mark - 自定义 alertView
-
-- (void)showAlertViewWithTextFieldWithTitle:(NSString *)title;
-
-/**
- *  自定义提示框
- *
- *  @param title   <#title description#>
- *  @param message <#message description#>
- *  @param image   <#image description#>
- */
-- (void)showAlertViewWithTitle:(NSString *)title
-                       Message:(NSString *)message
-                         Image:(UIImage *)image;
-
-/**
- *  自定义提示选择
- *
- *  @param title       <#title description#>
- *  @param message     <#message description#>
- *  @param actionTitle <#actionTitle description#>
- *  @param cancelTitle <#cancelTitle description#>
- *  @param action      <#action description#>
- */
-- (void)showAlertViewWithTitle:(NSString *)title
-                       Message:(NSString *)message
-                   ActionTitle:(NSString *)actionTitle
-                   CancelTitle:(NSString *)cancelTitle
-                           Sel:(SEL)action;
-
-/**
- *  alertView的关闭按钮事件
- *
- *  @param sender <#sender description#>
- */
-- (void)ClickAlertCloseBtn:(id)sender;
-
-#pragma mark - 网络请求
-
-/**
- *  get请求
- *
- *  @param path    url
- *  @param params  参数
- *  @param success <#success description#>
- *  @param failure <#failure description#>
- */
-- (void)getWithThePath:(NSString *)path Params:(NSDictionary *)params Success:(HttpSuccessBlock)success Failure:(HttpFailureBlock)failure;
-
-/**
- *  post请求
- *
- *  @param path    url
- *  @param params  参数
- *  @param success <#success description#>
- *  @param failure <#failure description#>
- */
-- (void)postWithThePath:(NSString *)path Params:(NSDictionary *)params Success:(HttpSuccessBlock)success Failure:(HttpFailureBlock)failure;
-
-/**
- *  网络请求数据(GET/POST)
- *
- *  @param path    url
- *  @param params  参数
- *  @param method  方法
- *  @param success success description
- *  @param failure failure description
- */
-- (void)requestWithThePath:(NSString *)path
-                    Params:(NSDictionary *)params
-                    Method:(NSString *)method
-                   Success:(HttpSuccessBlock)success
-                   Failure:(HttpFailureBlock)failure;
-
-/**
- *  上传图片
- *
- *  @param path    urlString
- *  @param data    图片data
- *  @param kName   图片对应的key值
- *  @param params  参数
- *  @param success success description
- *  @param failure failure description
- */
-- (void)requestWithThePath:(NSString *)path
-                      Data:(NSData *)data
-                   KeyName:(NSString *)kName
-                    Params:(NSDictionary *)params
-                   Success:(HttpSuccessBlock)success
-                   Failure:(HttpFailureBlock)failure;
-
-/**
- *  上传多张图片
- *
- *  @param path       urlString
- *  @param imgArray   图片数组(数组存放的可以是NSData,NSString,UIImage三种类型之一)
- *  @param kNameArray 对应上传图片的key值(字符串数组)
- *  @param params     参数列表
- *  @param success    success description
- *  @param failure    failure description
- */
-- (void)requestWithThePath:(NSString *)path
-                  imgArray:(NSArray *)imgArray
-              KeyNameArray:(NSArray *)kNameArray
-                    Params:(NSDictionary *)params
-                   Success:(HttpSuccessBlock)success
-                   Failure:(HttpFailureBlock)failure;
+//#pragma mark - 网络请求
+//
+///**
+// *  get请求
+// *
+// *  @param path    url
+// *  @param params  参数
+// *  @param success <#success description#>
+// *  @param failure <#failure description#>
+// */
+//- (void)getWithThePath:(NSString *)path Params:(NSDictionary *)params Success:(HttpSuccessBlock)success Failure:(HttpFailureBlock)failure;
+//
+///**
+// *  post请求
+// *
+// *  @param path    url
+// *  @param params  参数
+// *  @param success <#success description#>
+// *  @param failure <#failure description#>
+// */
+//- (void)postWithThePath:(NSString *)path Params:(NSDictionary *)params Success:(HttpSuccessBlock)success Failure:(HttpFailureBlock)failure;
+//
+///**
+// *  网络请求数据(GET/POST)
+// *
+// *  @param path    url
+// *  @param params  参数
+// *  @param method  方法
+// *  @param success success description
+// *  @param failure failure description
+// */
+//- (void)requestWithThePath:(NSString *)path
+//                    Params:(NSDictionary *)params
+//                    Method:(NSString *)method
+//                   Success:(HttpSuccessBlock)success
+//                   Failure:(HttpFailureBlock)failure;
+//
+///**
+// *  上传图片
+// *
+// *  @param path    urlString
+// *  @param data    图片data
+// *  @param kName   图片对应的key值
+// *  @param params  参数
+// *  @param success success description
+// *  @param failure failure description
+// */
+//- (void)requestWithThePath:(NSString *)path
+//                      Data:(NSData *)data
+//                   KeyName:(NSString *)kName
+//                    Params:(NSDictionary *)params
+//                   Success:(HttpSuccessBlock)success
+//                   Failure:(HttpFailureBlock)failure;
+//
+///**
+// *  上传多张图片
+// *
+// *  @param path       urlString
+// *  @param imgArray   图片数组(数组存放的可以是NSData,NSString,UIImage三种类型之一)
+// *  @param kNameArray 对应上传图片的key值(字符串数组)
+// *  @param params     参数列表
+// *  @param success    success description
+// *  @param failure    failure description
+// */
+//- (void)requestWithThePath:(NSString *)path
+//                  imgArray:(NSArray *)imgArray
+//              KeyNameArray:(NSArray *)kNameArray
+//                    Params:(NSDictionary *)params
+//                   Success:(HttpSuccessBlock)success
+//                   Failure:(HttpFailureBlock)failure;
 
 /**
  *  创建navigationbar上的右按钮
@@ -213,24 +174,6 @@ typedef void(^HttpFailureBlock)(id Error);
  *  重设self.view的frame(当frame不在nav下方时使用,不是很好用)
  */
 - (void)resetViewFrame;
-
-
-/**
- *  cell的自定义title
- *
- *  @param title 提示标题
- *
- *  @return 返回一个cell 适用于当前section的第一个row
- */
-- (UITableViewCell *)RecommendTitleCellWithTitle:(NSString *)title;
-
-/**
- *  View的周围阴影方法
- *
- *  @param view   需要阴影的视图
- *  @param Radius 视图的四个角的弧度值
- */
--(void)shadowWithView:(UIView *)view Radius:(CGFloat)Radius;
 
 //#pragma mark - 分享
 //

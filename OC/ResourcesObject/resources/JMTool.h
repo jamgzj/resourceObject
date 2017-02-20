@@ -7,21 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFNetworking.h"
-#import "UIButton+JM.h"
-#import "UILabel+JM.h"
+#import <AFNetworking/AFNetworking.h>
 #import "JMScrollView.h"
 #import "JMAlertView.h"
-#import "MBProgressHUD+NJ.h"
 #import "PopoverView.h"
 #import "JMView.h"
 #import "JMNavView.h"
 #import "Header.h"
-#import "UIButton+ImageTitleSpacing.h"
-#import "UIView+ExtensionUIView.h"
+#import "MBProgressHUD+NJ.h"
 #import "UINavigationBar+CustomHeight.h"
 #import "UserInfo.h"
 #import "TextLimit.h"
+#import "JMHttp.h"
+#import <Masonry/Masonry.h>
+#import <objc/runtime.h>
 
 @interface JMTool : NSObject
 
@@ -563,24 +562,125 @@
  */
 + (float)getRealPriceWithPrice:(float)price;
 
+@end
 
+@interface UIButton (JM)
 
+typedef NS_ENUM(NSUInteger, MKButtonEdgeInsetsStyle) {
+    MKButtonEdgeInsetsStyleTop, // image在上，label在下
+    MKButtonEdgeInsetsStyleLeft, // image在左，label在右
+    MKButtonEdgeInsetsStyleBottom, // image在下，label在上
+    MKButtonEdgeInsetsStyleRight // image在右，label在左
+};
 
++ (UIButton *)buttonWithTitle:(NSString *)title
+                        Image:(UIImage *)image
+                         Font:(UIFont *)font
+                   TitleColor:(UIColor *)color
+                     Delegate:(id)delegate
+                       Action:(SEL)action;
 
+/**
+ *  设置button的titleLabel和imageView的布局样式，及间距
+ *
+ *  @param style titleLabel和imageView的布局样式
+ *  @param space titleLabel和imageView的间距
+ */
+- (void)layoutButtonWithEdgeInsetsStyle:(MKButtonEdgeInsetsStyle)style
+                        imageTitleSpace:(CGFloat)space;
 
+@end
 
+@interface UILabel (JM)
 
+/**
+ *  自定义Label初始化
+ *
+ *  @param text
+ *  @param font
+ *  @param color
+ *
+ *  @return Label
+ */
++ (UILabel *)labelWithText:(NSString *)text
+                      Font:(UIFont *)font
+                 textColor:(UIColor *)color;
+
+/**
+ *  计算纯文字label高度(注意设置lineBreakMode属性)
+ *
+ *  @param width 当前label宽度
+ *
+ *  @return <#return value description#>
+ */
+- (CGFloat)heightOfContentWithWidth:(CGFloat)width;
+
+@end
+
+@interface UITextField (JM)
+
+/**
+ *  textfield初始化
+ *
+ *  @param placeholder  <#placeholder description#>
+ *  @param keyboardType <#keyboardType description#>
+ *  @param isSecure     <#isSecure description#>
+ *  @param delegate     <#delegate description#>
+ *
+ *  @return <#return value description#>
+ */
++ (UITextField *)textfieldWithPlaceholder:(NSString *)placeholder
+                             KeyboardType:(UIKeyboardType)keyboardType
+                          SecureTextEntry:(BOOL)isSecure
+                                 Delegate:(id)delegate;
+
+/**
+ *  textfield初始化
+ *
+ *  @param frame        <#frame description#>
+ *  @param placeholder  <#placeholder description#>
+ *  @param keyboardType <#keyboardType description#>
+ *  @param isSecure     <#isSecure description#>
+ *  @param delegate     <#delegate description#>
+ *
+ *  @return <#return value description#>
+ */
++ (UITextField *)textfieldWithFrame:(CGRect)frame
+                        Placeholder:(NSString *)placeholder
+                       KeyboardType:(UIKeyboardType)keyboardType
+                    SecureTextEntry:(BOOL)isSecure
+                           Delegate:(id)delegate;
 
 
 @end
 
+@interface UIView (ExtensionUIView)
 
+@property (nonatomic,assign)CGFloat x;
+@property (nonatomic,assign)CGFloat y;
+@property (nonatomic,assign)CGFloat width;
+@property (nonatomic,assign)CGFloat height;
+@property (nonatomic,assign)CGSize size;
+@property (nonatomic,assign)CGPoint origin;
 
+@property (nonatomic, assign, readonly) CGFloat left;
+@property (nonatomic, assign, readonly) CGFloat top;
+@property (nonatomic, assign, readonly) CGFloat right;
+@property (nonatomic, assign, readonly) CGFloat bottom;
 
+@property (nonatomic, copy) NSString *badgeValue;
+@property (strong,nonatomic)UILabel *badgeView;
 
+/**
+ *  添加view四周的阴影
+ *
+ *  @param cornerRadius <#cornerRadius description#>
+ */
+- (void)addShadowAroundWithCornerRadius:(float)cornerRadius;
 
+- (void)removeBadge;
 
-
+@end
 
 
 
