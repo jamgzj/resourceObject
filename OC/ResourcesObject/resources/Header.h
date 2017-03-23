@@ -50,8 +50,8 @@
 
 #define iPhone6plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size)) : NO)
 
-#define MAIN_FONT(a)  isIOS9?[UIFont fontWithName:ping_fang_regular size:(a)]:[UIFont fontWithName:@"HelveticaNeue" size:(a)];
-#define MAIN_BOLD_FONT(a)  isIOS9?[UIFont fontWithName:ping_fang_bold size:(a)]:[UIFont fontWithName:@"HelveticaNeue-Bold" size:(a)];
+#define MAIN_FONT(a)  isIOS9?[UIFont fontWithName:ping_fang_regular size:(a)]:[UIFont fontWithName:@"HelveticaNeue" size:(a)]
+#define MAIN_BOLD_FONT(a)  isIOS9?[UIFont fontWithName:ping_fang_bold size:(a)]:[UIFont fontWithName:@"HelveticaNeue-Bold" size:(a)]
 
 #define navHeight (40*coefficient+20)
 

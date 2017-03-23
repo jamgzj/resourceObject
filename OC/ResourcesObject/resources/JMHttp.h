@@ -18,6 +18,25 @@ typedef void(^HttpFailureBlock)(id Error);
 + (AFHTTPSessionManager *)sharedManager;
 
 /**
+ *  判断网络请求返回值
+ *
+ *  @param dict <#dict description#>
+ *
+ *  @return <#return value description#>
+ */
++ (BOOL)isHttpRequestStatusOK:(NSDictionary *)dict;
+
+/**
+ *  监测网络状态
+ */
++ (void)checkNetStatus;
+
+/**
+ *  处理网络请求失败
+ */
++ (void)dealWithNetError:(NSError *)error WithTimeOutAction:(void(^)())action;
+
+/**
  *  get请求
  *
  *  @param path    url

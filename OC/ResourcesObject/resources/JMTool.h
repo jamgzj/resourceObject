@@ -32,18 +32,11 @@
 + (BOOL)isLogin;
 
 /**
- *  判断网络请求返回值
- *
- *  @param dict <#dict description#>
+ *  获取当前的视图控制器
  *
  *  @return <#return value description#>
  */
-+ (BOOL)isHttpRequestStatusOK:(NSDictionary *)dict;
-
-/**
- *  监测网络状态
- */
-+ (void)checkNetStatus;
++ (UIViewController *)getCurrentVC;
 
 /**
  *  清除多余cell分割线

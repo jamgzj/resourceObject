@@ -36,64 +36,34 @@ static const short base64DecodingTable[256] = {
     return userInfoDict?YES:NO;
 }
 
-+ (BOOL)isHttpRequestStatusOK:(NSDictionary *)dict {
-    if ([dict[@"status"] integerValue] == 200) {
-        return YES;
-    }else {
-        return NO;
-    }
-}
-
-// 监测网络
-+ (void)checkNetStatus
-{
-    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
-    [reachabilityManager startMonitoring];//打开监测
++ (UIViewController *)getCurrentVC {
     
-    //监测网络状态回调
-    [reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        switch (status)
+    UIViewController *result = nil;
+    
+    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+    if (window.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow * tmpWin in windows)
         {
-            case AFNetworkReachabilityStatusUnknown://未知
+            if (tmpWin.windowLevel == UIWindowLevelNormal)
             {
-                
+                window = tmpWin;
+                break;
             }
-                break;
-                
-            case AFNetworkReachabilityStatusNotReachable://无连接
-            {
-                //基本上监测到无连接 给出友好提示就够了
-                [MBProgressHUD showError:@"当前无网络"];
-                [self setObject:@YES ForKey:IS_NETCONNECT_LOST];
-            }
-                break;
-                
-            case AFNetworkReachabilityStatusReachableViaWWAN://3G
-            {
-                if ([self getObjectForKey:IS_NETCONNECT_LOST] && [[self getObjectForKey:IS_NETCONNECT_LOST] boolValue]) {
-                    [self setObject:@NO ForKey:IS_NETCONNECT_LOST];
-                    [[NSNotificationCenter defaultCenter]postNotificationName:REFRESH_UI object:nil userInfo:nil];
-                }
-            }
-                break;
-                
-            case AFNetworkReachabilityStatusReachableViaWiFi://WiFi
-            {
-                if ([self getObjectForKey:IS_NETCONNECT_LOST] && [[self getObjectForKey:IS_NETCONNECT_LOST] boolValue]) {
-                    [self setObject:@NO ForKey:IS_NETCONNECT_LOST];
-                    [[NSNotificationCenter defaultCenter]postNotificationName:REFRESH_UI object:nil userInfo:nil];
-                }
-            }
-                break;
-                
-            default:
-                
-                break;
         }
-    }];
+    }
     
+    UIView *frontView = [[window subviews] objectAtIndex:0];
+    id nextResponder = [frontView nextResponder];
+    
+    if ([nextResponder isKindOfClass:[UIViewController class]])
+        result = nextResponder;
+    else
+        result = window.rootViewController;
+    
+    return result;
 }
-
 
 // 清除UITableView底部多余的分割线
 + (void)setExtraCellLineHidden: (UITableView *)_tableView{
@@ -1142,6 +1112,10 @@ static const short base64DecodingTable[256] = {
 
 @end
 
+
+
+
+
 @implementation UIButton (JM)
 
 + (UIButton *)buttonWithTitle:(NSString *)title
@@ -1231,6 +1205,10 @@ static const short base64DecodingTable[256] = {
 
 @end
 
+
+
+
+
 @implementation UILabel (JM)
 
 + (UILabel *)labelWithText:(NSString *)text
@@ -1261,6 +1239,10 @@ static const short base64DecodingTable[256] = {
 }
 
 @end
+
+
+
+
 
 @implementation UITextField (JM)
 
@@ -1297,6 +1279,10 @@ static const short base64DecodingTable[256] = {
 
 
 @end
+
+
+
+
 
 static const void *badgeViewKey = &badgeViewKey;
 static const void *badgeValueKey = &badgeValueKey;
@@ -1420,8 +1406,8 @@ static const void *badgeValueKey = &badgeValueKey;
                 self.badgeView.backgroundColor = [UIColor redColor];
                 [self addSubview:self.badgeView];
                 [self.badgeView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.centerX.mas_equalTo(self.mas_right);
-                    make.centerY.mas_equalTo(self.mas_top);
+                    make.right.mas_equalTo(self.mas_right);
+                    make.top.mas_equalTo(self.mas_top);
                     if (self.width>self.height) {
                         make.width.height.mas_equalTo(self.mas_height).multipliedBy(0.3);
                     }else {

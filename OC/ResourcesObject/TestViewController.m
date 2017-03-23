@@ -38,18 +38,18 @@
 //    {
 //        self.edgesForExtendedLayout = UIRectEdgeNone;
 //    }
-    [JMHttp postWithThePath:@"http://182.254.135.211:8099/coffeeInterface/activity/homeBannerList.htm" Params:nil isHudShow:YES Success:^(id JSON) {
-        if ([JMTool isHttpRequestStatusOK:JSON]) {
-            NSLog(@"JSON----->%@",JSON);
-            [MBProgressHUD showError:@"gjasgdkhjfbkjashfkajnfljkashdkjahsdkjhakjfaskfk"];
-        }else {
-            [MBProgressHUD showError:@"error"];
-        }
-    } Failure:^(id Error) {
-        NSLog(@"error----->%@",Error);
-    }];
-    
-    NSLog(@"%@,%@,%@,%@",[JMHttp sharedManager],[JMHttp sharedManager],[JMHttp sharedManager],[JMHttp sharedManager]);
+//    [JMHttp postWithThePath:@"http://182.254.135.211:8099/coffeeInterface/activity/homeBannerList.htm" Params:nil isHudShow:YES Success:^(id JSON) {
+//        if ([JMTool isHttpRequestStatusOK:JSON]) {
+//            NSLog(@"JSON----->%@",JSON);
+//            [MBProgressHUD showError:@"gjasgdkhjfbkjashfkajnfljkashdkjahsdkjhakjfaskfk"];
+//        }else {
+//            [MBProgressHUD showError:@"error"];
+//        }
+//    } Failure:^(id Error) {
+//        NSLog(@"error----->%@",Error);
+//    }];
+//    
+//    NSLog(@"%@,%@,%@,%@",[JMHttp sharedManager],[JMHttp sharedManager],[JMHttp sharedManager],[JMHttp sharedManager]);
     
     
 //    [self getLeftBarButtonItemWithImageNormal:[UIImage imageNamed:@"登录2_03"] ImageSelected:[UIImage imageNamed:@"登录2_03"] Frame:CGRectMake(0, 0, 20, 23)];

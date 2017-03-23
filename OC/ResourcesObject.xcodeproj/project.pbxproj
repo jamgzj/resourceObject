@@ -21,16 +21,16 @@
 		8F089AF31CFBE4EB00A37815 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F089AF11CFBE4EB00A37815 /* LaunchScreen.storyboard */; };
 		8F089AFE1CFC093000A37815 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8F089AFD1CFC093000A37815 /* podfile */; };
 		8F089B011CFC17F400A37815 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F089B001CFC17F400A37815 /* TestViewController.m */; };
-		8F089B031CFC186B00A37815 /* 登录2_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F089B021CFC186B00A37815 /* 登录2_03.png */; };
+		8F089B031CFC186B00A37815 /* login2_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F089B021CFC186B00A37815 /* login2_03.png */; };
 		8F1589311E5A7C37004C2FA7 /* JMHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1589301E5A7C37004C2FA7 /* JMHttp.m */; };
 		8F7716D01D755E2C0087BA67 /* iphone6Pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8F7716CF1D755E2C0087BA67 /* iphone6Pic.jpg */; };
 		8F7FD5EA1D34950100678DB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7FD5E91D34950100678DB1 /* main.m */; };
 		8FA4A5CD1DED8108002F6435 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4A5CC1DED8108002F6435 /* BaseTableViewCell.m */; };
 		8FAD5F2B1D518216003EA152 /* JMView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD5F2A1D518216003EA152 /* JMView.m */; };
 		8FC2DB7F1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC2DB7E1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m */; };
-		8FDB1EB31D1A240D005DE5B6 /* 引导页1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB01D1A240D005DE5B6 /* 引导页1.png */; };
-		8FDB1EB41D1A240D005DE5B6 /* 引导页2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB11D1A240D005DE5B6 /* 引导页2.png */; };
-		8FDB1EB51D1A240D005DE5B6 /* 引导页3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB21D1A240D005DE5B6 /* 引导页3.png */; };
+		8FDB1EB31D1A240D005DE5B6 /* lead_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB01D1A240D005DE5B6 /* lead_1.png */; };
+		8FDB1EB41D1A240D005DE5B6 /* lead_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB11D1A240D005DE5B6 /* lead_2.png */; };
+		8FDB1EB51D1A240D005DE5B6 /* lead_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB21D1A240D005DE5B6 /* lead_3.png */; };
 		8FFB4A931D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */; };
 		8FFE9AD31DED705100329FBA /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE9AD21DED705100329FBA /* UserInfo.m */; };
 		8FFE9AD61DED725400329FBA /* JMNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE9AD51DED725400329FBA /* JMNavView.m */; };
@@ -66,7 +66,7 @@
 		8F089AFD1CFC093000A37815 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8F089AFF1CFC17F400A37815 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		8F089B001CFC17F400A37815 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
-		8F089B021CFC186B00A37815 /* 登录2_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录2_03.png"; sourceTree = "<group>"; };
+		8F089B021CFC186B00A37815 /* login2_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login2_03.png; sourceTree = "<group>"; };
 		8F15892F1E5A7C37004C2FA7 /* JMHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHttp.h; sourceTree = "<group>"; };
 		8F1589301E5A7C37004C2FA7 /* JMHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHttp.m; sourceTree = "<group>"; };
 		8F7716CF1D755E2C0087BA67 /* iphone6Pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphone6Pic.jpg; sourceTree = "<group>"; };
@@ -77,9 +77,9 @@
 		8FAD5F2A1D518216003EA152 /* JMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMView.m; sourceTree = "<group>"; };
 		8FC2DB7D1D6AEF0F004D0893 /* RCDCustomerServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDCustomerServiceViewController.h; sourceTree = "<group>"; };
 		8FC2DB7E1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDCustomerServiceViewController.m; sourceTree = "<group>"; };
-		8FDB1EB01D1A240D005DE5B6 /* 引导页1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页1.png"; sourceTree = "<group>"; };
-		8FDB1EB11D1A240D005DE5B6 /* 引导页2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页2.png"; sourceTree = "<group>"; };
-		8FDB1EB21D1A240D005DE5B6 /* 引导页3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页3.png"; sourceTree = "<group>"; };
+		8FDB1EB01D1A240D005DE5B6 /* lead_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead_1.png; sourceTree = "<group>"; };
+		8FDB1EB11D1A240D005DE5B6 /* lead_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead_2.png; sourceTree = "<group>"; };
+		8FDB1EB21D1A240D005DE5B6 /* lead_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead_3.png; sourceTree = "<group>"; };
 		8FFB4A911D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CustomHeight.h"; sourceTree = "<group>"; };
 		8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+CustomHeight.m"; sourceTree = "<group>"; };
 		8FFE9AD11DED705100329FBA /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
@@ -174,10 +174,10 @@
 		8F089AE21CFBE4EB00A37815 /* ResourcesObject */ = {
 			isa = PBXGroup;
 			children = (
-				8FDB1EB01D1A240D005DE5B6 /* 引导页1.png */,
-				8FDB1EB11D1A240D005DE5B6 /* 引导页2.png */,
-				8FDB1EB21D1A240D005DE5B6 /* 引导页3.png */,
-				8F089B021CFC186B00A37815 /* 登录2_03.png */,
+				8FDB1EB01D1A240D005DE5B6 /* lead_1.png */,
+				8FDB1EB11D1A240D005DE5B6 /* lead_2.png */,
+				8FDB1EB21D1A240D005DE5B6 /* lead_3.png */,
+				8F089B021CFC186B00A37815 /* login2_03.png */,
 				8F7716CF1D755E2C0087BA67 /* iphone6Pic.jpg */,
 				8F089AE61CFBE4EB00A37815 /* AppDelegate.h */,
 				8F089AE71CFBE4EB00A37815 /* AppDelegate.m */,
@@ -273,13 +273,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F089AF31CFBE4EB00A37815 /* LaunchScreen.storyboard in Resources */,
-				8FDB1EB31D1A240D005DE5B6 /* 引导页1.png in Resources */,
+				8FDB1EB31D1A240D005DE5B6 /* lead_1.png in Resources */,
 				8F7716D01D755E2C0087BA67 /* iphone6Pic.jpg in Resources */,
 				8F089AF01CFBE4EB00A37815 /* Assets.xcassets in Resources */,
-				8F089B031CFC186B00A37815 /* 登录2_03.png in Resources */,
+				8F089B031CFC186B00A37815 /* login2_03.png in Resources */,
 				8F089AFE1CFC093000A37815 /* podfile in Resources */,
-				8FDB1EB41D1A240D005DE5B6 /* 引导页2.png in Resources */,
-				8FDB1EB51D1A240D005DE5B6 /* 引导页3.png in Resources */,
+				8FDB1EB41D1A240D005DE5B6 /* lead_2.png in Resources */,
+				8FDB1EB51D1A240D005DE5B6 /* lead_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
