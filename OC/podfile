@@ -13,5 +13,6 @@ target 'ResourcesObject' do
     pod 'BaiduMapKit', '~> 3.0.0'
     pod 'RongCloudIMKit', '~> 2.6.11'
     pod 'TZImagePickerController', '~> 1.7.1'
+    pod 'YYText', '~> 1.0.7'
 end
 

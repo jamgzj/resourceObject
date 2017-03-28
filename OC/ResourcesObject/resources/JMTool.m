@@ -31,11 +31,6 @@ static const short base64DecodingTable[256] = {
 
 @implementation JMTool
 
-+ (BOOL)isLogin {
-    NSDictionary *userInfoDict = [JMTool getObjectForKey:USER_INFO_KEY];
-    return userInfoDict?YES:NO;
-}
-
 + (UIViewController *)getCurrentVC {
     
     UIViewController *result = nil;
@@ -108,44 +103,6 @@ static const short base64DecodingTable[256] = {
     return contentSize.height;
 }
 
-#pragma mark - NSUserdefault 偏好设置
-
-// 将信息写入本地
-+ (void)setObject:(id)object ForKey:(NSString *)key {
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setObject:object forKey:key];
-    [defaults synchronize];
-}
-
-+ (id)getObjectForKey:(NSString *)key {
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    return [defaults objectForKey:key];
-}
-
-+ (void)removeAllNSUserdefaultObject {
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-}
-
-#pragma mark - NSKeyedArchiver 归档
-
-+ (void)archiveObject:(id)object ForKey:(NSString *)key {
-    //获取文件路径
-    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
-    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.achiver",[key description]]];
-    NSLog(@"path=%@",path);
-
-    //将数据保存到文件中
-    [NSKeyedArchiver archiveRootObject:object toFile:path];
-}
-
-+ (id)archiveObjectForKey:(NSString *)key {
-    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
-    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.achiver",[key description]]];
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-}
-
 #pragma mark - 清理url cookies
 
 + (void)clearCookiesForURL:(NSURL *)url {
@@ -181,60 +138,6 @@ static const short base64DecodingTable[256] = {
 
 + (void)removeAllCachedResponses {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
-}
-
-#pragma mark - md5
-
-+ (NSString *)md5String:(NSString *)sourceString {
-    if(!sourceString){
-        return nil;//判断sourceString如果为空则直接返回nil。
-    }
-    //MD5加密都是通过C级别的函数来计算，所以需要将加密的字符串转换为C语言的字符串
-    const char *cString = sourceString.UTF8String;
-    //创建一个C语言的字符数组，用来接收加密结束之后的字符
-    unsigned char result[CC_MD5_DIGEST_LENGTH];
-    //MD5计算（也就是加密）
-    //第一个参数：需要加密的字符串
-    //第二个参数：需要加密的字符串的长度
-    //第三个参数：加密完成之后的字符串存储的地方
-    CC_MD5(cString, (CC_LONG)strlen(cString), result);
-    //将加密完成的字符拼接起来使用（16进制的）。
-    //声明一个可变字符串类型，用来拼接转换好的字符
-    NSMutableString *resultString = [[NSMutableString alloc]init];
-    //遍历所有的result数组，取出所有的字符来拼接
-    for (int i = 0;i < CC_MD5_DIGEST_LENGTH; i++) {
-        [resultString  appendFormat:@"%02x",result[i]];
-        //%02x：x 表示以十六进制形式输出，02 表示不足两位，前面补0输出；超出两位，不影响。当x小写的时候，返回的密文中的字母就是小写的，当X大写的时候返回的密文中的字母是大写的。
-    }
-    //打印最终需要的字符
-    NSLog(@"resultString----->%@",resultString);
-    return resultString;
-}
-
-+ (NSString *)MD5String:(NSString *)sourceString {
-    if(!sourceString){
-        return nil;//判断sourceString如果为空则直接返回nil。
-    }
-    //MD5加密都是通过C级别的函数来计算，所以需要将加密的字符串转换为C语言的字符串
-    const char *cString = sourceString.UTF8String;
-    //创建一个C语言的字符数组，用来接收加密结束之后的字符
-    unsigned char result[CC_MD5_DIGEST_LENGTH];
-    //MD5计算（也就是加密）
-    //第一个参数：需要加密的字符串
-    //第二个参数：需要加密的字符串的长度
-    //第三个参数：加密完成之后的字符串存储的地方
-    CC_MD5(cString, (CC_LONG)strlen(cString), result);
-    //将加密完成的字符拼接起来使用（16进制的）。
-    //声明一个可变字符串类型，用来拼接转换好的字符
-    NSMutableString *resultString = [[NSMutableString alloc]init];
-    //遍历所有的result数组，取出所有的字符来拼接
-    for (int i = 0;i < CC_MD5_DIGEST_LENGTH; i++) {
-        [resultString  appendFormat:@"%02X",result[i]];
-        //%02x：x 表示以十六进制形式输出，02 表示不足两位，前面补0输出；超出两位，不影响。当x小写的时候，返回的密文中的字母就是小写的，当X大写的时候返回的密文中的字母是大写的。
-    }
-    //打印最终需要的字符
-    NSLog(@"resultString----->%@",resultString);
-    return resultString;
 }
 
 #pragma mark - base64
@@ -411,85 +314,54 @@ static const short base64DecodingTable[256] = {
 //将字符串数组按照元素首字母顺序进行排序分组
 
 + (NSDictionary *)dictionaryOrderByCharacterWithOriginalArray:(NSArray *)array{
-    
     if (array.count == 0) {
-        
         return nil;
-        
     }
     
     for (id obj in array) {
-        
         if (![obj isKindOfClass:[NSString class]]) {
-            
             return nil;
-            
         }
-        
     }
     
     UILocalizedIndexedCollation *indexedCollation = [UILocalizedIndexedCollation currentCollation];
-    
     NSMutableArray *objects = [NSMutableArray arrayWithCapacity:indexedCollation.sectionTitles.count];
     
     //创建27个分组数组
-    
     for (int i = 0; i < indexedCollation.sectionTitles.count; i++) {
-        
         NSMutableArray *obj = [NSMutableArray array];
-        
         [objects addObject:obj];
-        
     }
     
     NSMutableArray *keys = [NSMutableArray arrayWithCapacity:objects.count];
     
     //按字母顺序进行分组
-    
     NSInteger lastIndex = -1;
     
     for (int i = 0; i < array.count; i++) {
-        
         NSInteger index = [indexedCollation sectionForObject:array[i] collationStringSelector:@selector(uppercaseString)];
-        
         [[objects objectAtIndex:index] addObject:array[i]];
-        
         lastIndex = index;
-        
     }
     
     //去掉空数组
-    
     for (int i = 0; i < objects.count; i++) {
-        
         NSMutableArray *obj = objects[i];
-        
         if (obj.count == 0) {
-            
             [objects removeObject:obj];
-            
         }
-        
     }
     
     //获取索引字母
-    
     for (NSMutableArray *obj in objects) {
-        
         NSString *str = obj[0];
-        
         NSString *key = [self firstCharacterWithString:str];
-        
         [keys addObject:key];
-        
     }
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    
     [dic setObject:objects forKey:keys];
-    
     return dic;
-    
 }
 
 #pragma mark - 正则判断条件
@@ -1116,6 +988,57 @@ static const short base64DecodingTable[256] = {
 
 
 
+@implementation NSString (JM)
+
+- (NSString *)md5String {
+    if(!self){
+        return nil;//判断self如果为空则直接返回nil。
+    }
+    //MD5加密都是通过C级别的函数来计算，所以需要将加密的字符串转换为C语言的字符串
+    const char *cString = self.UTF8String;
+    //创建一个C语言的字符数组，用来接收加密结束之后的字符
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    //MD5计算（也就是加密）
+    //第一个参数：需要加密的字符串
+    //第二个参数：需要加密的字符串的长度
+    //第三个参数：加密完成之后的字符串存储的地方
+    CC_MD5(cString, (CC_LONG)strlen(cString), result);
+    //将加密完成的字符拼接起来使用（16进制的）。
+    //声明一个可变字符串类型，用来拼接转换好的字符
+    NSMutableString *resultString = [[NSMutableString alloc]init];
+    //遍历所有的result数组，取出所有的字符来拼接
+    for (int i = 0;i < CC_MD5_DIGEST_LENGTH; i++) {
+        [resultString  appendFormat:@"%02x",result[i]];
+        //%02x：x 表示以十六进制形式输出，02 表示不足两位，前面补0输出；超出两位，不影响。当x小写的时候，返回的密文中的字母就是小写的，当X大写的时候返回的密文中的字母是大写的。
+    }
+    //打印最终需要的字符
+    NSLog(@"resultString----->%@",resultString);
+    return resultString;
+}
+
+- (NSString *)MD5String {
+    if(!self){
+        return nil;//判断self如果为空则直接返回nil。
+    }
+    const char *cString = self.UTF8String;
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cString, (CC_LONG)strlen(cString), result);
+    NSMutableString *resultString = [[NSMutableString alloc]init];
+    for (int i = 0;i < CC_MD5_DIGEST_LENGTH; i++) {
+        [resultString  appendFormat:@"%02X",result[i]];
+    }
+    NSLog(@"resultString----->%@",resultString);
+    return resultString;
+}
+
+@end
+
+
+
+
+
+
+
 @implementation UIButton (JM)
 
 + (UIButton *)buttonWithTitle:(NSString *)title
@@ -1392,8 +1315,9 @@ static const void *badgeValueKey = &badgeValueKey;
 
 - (void)setBadgeValue:(NSString *)badgeValue {
     if (badgeValue) {
+        self.badgeView.hidden = NO;
         if ([badgeValue isEqualToString:@"0"]) {
-            [self.badgeView removeFromSuperview];
+            self.badgeView.hidden = YES;
         }else {
             if (self.badgeView) {
                 self.badgeView.text = badgeValue;
@@ -1435,7 +1359,7 @@ static const void *badgeValueKey = &badgeValueKey;
 }
 
 - (void)removeBadge {
-    [self.badgeView removeFromSuperview];
+    self.badgeView.hidden = YES;
 }
 
 @end

@@ -37,7 +37,6 @@
         _jmCover.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.6];
         _jmCover.hidden = YES;
         [self.view addSubview:_jmCover];
-//        [self.view sendSubviewToBack:_jmCover];
     }
     return _jmCover;
 }
@@ -57,7 +56,7 @@
     if(!_tableView)
     {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-//        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_tableView setIndicatorStyle:UIScrollViewIndicatorStyleWhite];
         _tableView.scrollEnabled = YES;
         _tableView.userInteractionEnabled = YES;
@@ -73,7 +72,7 @@
     if(!_groupedTableView)
     {
         _groupedTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        //        [_groupedTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [_groupedTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_groupedTableView setIndicatorStyle:UIScrollViewIndicatorStyleWhite];
         _groupedTableView.scrollEnabled = YES;
         _groupedTableView.userInteractionEnabled = YES;

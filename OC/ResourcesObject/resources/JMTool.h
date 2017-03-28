@@ -22,14 +22,82 @@
 #import <Masonry/Masonry.h>
 #import <objc/runtime.h>
 
-@interface JMTool : NSObject
+
+#pragma mark - NSUserdefault 存储
+/**
+ *  写入本地
+ *
+ *  @param str
+ *  @param key
+ */
+static inline void setObjectForKey(id object,NSString *key) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:object forKey:key];
+    [defaults synchronize];
+}
+
+/**
+ *  取出信息
+ *
+ *  @param key
+ *
+ *  @return
+ */
+static inline id getObject(NSString *key) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:key];
+}
+
+/**
+ *  清空Userdefault
+ */
+static inline void removeAllNSUserdefaultObject() {
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+}
 
 /**
  *  是否登陆
  *
  *  @return <#return value description#>
  */
-+ (BOOL)isLogin;
+static inline bool isLogin() {
+    NSDictionary *userInfoDict = getObject(USER_INFO_KEY);
+    return userInfoDict?YES:NO;
+}
+
+#pragma mark - NSKeyedArchiver 归档
+/**
+ *  存储数据
+ *
+ *  @param object <#object description#>
+ *  @param key    <#key description#>
+ */
+static inline void archiveObjectForKey(id object,NSString *key) {
+    //获取文件路径
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.achiver",[key description]]];
+    
+    //将数据保存到文件中
+    [NSKeyedArchiver archiveRootObject:object toFile:path];
+}
+
+/**
+ *  取出数据
+ *
+ *  @param key <#key description#>
+ *
+ *  @return <#return value description#>
+ */
+static inline id archiveObject(NSString *key) {
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.achiver",[key description]]];
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+}
+
+
+
+@interface JMTool : NSObject
 
 /**
  *  获取当前的视图控制器
@@ -75,49 +143,6 @@
  */
 + (CGFloat)heightOfContent:(NSString *)content Font:(UIFont *)font WithWidth:(CGFloat)width;
 
-#pragma mark - NSUserdefault 存储
-
-/**
- *  写入本地
- *
- *  @param str
- *  @param key
- */
-+ (void)setObject:(id)object ForKey:(NSString *)key;
-
-/**
- *  取出信息
- *
- *  @param key
- *
- *  @return 
- */
-+ (id)getObjectForKey:(NSString *)key;
-
-/**
- *  清空Userdefault
- */
-+ (void)removeAllNSUserdefaultObject;
-
-#pragma mark - NSKeyedArchiver 归档
-
-/**
- *  存储数据
- *
- *  @param object <#object description#>
- *  @param key    <#key description#>
- */
-+ (void)archiveObject:(id)object ForKey:(NSString *)key;
-
-/**
- *  取出数据
- *
- *  @param key <#key description#>
- *
- *  @return <#return value description#>
- */
-+ (id)archiveObjectForKey:(NSString *)key;
-
 #pragma mark - 清理url cookies
 
 /**
@@ -146,26 +171,6 @@
  *  清空所有缓存
  */
 + (void)removeAllCachedResponses;
-
-#pragma mark - MD5加密
-
-/**
- *  MD5加密（小写）
- *
- *  @param sourceString <#sourceString description#>
- *
- *  @return <#return value description#>
- */
-+ (NSString *)md5String:(NSString *)sourceString;
-
-/**
- *  MD5加密（大写）
- *
- *  @param sourceString <#sourceString description#>
- *
- *  @return <#return value description#>
- */
-+ (NSString *)MD5String:(NSString *)sourceString;
 
 #pragma mark - base64 编码
 
@@ -556,6 +561,17 @@
 + (float)getRealPriceWithPrice:(float)price;
 
 @end
+
+
+
+@interface NSString (JM)
+
+@property (readonly,copy,nonatomic)NSString *md5String;
+@property (readonly,copy,nonatomic)NSString *MD5String;
+
+@end
+
+
 
 @interface UIButton (JM)
 
