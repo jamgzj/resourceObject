@@ -14,7 +14,7 @@
 
 + (instancetype)getUserInfo
 {
-    UserInfo *info = [UserInfo mj_objectWithKeyValues:[JMTool getObjectForKey:USER_INFO_KEY]];
+    UserInfo *info = [UserInfo mj_objectWithKeyValues:getObject(USER_INFO_KEY)];
     
     return info;
 }

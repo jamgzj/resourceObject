@@ -481,6 +481,67 @@ static const short base64DecodingTable[256] = {
 }
 
 /**
+ *  截取当前屏幕
+ *
+ *  @return NSData *
+ */
++ (NSData *)dataWithScreenshotInPNGFormat {
+    CGSize imageSize = CGSizeZero;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (UIInterfaceOrientationIsPortrait(orientation))
+        imageSize = [UIScreen mainScreen].bounds.size;
+    else
+        imageSize = CGSizeMake([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+    
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    for (UIWindow *window in [[UIApplication sharedApplication] windows])
+    {
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, window.center.x, window.center.y);
+        CGContextConcatCTM(context, window.transform);
+        CGContextTranslateCTM(context, -window.bounds.size.width * window.layer.anchorPoint.x, -window.bounds.size.height * window.layer.anchorPoint.y);
+        if (orientation == UIInterfaceOrientationLandscapeLeft)
+        {
+            CGContextRotateCTM(context, M_PI_2);
+            CGContextTranslateCTM(context, 0, -imageSize.width);
+        }
+        else if (orientation == UIInterfaceOrientationLandscapeRight)
+        {
+            CGContextRotateCTM(context, -M_PI_2);
+            CGContextTranslateCTM(context, -imageSize.height, 0);
+        } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+            CGContextRotateCTM(context, M_PI);
+            CGContextTranslateCTM(context, -imageSize.width, -imageSize.height);
+        }
+        if ([window respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)])
+        {
+            [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
+        }
+        else
+        {
+            [window.layer renderInContext:context];
+        }
+        CGContextRestoreGState(context);
+    }
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return UIImagePNGRepresentation(image);
+}
+
+/**
+ *  返回截取到的图片
+ *
+ *  @return UIImage *
+ */
++ (UIImage *)imageWithScreenshot {
+    NSData *imageData = [self dataWithScreenshotInPNGFormat];
+    return [UIImage imageWithData:imageData];
+}
+
+/**
  *  截取view生成图片
  */
 + (UIImage *)showWithView:(UIView *)view {
@@ -491,7 +552,6 @@ static const short base64DecodingTable[256] = {
     UIGraphicsEndImageContext();
     return image;
 }
-
 
 /**
  *  截取view 中某个区域生成一张图片
@@ -510,6 +570,24 @@ static const short base64DecodingTable[256] = {
     CGImageRelease(imageRef);
     CGContextRelease(context);
     return image;
+}
+
++ (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // End the context
+    UIGraphicsEndImageContext();
+    
+    // Return the new image.
+    return newImage;
 }
 
 + (UIImage *)handleImage:(UIImage *)originalImage withSize:(CGSize)size {
@@ -1299,14 +1377,6 @@ static const void *badgeValueKey = &badgeValueKey;
 
 - (CGFloat)bottom {
     return self.origin.y + self.height;
-}
-
-- (void)addShadowAroundWithCornerRadius:(float)cornerRadius {
-    self.layer.cornerRadius = cornerRadius;
-    self.layer.shadowColor = [UIColor colorWithWhite:0.3 alpha:0.3].CGColor;
-    self.layer.shadowRadius = 2*coefficient;
-    self.layer.shadowOpacity = 1.f;
-    self.layer.shadowOffset = CGSizeZero;
 }
 
 - (NSString *)badgeValue {

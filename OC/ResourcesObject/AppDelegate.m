@@ -59,7 +59,7 @@
     
     manager.shouldToolbarUsesTextFieldTintColor = YES;
     
-    [JMTool checkNetStatus];
+    [JMHttp checkNetStatus];
     
 //    //请先启动BaiduMapManager
 //    _mapManager = [[BMKMapManager alloc]init];

@@ -443,6 +443,13 @@ static inline id archiveObject(NSString *key) {
                            Height:(CGFloat)height;
 
 /**
+ *  返回截取到的图片(全屏)
+ *
+ *  @return UIImage *
+ */
++ (UIImage *)imageWithScreenshot;
+
+/**
  *  截取view生成图片
  */
 + (UIImage *)showWithView:(UIView *)view;
@@ -451,6 +458,11 @@ static inline id archiveObject(NSString *key) {
  *  截取view 中某个区域生成一张图片
  */
 + (UIImage *)shotWithView:(UIView *)view scope:(CGRect)scope;
+
+/**
+ *  压缩图片
+ */
++ (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
 
 /**
  *  裁剪图片
@@ -679,13 +691,6 @@ typedef NS_ENUM(NSUInteger, MKButtonEdgeInsetsStyle) {
 
 @property (nonatomic, copy) NSString *badgeValue;
 @property (strong,nonatomic)UILabel *badgeView;
-
-/**
- *  添加view四周的阴影
- *
- *  @param cornerRadius <#cornerRadius description#>
- */
-- (void)addShadowAroundWithCornerRadius:(float)cornerRadius;
 
 - (void)removeBadge;
 

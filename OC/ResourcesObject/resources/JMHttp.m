@@ -55,14 +55,14 @@ static AFHTTPSessionManager *_manager;
             {
                 //基本上监测到无连接 给出友好提示就够了
                 [MBProgressHUD showError:@"当前无网络"];
-                [JMTool setObject:@YES ForKey:IS_NETCONNECT_LOST];
+                setObjectForKey(@YES, IS_NETCONNECT_LOST);
             }
                 break;
                 
             case AFNetworkReachabilityStatusReachableViaWWAN://3G
             {
-                if ([JMTool getObjectForKey:IS_NETCONNECT_LOST] && [[JMTool getObjectForKey:IS_NETCONNECT_LOST] boolValue]) {
-                    [JMTool setObject:@NO ForKey:IS_NETCONNECT_LOST];
+                if (getObject(IS_NETCONNECT_LOST) && [getObject(IS_NETCONNECT_LOST) boolValue]) {
+                    setObjectForKey(@NO, IS_NETCONNECT_LOST);
                     [[NSNotificationCenter defaultCenter]postNotificationName:REFRESH_UI object:nil userInfo:nil];
                 }
             }
@@ -70,8 +70,8 @@ static AFHTTPSessionManager *_manager;
                 
             case AFNetworkReachabilityStatusReachableViaWiFi://WiFi
             {
-                if ([JMTool getObjectForKey:IS_NETCONNECT_LOST] && [[JMTool getObjectForKey:IS_NETCONNECT_LOST] boolValue]) {
-                    [JMTool setObject:@NO ForKey:IS_NETCONNECT_LOST];
+                if (getObject(IS_NETCONNECT_LOST) && [getObject(IS_NETCONNECT_LOST) boolValue]) {
+                    setObjectForKey(@NO, IS_NETCONNECT_LOST);
                     [[NSNotificationCenter defaultCenter]postNotificationName:REFRESH_UI object:nil userInfo:nil];
                 }
             }
