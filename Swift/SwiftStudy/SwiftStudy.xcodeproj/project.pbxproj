@@ -13,6 +13,7 @@
 		8F02349A1E24BE5C00528A59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0234991E24BE5C00528A59 /* Assets.xcassets */; };
 		8F0234A71E24C21300528A59 /* JMTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0234A61E24C21300528A59 /* JMTool.swift */; };
 		8F1B12B71E8CEC2400D10359 /* JMHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B12B61E8CEC2400D10359 /* JMHttp.swift */; };
+		8F20766E1E8E04D90074FC33 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F20766D1E8E04D90074FC33 /* TestViewController.swift */; };
 		8F277EEF1E2C52F10034B8A0 /* JMTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F277EEE1E2C52F00034B8A0 /* JMTabbarViewController.swift */; };
 		8F277EF11E2C55280034B8A0 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F277EF01E2C55280034B8A0 /* Header.swift */; };
 		8F277EF31E2C55320034B8A0 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F277EF21E2C55320034B8A0 /* Url.swift */; };
@@ -28,6 +29,7 @@
 		8F02349E1E24BE5C00528A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F0234A61E24C21300528A59 /* JMTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMTool.swift; sourceTree = "<group>"; };
 		8F1B12B61E8CEC2400D10359 /* JMHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMHttp.swift; sourceTree = "<group>"; };
+		8F20766D1E8E04D90074FC33 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		8F277EEE1E2C52F00034B8A0 /* JMTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMTabbarViewController.swift; sourceTree = "<group>"; };
 		8F277EF01E2C55280034B8A0 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		8F277EF21E2C55320034B8A0 /* Url.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Url.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				8F0234921E24BE5C00528A59 /* AppDelegate.swift */,
+				8F20766D1E8E04D90074FC33 /* TestViewController.swift */,
 				8F277EEE1E2C52F00034B8A0 /* JMTabbarViewController.swift */,
 				8F0234A61E24C21300528A59 /* JMTool.swift */,
 				8F1B12B61E8CEC2400D10359 /* JMHttp.swift */,
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F20766E1E8E04D90074FC33 /* TestViewController.swift in Sources */,
 				8F277EF11E2C55280034B8A0 /* Header.swift in Sources */,
 				8F0234A71E24C21300528A59 /* JMTool.swift in Sources */,
 				8F277EEF1E2C52F10034B8A0 /* JMTabbarViewController.swift in Sources */,

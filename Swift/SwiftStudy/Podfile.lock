@@ -1,6 +1,8 @@
 PODS:
   - Alamofire (4.4.0)
   - Kingfisher (3.6.0)
+  - MJRefresh (3.1.12)
+  - NVActivityIndicatorView (3.5.2)
   - Popover (1.0.4)
   - SKPhotoBrowser (4.0.1)
   - SnapKit (3.2.0)
@@ -13,16 +15,20 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4.0)
   - Kingfisher (~> 3.6.0)
-  - Popover
-  - SKPhotoBrowser
+  - MJRefresh (~> 3.1.12)
+  - NVActivityIndicatorView (~> 3.5.2)
+  - Popover (~> 1.0.4)
+  - SKPhotoBrowser (~> 4.0.1)
   - SnapKit (~> 3.2.0)
-  - SwiftyJSON
+  - SwiftyJSON (~> 3.1.4)
   - YYCategories (~> 1.0.4)
   - YYText (~> 1.0.7)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Kingfisher: 300035f9a40634dc9b452d946c9f22250688fecd
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  NVActivityIndicatorView: 8c10abd410a0657afd21aa853373e1a3cfc25e7f
   Popover: 8bced665f98824ded3b8114a27f4d2281c78a672
   SKPhotoBrowser: 3a7c6fc02aa1620ab17253a47a49fafda46536e8
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
@@ -30,6 +36,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: bc7f19ca3467857ec91b9ea70e2776bbd1e829b9
+PODFILE CHECKSUM: 771fe17b11fe0c16084ad49f174e820b9f6cf9ae
 
 COCOAPODS: 1.1.1

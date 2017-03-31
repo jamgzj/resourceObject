@@ -33,18 +33,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    UITextField *textF;
-    textF.background = [UIImage imageNamed:@""];
-    textF.contentMode = UIViewContentModeScaleToFill;
-    NSDate *before;
-    NSDate *now;
-    NSCalendar *calendar;
-    [before timeIntervalSinceDate:now];
-    [JMHttp getWithThePath:@"" Params:nil isHudShow:YES Success:^(id JSON) {
-        
-    } Failure:^(id Error) {
-        
-    }];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    
+    
 //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
 //    {
 //        self.edgesForExtendedLayout = UIRectEdgeNone;

@@ -86,6 +86,14 @@ extension String {
     var firstCharacter : String {
         return (pinyin as NSString).substring(to: 1)
     }
+    
+    func isLegal(judgeString:String) -> Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@",judgeString)
+        if predicate.evaluate(with: self) {
+            return true
+        }
+        return false
+    }
 }
 
 
