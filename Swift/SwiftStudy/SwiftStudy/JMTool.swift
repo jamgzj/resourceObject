@@ -7,16 +7,40 @@
 //
 
 import UIKit
+import YYText
 
 let USER_INFO_KEY = "USER_INFO_KEY"
-
-
 
 class JMTool: NSObject {
         
     class func isLogin() -> Bool {
         let userInfoDict:Any? = UserDefaults.standard.object(forKey: USER_INFO_KEY)
         return userInfoDict == nil ? false:true
+    }
+    
+    class func getCurrentVC() -> UIViewController {
+        var result:UIViewController
+        
+        var window = UIApplication.shared.keyWindow
+        
+        if window!.windowLevel != UIWindowLevelNormal {
+            let windows = UIApplication.shared.windows
+            for var tmpWin in windows {
+                if tmpWin.windowLevel == UIWindowLevelNormal {
+                    window = tmpWin
+                    break
+                }
+            }
+        }
+        
+        let frontView = window!.subviews[0]
+        let nextResponder = frontView.next
+        if nextResponder!.isKind(of: UIViewController.self) {
+            result = nextResponder as! UIViewController
+        }else {
+            result = window!.rootViewController!
+        }
+        return result
     }
     
     class func setExtraCellLineHidden(tableView:UITableView) -> Void {

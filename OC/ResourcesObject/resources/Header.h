@@ -13,7 +13,7 @@
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
-#define coefficient     (SCREEN_WIDTH/320.f)
+#define coefficient     (SCREEN_WIDTH/375.f)
 
 #define CURRENT_SIZE(_SIZE) _SIZE/375.0*SCREEN_WIDTH //当前的宽高比
 

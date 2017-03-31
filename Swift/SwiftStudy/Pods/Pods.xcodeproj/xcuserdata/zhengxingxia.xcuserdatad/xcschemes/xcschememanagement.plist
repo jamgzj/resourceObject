@@ -9,7 +9,42 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SwiftStudy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Popover.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SKPhotoBrowser.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YYCategories.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YYText.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1DE93A359FA21F91DFBE81309E851A4A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>228C0028B3D85B49CE90FC6EC23A2D19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38B09EC1E416447CE99E83130B5475F5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3977CA1F96DDA8F1A662412C059C2AAD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>99DA392A0AC4510F766837A8B9B2DC81</key>
+		<key>8B79C4DBC2E2CCB380AE7BA93BB25E5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C46567017A3ABC0928E10E7FA4FB3BED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD15A7B12F4C50204F348756CD7DD534</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F6F57766A60D26D4881FADFBA2571640</key>
 		<dict>
 			<key>primary</key>
 			<true/>

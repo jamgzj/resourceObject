@@ -8,13 +8,18 @@
 
 import UIKit
 import Alamofire
+import SnapKit
 
 class JMTabbarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let array = ["1","2","3"]
-        
+        JMHttp.get(path: "", params: nil, isHudShow: true, success: { (json) in
+            
+        }) { (error) in
+            
+        }
         
         // Do any additional setup after loading the view.
     }
