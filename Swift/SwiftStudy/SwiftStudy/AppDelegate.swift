@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.rootViewController = TestViewController()
         window?.makeKeyAndVisible()
+        
+        let manager = IQKeyboardManager.shared()
+        manager.toolbarDoneBarButtonItemText = "完成"
+        manager.isEnabled = true
+        manager.shouldResignOnTouchOutside = true
+        manager.shouldToolbarUsesTextFieldTintColor = true
         
         return true
     }

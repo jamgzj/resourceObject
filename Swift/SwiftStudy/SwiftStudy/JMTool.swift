@@ -43,14 +43,14 @@ class JMTool: NSObject {
         return result
     }
     
-    class func setExtraCellLineHidden(tableView:UITableView) -> Void {
+    class func setExtraCellLineHidden(_ tableView:UITableView) -> Void {
         let view = UIView()
         view.backgroundColor = UIColor.clear
         tableView.tableFooterView = view
     }
     
     // 设置label首行缩进
-    class func resetContent(label:UILabel,width:CGFloat) -> UILabel? {
+    class func resetContentForLabel(_ label:UILabel,withWidth width:CGFloat) -> UILabel? {
         if label.text != nil {
             let attributedString = NSMutableAttributedString.init(string: label.text!)
             let paragraphStyle = NSMutableParagraphStyle()
@@ -67,13 +67,13 @@ class JMTool: NSObject {
     }
     
     //MARK: - NSUserdefault 偏好设置
-    class func setObject(object:Any?, forKey:String) -> Void {
-        UserDefaults.standard.set(object, forKey: forKey)
+    class func setObject(_ object:Any?,forKey key:String) -> Void {
+        UserDefaults.standard.set(object, forKey: key)
         UserDefaults.standard.synchronize()
     }
     
-    class func getObject(forKey:String) -> Any? {
-        return UserDefaults.standard.object(forKey: forKey)
+    class func getObjectforKey(_ key:String) -> Any? {
+        return UserDefaults.standard.object(forKey: key)
     }
     
     class func removeAllNSUserdefaultObject() {
@@ -81,25 +81,25 @@ class JMTool: NSObject {
     }
     
     //MARK: - NSKeyedArchiver 归档
-    class func archiveObject(object:Any?, forKey:String) {
+    class func archiveObject(_ object:Any?,forKey key:String) {
         let docPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last
-        let path = docPath?.appendingFormat("%@.archiver", forKey.description)
-        if path != nil {
-            NSKeyedArchiver.archiveRootObject(object, toFile: path!)
+        let path = docPath?.appendingFormat("%@.archiver", key.description)
+        if let path = path, let object = object {
+            NSKeyedArchiver.archiveRootObject(object, toFile: path)
         }
     }
     
-    class func archiveObject(forKey:String) -> Any? {
+    class func archiveObjectForKey(_ key:String) -> Any? {
         let docPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last
-        let path = docPath?.appendingFormat("%@.archiver", forKey.description)
-        if path != nil {
-            return NSKeyedUnarchiver.unarchiveObject(withFile: path!)
+        let path = docPath?.appendingFormat("%@.archiver", key.description)
+        if let path = path {
+            return NSKeyedUnarchiver.unarchiveObject(withFile: path)
         }
         return nil
     }
     
     //MARK: - 清理url cookies
-    class func clearCookies(url:URL) -> Void {
+    class func clearCookiesForUrl(_ url:URL) -> Void {
         let cookies = HTTPCookieStorage.shared.cookies(for: url)
         for cookie in cookies! {
             print("cookie------>\(cookie)")
@@ -109,7 +109,7 @@ class JMTool: NSObject {
         }
     }
     
-    class func clearCookie(name:(String),url:URL?) -> Void {
+    class func clearCookieWithName(_ name:String,forUrl url:URL?) -> Void {
         if url != nil {
             let cookieArray = HTTPCookieStorage.shared.cookies(for: url!)
             if cookieArray != nil {
@@ -122,9 +122,9 @@ class JMTool: NSObject {
         }
     }
     
-    class func removeCache(url:URL?) -> Void {
-        if url != nil {
-            URLCache.shared.removeCachedResponse(for: URLRequest.init(url: url!))
+    class func removeCacheForUrl(_ url:URL?) -> Void {
+        if let url = url {
+            URLCache.shared.removeCachedResponse(for: URLRequest.init(url: url))
         }
     }
     
@@ -132,7 +132,7 @@ class JMTool: NSObject {
         URLCache.shared.removeAllCachedResponses()
     }
     
-    class func transformToJson(object:AnyObject) -> String? {
+    class func transformToJsonWithObject(_ object:AnyObject) -> String? {
         let canTransform = JSONSerialization.isValidJSONObject(object)
         let jsonDataString:String
         if canTransform {

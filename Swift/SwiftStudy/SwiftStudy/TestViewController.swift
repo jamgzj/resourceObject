@@ -7,21 +7,21 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 
-class TestViewController: UIViewController, NVActivityIndicatorViewable {
+class TestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         automaticallyAdjustsScrollViewInsets = false
-        // Do any additional setup after loading the view.
-        startAnimating(message:"Loading...",type:NVActivityIndicatorType.ballGridPulse)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) { 
-            self.stopAnimating()
-        }
+        
+        
+        
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) { 
+//            self.stopAnimating()
+//        }
     }
 
     override func didReceiveMemoryWarning() {

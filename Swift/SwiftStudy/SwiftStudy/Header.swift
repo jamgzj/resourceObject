@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MBProgressHUD
 
 private let base64EncodingTable = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 private let base64DecodingTable = [
@@ -38,6 +39,10 @@ let HEIGHT_RATE = SCREEN_HEIGHT/667
 let IS_IOS8 = (UIDevice.current.systemVersion as NSString).doubleValue >= 8.0
 let IS_IOS9 = (UIDevice.current.systemVersion as NSString).doubleValue >= 9.0
 let IS_IOS10 = (UIDevice.current.systemVersion as NSString).doubleValue >= 10.0
+
+let MAIN_FONT = UIFont.systemFont(ofSize: 15*WIDTH_RATE)
+
+let IP_ADDRESS_URL = ""
 
 extension String {
     var md5 : String {
@@ -87,7 +92,7 @@ extension String {
         return (pinyin as NSString).substring(to: 1)
     }
     
-    func isLegal(judgeString:String) -> Bool {
+    func isLegal(_ judgeString:String) -> Bool {
         let predicate = NSPredicate(format: "SELF MATCHES %@",judgeString)
         if predicate.evaluate(with: self) {
             return true
@@ -96,7 +101,63 @@ extension String {
     }
 }
 
-
+extension MBProgressHUD {
+    class func showText(_ text:String?,toView view:UIView?) -> MBProgressHUD {
+        var bgView : UIView
+        
+        if view == nil {
+            bgView = UIApplication.shared.windows.last!
+        }else {
+            bgView = view!
+        }
+        
+        let hud = MBProgressHUD.showAdded(to: bgView, animated: true)
+        hud.bezelView.backgroundColor = .black
+        hud.contentColor = .white
+        hud.detailsLabel.text = text
+        hud.detailsLabel.textColor = .white
+        hud.detailsLabel.font = UIFont.boldSystemFont(ofSize: 15*WIDTH_RATE)
+        hud.mode = .customView
+        hud.removeFromSuperViewOnHide = true;
+        
+        hud.hide(animated: true, afterDelay: 2)
+        
+        return hud
+    }
+    
+    class func showMessage(_ message:String?,toView view:UIView?) -> MBProgressHUD {
+        var bgView : UIView
+        if view == nil {
+            bgView = UIApplication.shared.windows.last!
+        }else {
+            bgView = view!
+        }
+        let hud = MBProgressHUD.showAdded(to: bgView, animated: true)
+        hud.label.text = message
+        hud.removeFromSuperViewOnHide = true
+        hud.dimBackground = true
+        return hud
+    }
+    
+    class func showSuccess(_ message:String?) -> MBProgressHUD {
+        let hud = showText(message, toView: nil)
+        return hud
+    }
+    
+    class func showError(_ message:String?) -> MBProgressHUD {
+        let hud = showText(message, toView: nil)
+        return hud
+    }
+    
+    class func hideHudForView(_ view:UIView?) {
+        var bgView = view
+        guard (bgView != nil) else {
+            bgView = UIApplication.shared.windows.last!
+            return
+        }
+        hide(for: bgView!, animated: true)
+    }
+}
 
 
 

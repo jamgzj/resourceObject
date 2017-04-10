@@ -1,9 +1,15 @@
 PODS:
   - Alamofire (4.4.0)
+  - IQKeyboardManager (3.3.7)
   - Kingfisher (3.6.0)
+  - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
-  - NVActivityIndicatorView (3.5.2)
   - Popover (1.0.4)
+  - SDCycleScrollView (1.65):
+    - SDWebImage (~> 3.7)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SKPhotoBrowser (4.0.1)
   - SnapKit (3.2.0)
   - SwiftyJSON (3.1.4)
@@ -14,10 +20,12 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4.0)
+  - IQKeyboardManager (~> 3.3.7)
   - Kingfisher (~> 3.6.0)
+  - MBProgressHUD (~> 1.0.0)
   - MJRefresh (~> 3.1.12)
-  - NVActivityIndicatorView (~> 3.5.2)
   - Popover (~> 1.0.4)
+  - SDCycleScrollView (~> 1.65)
   - SKPhotoBrowser (~> 4.0.1)
   - SnapKit (~> 3.2.0)
   - SwiftyJSON (~> 3.1.4)
@@ -26,16 +34,19 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   Kingfisher: 300035f9a40634dc9b452d946c9f22250688fecd
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  NVActivityIndicatorView: 8c10abd410a0657afd21aa853373e1a3cfc25e7f
   Popover: 8bced665f98824ded3b8114a27f4d2281c78a672
+  SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SKPhotoBrowser: 3a7c6fc02aa1620ab17253a47a49fafda46536e8
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 771fe17b11fe0c16084ad49f174e820b9f6cf9ae
+PODFILE CHECKSUM: 99ce1980ec9f3f9168e338ba6f02c22f6e89141f
 
 COCOAPODS: 1.1.1
