@@ -14,8 +14,8 @@ class JMTabbarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let array = ["1","2","3"]
-        JMHttp.get("", params: nil, isHudShow: true, success: { (json) in
+        
+        JMHttp.get("s", params: nil, isHudShow: true, success: { (json) in
             
         }) { (error) in
             

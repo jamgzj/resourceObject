@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-import MBProgressHUD
 
 final class JMHttp: NSObject {
     
@@ -53,52 +50,55 @@ final class JMHttp: NSObject {
     
     class func request(_ path:String, method:String, params:AnyObject?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
         
-        let urlString = path.isLegal("^http://.*") ? path : (IP_ADDRESS_URL + path)
+        var urlString = path.isLegal("^http://.*") ? path : (IP_ADDRESS_URL + path)
+        urlString = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let bgView = UIApplication.shared.windows.last
         
-        if let url = URL(string: urlString) {
-            if isHudShow {
-                DispatchQueue.main.async {
-                    let hud = MBProgressHUD.showMessage("loading...",toView:bgView)
-                    hud.hide(animated: true, afterDelay: URLSessionConfiguration.default.timeoutIntervalForRequest)
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        if isHudShow {
+            DispatchQueue.main.async {
+                let hud = MBProgressHUD.showMessage("loading...",toView:bgView)
+                hud.hide(animated: true, afterDelay: URLSessionConfiguration.default.timeoutIntervalForRequest)
+            }
+        }
+        if method == "get" {
+            sharedManager.request(url, method: .get, parameters: params as? [String : AnyObject]).responseData { (response) in
+                switch response.result {
+                case .success(let data):
+                    let dict = JSON(data)
+                    if let bgView = bgView {
+                        MBProgressHUD.hideHudForView(bgView)
+                    }
+                    success(dict)
+                    break
+                case .failure(let error):
+                    if let bgView = bgView {
+                        MBProgressHUD.hideHudForView(bgView)
+                    }
+                    failure(error)
+                    break
                 }
             }
-            if method == "get" {
-                sharedManager.request(url, method: .get, parameters: params as? [String : AnyObject]).responseData { (response) in
-                    switch response.result {
-                    case .success(let data):
-                        let dict = JSON(data)
-                        if let bgView = bgView {
-                            MBProgressHUD.hideHudForView(bgView)
-                        }
-                        success(dict)
-                        break
-                    case .failure(let error):
-                        if let bgView = bgView {
-                            MBProgressHUD.hideHudForView(bgView)
-                        }
-                        failure(error)
-                        break
+        }
+        else if method == "post" {
+            sharedManager.request(url, method: .post, parameters: params as? [String : AnyObject]).responseData { (response) in
+                switch response.result {
+                case .success(let data):
+                    let dict = JSON(data)
+                    if let bgView = bgView {
+                        MBProgressHUD.hideHudForView(bgView)
                     }
-                }
-            }
-            else if method == "post" {
-                sharedManager.request(url, method: .post, parameters: params as? [String : AnyObject]).responseData { (response) in
-                    switch response.result {
-                    case .success(let data):
-                        let dict = JSON(data)
-                        if let bgView = bgView {
-                            MBProgressHUD.hideHudForView(bgView)
-                        }
-                        success(dict)
-                        break
-                    case .failure(let error):
-                        if let bgView = bgView {
-                            MBProgressHUD.hideHudForView(bgView)
-                        }
-                        failure(error)
-                        break
+                    success(dict)
+                    break
+                case .failure(let error):
+                    if let bgView = bgView {
+                        MBProgressHUD.hideHudForView(bgView)
                     }
+                    failure(error)
+                    break
                 }
             }
         }
@@ -106,85 +106,91 @@ final class JMHttp: NSObject {
     
     // 上传单张图片
     class func request(_ path:String, data:Data, keyName:String, params:AnyObject?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
-        let urlString = path.isLegal("^http://.*") ? path : (IP_ADDRESS_URL + path)
+        var urlString = path.isLegal("^http://.*") ? path : (IP_ADDRESS_URL + path)
+        urlString = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let bgView = UIApplication.shared.windows.last
         
-        if let url = URL(string: urlString) {
-            if isHudShow {
-                DispatchQueue.main.async {
-                    let hud = MBProgressHUD.showMessage("loading...",toView:bgView)
-                    hud.hide(animated: true, afterDelay: URLSessionConfiguration.default.timeoutIntervalForRequest)
-                }
-            }
-            sharedManager.upload(multipartFormData: { (formData) in
-                formData.append(data, withName: keyName, fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
-            }, to: url, method: .post, headers: params as? [String : String], encodingCompletion: { (result) in
-                switch result {
-                case .success(let data):
-                    let dict = JSON(data)
-                    if let bgView = bgView {
-                        MBProgressHUD.hideHudForView(bgView)
-                    }
-                    success(dict)
-                    break
-                case .failure(let error):
-                    if let bgView = bgView {
-                        MBProgressHUD.hideHudForView(bgView)
-                    }
-                    failure(error)
-                    break
-                }
-            })
+        guard let url = URL(string: urlString) else {
+            return
         }
+        
+        if isHudShow {
+            DispatchQueue.main.async {
+                let hud = MBProgressHUD.showMessage("loading...",toView:bgView)
+                hud.hide(animated: true, afterDelay: URLSessionConfiguration.default.timeoutIntervalForRequest)
+            }
+        }
+        sharedManager.upload(multipartFormData: { (formData) in
+            formData.append(data, withName: keyName, fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
+        }, to: url, method: .post, headers: params as? [String : String], encodingCompletion: { (result) in
+            switch result {
+            case .success(let data):
+                let dict = JSON(data)
+                if let bgView = bgView {
+                    MBProgressHUD.hideHudForView(bgView)
+                }
+                success(dict)
+                break
+            case .failure(let error):
+                if let bgView = bgView {
+                    MBProgressHUD.hideHudForView(bgView)
+                }
+                failure(error)
+                break
+            }
+        })
     }
     
     // 上传多张图片
     class func request<T>(_ path:String, imgArray:[T], keyNames:[String], params:AnyObject?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
-        let urlString = path.isLegal("^http://.*") ? path : (IP_ADDRESS_URL + path)
+        var urlString = path.isLegal("^http://.*") ? path : (IP_ADDRESS_URL + path)
+        urlString = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let bgView = UIApplication.shared.windows.last
         
-        if let url = URL(string: urlString) {
-            if isHudShow {
-                DispatchQueue.main.async {
-                    let hud = MBProgressHUD.showMessage("loading...",toView:bgView)
-                    hud.hide(animated: true, afterDelay: URLSessionConfiguration.default.timeoutIntervalForRequest)
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        if isHudShow {
+            DispatchQueue.main.async {
+                let hud = MBProgressHUD.showMessage("loading...",toView:bgView)
+                hud.hide(animated: true, afterDelay: URLSessionConfiguration.default.timeoutIntervalForRequest)
+            }
+        }
+        sharedManager.upload(multipartFormData: { (formData) in
+            let count = imgArray.count<keyNames.count ? imgArray.count : keyNames.count
+            for index in 0...count {
+                let object = imgArray[index]
+                if object is String {
+                    let image = UIImage.init(named: object as! String)
+                    let data = UIImageJPEGRepresentation(image!, 1)
+                    formData.append(data!, withName: keyNames[index], fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
+                }
+                if object is UIImage {
+                    let data = UIImageJPEGRepresentation(object as! UIImage, 1)
+                    formData.append(data!, withName: keyNames[index], fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
+                }
+                if object is Data {
+                    formData.append(object as! Data, withName: keyNames[index], fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
                 }
             }
-            sharedManager.upload(multipartFormData: { (formData) in
-                let count = imgArray.count<keyNames.count ? imgArray.count : keyNames.count
-                for index in 0...count {
-                    let object = imgArray[index]
-                    if object is String {
-                        let image = UIImage.init(named: object as! String)
-                        let data = UIImageJPEGRepresentation(image!, 1)
-                        formData.append(data!, withName: keyNames[index], fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
-                    }
-                    if object is UIImage {
-                        let data = UIImageJPEGRepresentation(object as! UIImage, 1)
-                        formData.append(data!, withName: keyNames[index], fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
-                    }
-                    if object is Data {
-                        formData.append(object as! Data, withName: keyNames[index], fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
-                    }
+        }, to: url, method: .post, headers: params as? [String:String], encodingCompletion: { (result) in
+            switch result {
+            case .success(let data):
+                let dict = JSON(data)
+                if let bgView = bgView {
+                    MBProgressHUD.hideHudForView(bgView)
                 }
-            }, to: url, method: .post, headers: params as? [String:String], encodingCompletion: { (result) in
-                switch result {
-                case .success(let data):
-                    let dict = JSON(data)
-                    if let bgView = bgView {
-                        MBProgressHUD.hideHudForView(bgView)
-                    }
-                    success(dict)
-                    break
-                case .failure(let error):
-                    if let bgView = bgView {
-                        MBProgressHUD.hideHudForView(bgView)
-                    }
-                    failure(error)
-                    break
+                success(dict)
+                break
+            case .failure(let error):
+                if let bgView = bgView {
+                    MBProgressHUD.hideHudForView(bgView)
                 }
-            })
-        }
+                failure(error)
+                break
+            }
+        })
     }
 }
 

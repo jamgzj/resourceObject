@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import UIKit
-import MBProgressHUD
 
 private let base64EncodingTable = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 private let base64DecodingTable = [
@@ -158,6 +156,80 @@ extension MBProgressHUD {
         hide(for: bgView!, animated: true)
     }
 }
+
+extension UIButton {
+    public enum MKButtonEdgeInsetsStyle {
+        case top
+        case left
+        case right
+        case bottom
+    }
+    
+    final func layoutWithStyle(_ style:MKButtonEdgeInsetsStyle, Padding padding:Float) {
+        var imageWidth : Float = 0
+        var imageHeight : Float = 0
+        if imageView != nil {
+            imageWidth = Float(IS_IOS8 ? imageView!.intrinsicContentSize.width : imageView!.width)
+            imageHeight = Float(IS_IOS8 ? imageView!.intrinsicContentSize.height : imageView!.height)
+        }
+        
+        var labelWidth : Float = 0
+        var labelHeight : Float = 0
+        if titleLabel != nil {
+            labelWidth = Float(IS_IOS8 ? titleLabel!.intrinsicContentSize.width : titleLabel!.width)
+            labelHeight = Float(IS_IOS8 ? titleLabel!.intrinsicContentSize.height : titleLabel!.height)
+        }
+        
+        var imgEdgeInsets = UIEdgeInsets.zero
+        var labelEdgeInsets = UIEdgeInsets.zero
+        
+        switch style {
+        case .top:
+            imgEdgeInsets = UIEdgeInsets(top: CGFloat(-labelHeight-padding/2.0), left: 0, bottom: 0, right: CGFloat(-labelWidth))
+            labelEdgeInsets = UIEdgeInsets(top: 0, left: CGFloat(-imageWidth), bottom: CGFloat(-imageWidth-padding/2.0), right: 0)
+            break
+        case .left:
+            imgEdgeInsets = UIEdgeInsets(top: 0, left: CGFloat(-padding/2.0), bottom: 0, right: CGFloat(padding/2.0))
+            labelEdgeInsets = UIEdgeInsets(top: 0, left: CGFloat(padding/2.0), bottom: 0, right: CGFloat(-padding/2.0))
+            break
+        case .right:
+            imgEdgeInsets = UIEdgeInsets(top: 0, left: CGFloat(labelWidth+padding/2.0), bottom: 0, right: CGFloat(-labelWidth-padding/2.0))
+            labelEdgeInsets = UIEdgeInsets(top: 0, left: CGFloat(-imageWidth-padding/2.0), bottom: 0, right: CGFloat(imageWidth+padding/2.0))
+            break
+        case .bottom:
+            imgEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: CGFloat(-labelHeight-padding/2.0), right: CGFloat(-labelWidth))
+            labelEdgeInsets = UIEdgeInsets(top: CGFloat(-imageHeight-padding/2.0), left: CGFloat(-imageWidth), bottom: 0, right: 0)
+            break
+        }
+        
+        titleEdgeInsets = labelEdgeInsets
+        imageEdgeInsets = imgEdgeInsets
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

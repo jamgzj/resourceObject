@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import YYText
 
 let USER_INFO_KEY = "USER_INFO_KEY"
 

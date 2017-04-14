@@ -35,6 +35,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    [self getSheepNumberByYear:100];
+    
+    
     
     
 //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
@@ -190,6 +193,34 @@
 //    [rongClould addTarget:self action:@selector(ClickRongClould) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:rongClould];
     
+}
+
+- (int)getSheepNumberByYear:(int)year {
+    //存放还有几只羊
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:5];
+    //每年羊增加的数量
+    int addNumber = 0;
+    [array addObject:@5];
+    for (int i = 0; i < year; i++) {
+        int count = array.count;
+        for (int j = 0 ; j < count; j++) {
+            // 该🐑还能活几年
+            int lastyear = [array[j] intValue];
+            lastyear--;
+            if (lastyear == 3 || lastyear == 1) {
+                addNumber++;
+            }
+            [array replaceObjectAtIndex:j withObject:@(lastyear)];
+        }
+        [array removeObject:@0];
+        // 添加新生的小羊
+        for (int i = 0; i < addNumber; i++) {
+            [array addObject:@5];
+        }
+        NSLog(@"第%d年有%d只羊🐑",i+1,array.count);
+        addNumber = 0;
+    }
+    return array.count;
 }
 
 - (void)ClickRongClould {
