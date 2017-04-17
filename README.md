@@ -1,3 +1,4 @@
 # resourceObject
-OC以及Swift 方法的收藏和归纳
-一些常用的第三方库
+OC以及Swift常用的第三方库
+自己的方法收藏和归纳
+
