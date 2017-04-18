@@ -17,8 +17,12 @@ class TestViewController: UIViewController {
         view.backgroundColor = .white
         automaticallyAdjustsScrollViewInsets = false
         
+        let string = "hello world"
+        print(string[1..<3])
         
-        
+        let navView = JMNavView()
+        navView.title = "jhkaf"
+        print(navView.title)
         
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) { 
 //            self.stopAnimating()

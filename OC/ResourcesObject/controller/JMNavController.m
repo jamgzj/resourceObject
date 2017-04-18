@@ -23,7 +23,7 @@
 }
 
 - (void)setTitleVerticalOffset:(float)offset {
-    [self.navigationBar setTitleVerticalPositionAdjustment:5 forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setTitleVerticalPositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)setNavigationBarColor:(UIColor *)color {

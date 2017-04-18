@@ -33,16 +33,50 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
 let WIDTH_RATE = SCREEN_WIDTH/375
 let HEIGHT_RATE = SCREEN_HEIGHT/667
+let navHeight = 40*WIDTH_RATE+20
 
 let IS_IOS8 = (UIDevice.current.systemVersion as NSString).doubleValue >= 8.0
 let IS_IOS9 = (UIDevice.current.systemVersion as NSString).doubleValue >= 9.0
 let IS_IOS10 = (UIDevice.current.systemVersion as NSString).doubleValue >= 10.0
 
-let MAIN_FONT = UIFont.systemFont(ofSize: 15*WIDTH_RATE)
+let MAIN_COLOR = UIColor.gray
+let MAIN_FONT_COLOR = UIColor.black
 
-let IP_ADDRESS_URL = ""
+func MAIN_FONT(_ size:CGFloat) -> UIFont {
+    return UIFont.systemFont(ofSize: size)
+}
+
+func MAIN_BOLD_FONT(_ size:CGFloat) -> UIFont {
+    return UIFont.boldSystemFont(ofSize: size)
+}
+
+func IP_ADDRESS_URL(_ string:String?) -> String {
+    if let string = string {
+        return IP_ADDRESS_URL + string
+    }else {
+        return IP_ADDRESS_URL
+    }
+}
 
 extension String {
+    
+    subscript(range: Range<Int>) -> String {
+        get{
+            let rStart = range.lowerBound < 0 ? 0 : range.lowerBound
+            let rEnd = range.upperBound < 0 ? 0 : range.upperBound
+            
+            let startIndex = self.index(self.startIndex, offsetBy: rStart, limitedBy:self.endIndex)
+            let endIndex = self.index(self.startIndex, offsetBy: rEnd, limitedBy: self.endIndex)
+            return self.substring(with: Range.init(uncheckedBounds: (startIndex!,endIndex!)))
+        }
+    }
+    
+    subscript(index: Int) -> String{
+        get{
+            return self[index..<index+1]
+        }
+    }
+    
     var md5 : String {
         let str = cString(using: String.Encoding.utf8)
         let strLen = CC_LONG(lengthOfBytes(using: String.Encoding.utf8))

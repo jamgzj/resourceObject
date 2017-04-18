@@ -163,7 +163,142 @@ class JMTool: NSObject {
     
 }
 
-
+class JMNavView: UIView {
+    
+    fileprivate var JMTitle = ""
+    open var jmLeftButton : UIButton?
+    open var jmRightButton : UIButton?
+    
+    open var titleLabel : UILabel = {
+        let label = UILabel()
+        label.font = MAIN_BOLD_FONT(15*WIDTH_RATE)
+        label.textAlignment = .center
+        label.textColor = MAIN_FONT_COLOR
+        return label
+    }()
+    
+    open var title :String {
+        get {
+            return getJMTitle()
+        }
+        set {
+            setJMTitle(newValue)
+        }
+    }
+    
+    enum JMNavButtonType {
+        case left
+        case right
+    }
+    
+    init() {
+        super.init(frame: CGRect.zero)
+        addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(10)
+            make.top.greaterThanOrEqualToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
+        }
+    }
+    
+    override init(frame:CGRect) {
+        super.init(frame: frame)
+        addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(10)
+            make.top.greaterThanOrEqualToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    fileprivate func getJMTitle() -> String {
+        return JMTitle
+    }
+    
+    fileprivate func setJMTitle(_ newTitle:String) {
+        JMTitle = newTitle
+        for i in 0 ..< (newTitle as NSString).length {
+            if i != (newTitle as NSString).length-1 {
+                let start = JMTitle.index(JMTitle.startIndex, offsetBy: 2*i+1)
+                let end = JMTitle.index(JMTitle.startIndex, offsetBy: 2*i+1)
+                let myRange = start..<end
+                JMTitle = JMTitle.replacingCharacters(in: myRange, with: " ")
+            }
+        }
+        titleLabel.text = JMTitle
+    }
+    
+    open func addButton(_ image:UIImage, target:AnyObject?, type:JMNavButtonType = .left) -> UIButton {
+        let imageSize = image.size
+        let buttonHeight = navHeight - 20
+        var imageHeight = 17*WIDTH_RATE
+        var imageWidth = imageHeight * imageSize.width / imageSize.height
+        let button = UIButton()
+        button.setImage(image, for: .normal)
+        if imageWidth > buttonHeight {
+            imageWidth = buttonHeight;
+            imageHeight = imageWidth * imageSize.height / imageSize.width;
+        }
+        button.imageEdgeInsets = UIEdgeInsets.init(top: (buttonHeight-imageHeight)/2, left: (buttonHeight-imageWidth)/2, bottom: (buttonHeight-imageHeight)/2, right: (buttonHeight-imageWidth)/2)
+        addSubview(button)
+        switch type {
+        case .left:
+            button.frame = CGRect.init(x: 5*WIDTH_RATE, y: 20, width: buttonHeight, height: buttonHeight)
+            jmLeftButton = button
+            break
+        case .right:
+            button.frame = CGRect.init(x: SCREEN_WIDTH-5*WIDTH_RATE-buttonHeight, y: 20, width: buttonHeight, height: buttonHeight)
+            jmRightButton = button
+            break
+        }
+        return button
+    }
+    
+    open func addButton(_ title:String, target:AnyObject?, type:JMNavButtonType = .left) -> UIButton {
+        let width = (title as NSString).width(for: MAIN_FONT(15*WIDTH_RATE))
+        let buttonHeight = navHeight-20
+        let buttonWidth = width > buttonHeight ? width : buttonHeight
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 13*WIDTH_RATE)
+        button.setTitle(title, for: .normal)
+        button.addTarget(target, action: NSSelectorFromString("ClickJmRightBarBtn"), for: .touchUpInside)
+        addSubview(button)
+        switch type {
+        case .left:
+            button.frame = CGRect.init(x: 5*WIDTH_RATE, y: 20, width: buttonWidth, height: buttonHeight)
+            jmLeftButton = button
+            break
+        case .right:
+            button.frame = CGRect.init(x: SCREEN_WIDTH-5*WIDTH_RATE-buttonWidth, y: 20, width: buttonWidth, height: buttonHeight)
+            jmRightButton = button
+            break
+        }
+        return button
+    }
+    
+    open func addButton(_ image:UIImage, originX:CGFloat) -> UIButton {
+        let imageSize = image.size
+        let buttonHeight = navHeight - 20
+        var imageHeight = 17 * WIDTH_RATE
+        var imageWidth = imageHeight * imageSize.width / imageSize.height
+        let button = UIButton()
+        button.frame = CGRect.init(x: originX, y: 20, width: buttonHeight, height: buttonHeight)
+        button.setImage(image, for: .normal)
+        if imageWidth > buttonHeight {
+            imageWidth = buttonHeight;
+            imageHeight = imageWidth * imageSize.height / imageSize.width;
+        }
+        button.imageEdgeInsets = UIEdgeInsetsMake((buttonHeight-imageHeight)/2, (buttonHeight-imageWidth)/2, (buttonHeight-imageHeight)/2, (buttonHeight-imageWidth)/2);
+        addSubview(button)
+        return button
+    }
+}
 
 
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+let IP_ADDRESS_URL = ""
 
 
 

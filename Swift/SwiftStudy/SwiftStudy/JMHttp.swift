@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class JMHttp: NSObject {
+class JMHttp: NSObject {
     
     open static let sharedManager : SessionManager = {
         let configuration = URLSessionConfiguration.default

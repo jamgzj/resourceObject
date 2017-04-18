@@ -17,6 +17,7 @@
 		8F277EEF1E2C52F10034B8A0 /* JMTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F277EEE1E2C52F00034B8A0 /* JMTabbarViewController.swift */; };
 		8F277EF11E2C55280034B8A0 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F277EF01E2C55280034B8A0 /* Header.swift */; };
 		8F277EF31E2C55320034B8A0 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F277EF21E2C55320034B8A0 /* Url.swift */; };
+		8F4DFABF1EA5C32A00706B7C /* JMNavgationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4DFABE1EA5C32A00706B7C /* JMNavgationController.swift */; };
 		8FB9AC5E1E9C7B7F0048A0D6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB9AC5D1E9C7B7F0048A0D6 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		8F277EF01E2C55280034B8A0 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		8F277EF21E2C55320034B8A0 /* Url.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Url.swift; sourceTree = "<group>"; };
 		8F277EF51E2C6E7E0034B8A0 /* SwiftStudy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftStudy-Bridging-Header.h"; sourceTree = "<group>"; };
+		8F4DFABE1EA5C32A00706B7C /* JMNavgationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMNavgationController.swift; sourceTree = "<group>"; };
 		8FB9AC5D1E9C7B7F0048A0D6 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E35865329A072696B18C17C5 /* Pods-SwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 				8F0234921E24BE5C00528A59 /* AppDelegate.swift */,
 				8F20766D1E8E04D90074FC33 /* TestViewController.swift */,
 				8F277EEE1E2C52F00034B8A0 /* JMTabbarViewController.swift */,
+				8F4DFABE1EA5C32A00706B7C /* JMNavgationController.swift */,
 				8FB9AC5F1E9C7D6C0048A0D6 /* Resource */,
 				8F0234991E24BE5C00528A59 /* Assets.xcassets */,
 				8F02349E1E24BE5C00528A59 /* Info.plist */,
@@ -246,6 +249,7 @@
 				8F277EF11E2C55280034B8A0 /* Header.swift in Sources */,
 				8F0234A71E24C21300528A59 /* JMTool.swift in Sources */,
 				8F277EEF1E2C52F10034B8A0 /* JMTabbarViewController.swift in Sources */,
+				8F4DFABF1EA5C32A00706B7C /* JMNavgationController.swift in Sources */,
 				8F0234931E24BE5C00528A59 /* AppDelegate.swift in Sources */,
 				8FB9AC5E1E9C7B7F0048A0D6 /* BaseViewController.swift in Sources */,
 				8F1B12B71E8CEC2400D10359 /* JMHttp.swift in Sources */,

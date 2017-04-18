@@ -10,7 +10,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    fileprivate lazy var tableView:UITableView = { () -> UITableView in
+    fileprivate lazy var tableView : UITableView = { () -> UITableView in
         var tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
@@ -23,7 +23,7 @@ class BaseViewController: UIViewController {
         return tableView
     }()
     
-    fileprivate lazy var groupedTableView:UITableView = { () -> UITableView in
+    fileprivate lazy var groupedTableView : UITableView = { () -> UITableView in
         var groupedTableView = UITableView(frame: CGRect.zero, style: .grouped)
         groupedTableView.dataSource = self
         groupedTableView.delegate = self
@@ -36,7 +36,7 @@ class BaseViewController: UIViewController {
         return groupedTableView
     }()
     
-    fileprivate lazy var scrollView:UIScrollView = { () -> UIScrollView in
+    fileprivate lazy var scrollView : UIScrollView = { () -> UIScrollView in
         var scrollView = UIScrollView(frame: CGRect.zero)
         scrollView.delegate = self
         scrollView.showsVerticalScrollIndicator = false
@@ -45,6 +45,47 @@ class BaseViewController: UIViewController {
         self.view.addSubview(scrollView)
         return scrollView
     }()
+    
+    fileprivate lazy var jmNavigationView : JMNavView = { () -> JMNavView in
+        var jmNavView = JMNavView(frame:CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: navHeight))
+        return jmNavView
+    }()
+    
+    // MARK: - 系统原生navigationbar封装
+    
+    fileprivate func getRightBarButtonItem(_ button:UIButton) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+    }
+    
+    fileprivate func getLeftBarButtonItem(_ button:UIButton) {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+    }
+    
+    fileprivate func getLeftBarButtonItem(_ frame:CGRect = .zero, image:UIImage) {
+        var buttonFrame = frame
+        if buttonFrame == CGRect.zero {
+            buttonFrame = CGRect(x: -5, y: 0, width: 10, height: 17)
+        }
+        let button = UIButton(frame: buttonFrame)
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(ClickDefaultLeftBarBtn(_:)), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+    }
+    
+    fileprivate func getLeftBarButtonItem(_ frame:CGRect = .zero, title:String) {
+        var buttonFrame = frame
+        if buttonFrame == CGRect.zero {
+            buttonFrame = CGRect(x: 0, y: 0, width: 40, height: 30)
+        }
+        let button = UIButton(frame: buttonFrame)
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: #selector(ClickDefaultLeftBarBtn(_:)), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+    }
+    
+    @objc fileprivate func ClickDefaultLeftBarBtn(_ button:UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +98,6 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -82,6 +122,10 @@ extension BaseViewController : UITableViewDataSource {
 }
 
 extension BaseViewController : UITableViewDelegate {
+    
+}
+
+extension BaseViewController : UIScrollViewDelegate {
     
 }
 
