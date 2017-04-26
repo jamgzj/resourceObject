@@ -24,7 +24,7 @@ class JMTool: NSObject {
         
         if window!.windowLevel != UIWindowLevelNormal {
             let windows = UIApplication.shared.windows
-            for var tmpWin in windows {
+            for tmpWin in windows {
                 if tmpWin.windowLevel == UIWindowLevelNormal {
                     window = tmpWin
                     break
@@ -194,27 +194,25 @@ class JMNavView: UIView {
     init() {
         super.init(frame: CGRect.zero)
         addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(10)
-            make.top.greaterThanOrEqualToSuperview()
-            make.bottom.lessThanOrEqualToSuperview()
-        }
     }
     
     override init(frame:CGRect) {
         super.init(frame: frame)
         addSubview(titleLabel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(10)
             make.top.greaterThanOrEqualToSuperview()
             make.bottom.lessThanOrEqualToSuperview()
         }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     fileprivate func getJMTitle() -> String {
@@ -267,6 +265,7 @@ class JMNavView: UIView {
         let button = UIButton()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13*WIDTH_RATE)
         button.setTitle(title, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.addTarget(target, action: NSSelectorFromString("ClickJmRightBarBtn"), for: .touchUpInside)
         addSubview(button)
         switch type {

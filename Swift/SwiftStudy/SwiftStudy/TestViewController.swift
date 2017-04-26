@@ -10,7 +10,7 @@ import UIKit
 
 
 class TestViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +23,8 @@ class TestViewController: UIViewController {
         let navView = JMNavView()
         navView.title = "jhkaf"
         print(navView.title)
+        
+        
         
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) { 
 //            self.stopAnimating()

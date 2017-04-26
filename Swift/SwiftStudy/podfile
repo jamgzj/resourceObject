@@ -8,7 +8,7 @@ pod 'SnapKit', '~> 3.2.0'           # swift版的auto layout
 pod 'YYText', '~> 1.0.7'
 pod 'YYCategories', '~> 1.0.4'
 pod 'Kingfisher', '~> 3.6.0'        # SDWebImage 的swift版
-pod "Popover", '~> 1.0.4'           # 下拉菜单
+pod 'Popover', '~> 1.0.4'           # 下拉菜单
 pod 'SKPhotoBrowser', '~> 4.0.1'    # 图片浏览器
 pod 'SwiftyJSON', '~> 3.1.4'        # json解析
 pod 'MJRefresh', '~> 3.1.12'

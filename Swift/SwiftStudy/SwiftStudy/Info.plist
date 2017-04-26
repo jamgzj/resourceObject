@@ -2,8 +2,43 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Privacy - Speech Recognition Usage Description</key>
+	<string>App需要您的同意才能使用语音识别</string>
+	<key>NSContactsUsageDescription</key>
+	<string>APP需要您的同意才能访问通讯录</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>APP需要您的同意才能访问相册</string>
+	<key>NSCameraUsageDescription</key>
+	<string>APP需要您的同意才能访问相机</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>APP需要您的同意才能访问麦克风</string>
+	<key>NSLocationUsageDescription</key>
+	<string>APP需要您的同意才能访问您的坐标</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>APP需要您的同意才能使用期间访问您的坐标</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>APP需要您的同意才能访问您的坐标</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>APP需要您的同意才能访问日历</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>APP需要您的同意才能访问提醒事项</string>
+	<key>NSMotionUsageDescription</key>
+	<string>APP需要您的同意才能访问运动与健身</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>APP需要您的同意才能访问健康更新</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>APP需要您的同意才能访问健康分享</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>APP需要您的同意才能访问蓝牙</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>APP需要您的同意才能访问媒体资料库</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh_CN</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

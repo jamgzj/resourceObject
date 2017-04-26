@@ -52,6 +52,7 @@
     UIButton *JmLeftBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(5*coefficient, 20, btnWidth, btnHeight)];
     JmLeftBarBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [JmLeftBarBtn setTitle:title forState:UIControlStateNormal];
+    [JmLeftBarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [JmLeftBarBtn addTarget:target action:@selector(ClickJmLeftBarBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:JmLeftBarBtn];
     self.jmLeftBarBtn = JmLeftBarBtn;
@@ -81,6 +82,7 @@
     UIButton *JmRightBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-5*coefficient-btnWidth, 20, btnWidth, btnHeight)];
     JmRightBarBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [JmRightBarBtn setTitle:title forState:UIControlStateNormal];
+    [JmRightBarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [JmRightBarBtn addTarget:target action:@selector(ClickJmRightBarBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:JmRightBarBtn];
     self.jmRightBarBtn = JmRightBarBtn;
@@ -110,6 +112,7 @@
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(originX, 20, btnWidth, btnHeight)];
     button.titleLabel.font = [UIFont systemFontOfSize:13];
     [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self addSubview:button];
     return button;
 }
