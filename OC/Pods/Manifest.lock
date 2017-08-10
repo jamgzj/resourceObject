@@ -17,6 +17,7 @@ PODS:
   - BaiduMapKit (3.0.0)
   - IQKeyboardManager (3.3.7)
   - JSONModel (1.7.0)
+  - JZLocationConverter (1.0.0)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - BaiduMapKit (~> 3.0.0)
   - IQKeyboardManager (~> 3.3.7)
   - JSONModel (~> 1.7.0)
+  - JZLocationConverter (~> 1.0.0)
   - Masonry (~> 1.0.2)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh (~> 3.1.12)
@@ -54,6 +56,7 @@ SPEC CHECKSUMS:
   BaiduMapKit: de2a726d5296d6b2dc0e974b683af73153608dcd
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  JZLocationConverter: 3d816bee6484aed9c155a6045a02ce444833e2f0
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -64,6 +67,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 75091093a80b475da18eb80800848b1742ccac66
+PODFILE CHECKSUM: 33823165f66b5e3c7c962df7d517cc054c811f16
 
 COCOAPODS: 1.2.1

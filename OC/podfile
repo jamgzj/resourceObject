@@ -15,5 +15,6 @@ target 'ResourcesObject' do
     pod 'YYText', '~> 1.0.7'
     pod 'YYCategories', '~> 1.0.4'
     pod 'JSONModel', '~> 1.7.0'
+    pod 'JZLocationConverter', '~> 1.0.0'
 end
 

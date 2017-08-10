@@ -15,7 +15,6 @@
 		8F07620A1D3474960013238C /* JMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0761FD1D3474960013238C /* JMScrollView.m */; };
 		8F07620B1D3474960013238C /* JMTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0761FF1D3474960013238C /* JMTool.m */; };
 		8F07620C1D3474960013238C /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0762011D3474960013238C /* MBProgressHUD+NJ.m */; };
-		8F07620D1D3474960013238C /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0762031D3474960013238C /* PopoverView.m */; };
 		8F089AE81CFBE4EB00A37815 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F089AE71CFBE4EB00A37815 /* AppDelegate.m */; };
 		8F089AF01CFBE4EB00A37815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F089AEF1CFBE4EB00A37815 /* Assets.xcassets */; };
 		8F089AF31CFBE4EB00A37815 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F089AF11CFBE4EB00A37815 /* LaunchScreen.storyboard */; };
@@ -31,7 +30,6 @@
 		8FDB1EB31D1A240D005DE5B6 /* lead_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB01D1A240D005DE5B6 /* lead_1.png */; };
 		8FDB1EB41D1A240D005DE5B6 /* lead_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB11D1A240D005DE5B6 /* lead_2.png */; };
 		8FDB1EB51D1A240D005DE5B6 /* lead_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDB1EB21D1A240D005DE5B6 /* lead_3.png */; };
-		8FFB4A931D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */; };
 		8FFE9AD31DED705100329FBA /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE9AD21DED705100329FBA /* UserInfo.m */; };
 		8FFE9AD61DED725400329FBA /* JMNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE9AD51DED725400329FBA /* JMNavView.m */; };
 		D1369ED91F3BFC9F008092F6 /* JMMapSkip.m in Sources */ = {isa = PBXBuildFile; fileRef = D1369ED81F3BFC9F008092F6 /* JMMapSkip.m */; };
@@ -57,8 +55,6 @@
 		8F0761FF1D3474960013238C /* JMTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTool.m; sourceTree = "<group>"; };
 		8F0762001D3474960013238C /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
 		8F0762011D3474960013238C /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
-		8F0762021D3474960013238C /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
-		8F0762031D3474960013238C /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
 		8F089AE01CFBE4EB00A37815 /* ResourcesObject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourcesObject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F089AE61CFBE4EB00A37815 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8F089AE71CFBE4EB00A37815 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -82,8 +78,6 @@
 		8FDB1EB01D1A240D005DE5B6 /* lead_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead_1.png; sourceTree = "<group>"; };
 		8FDB1EB11D1A240D005DE5B6 /* lead_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead_2.png; sourceTree = "<group>"; };
 		8FDB1EB21D1A240D005DE5B6 /* lead_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead_3.png; sourceTree = "<group>"; };
-		8FFB4A911D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CustomHeight.h"; sourceTree = "<group>"; };
-		8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+CustomHeight.m"; sourceTree = "<group>"; };
 		8FFE9AD11DED705100329FBA /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		8FFE9AD21DED705100329FBA /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		8FFE9AD41DED725400329FBA /* JMNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMNavView.h; sourceTree = "<group>"; };
@@ -152,12 +146,8 @@
 				D1369ED81F3BFC9F008092F6 /* JMMapSkip.m */,
 				8F0762001D3474960013238C /* MBProgressHUD+NJ.h */,
 				8F0762011D3474960013238C /* MBProgressHUD+NJ.m */,
-				8F0762021D3474960013238C /* PopoverView.h */,
-				8F0762031D3474960013238C /* PopoverView.m */,
 				D1369EDA1F3C022E008092F6 /* TextLimit.h */,
 				D1369EDB1F3C022E008092F6 /* TextLimit.m */,
-				8FFB4A911D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.h */,
-				8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -353,7 +343,6 @@
 				8F07620C1D3474960013238C /* MBProgressHUD+NJ.m in Sources */,
 				8F0762041D3474960013238C /* JMNavController.m in Sources */,
 				8F0762061D3474960013238C /* BaseViewController.m in Sources */,
-				8F07620D1D3474960013238C /* PopoverView.m in Sources */,
 				8FFE9AD31DED705100329FBA /* UserInfo.m in Sources */,
 				8FC2DB7F1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m in Sources */,
 				8F089AE81CFBE4EB00A37815 /* AppDelegate.m in Sources */,
@@ -365,7 +354,6 @@
 				8F07620A1D3474960013238C /* JMScrollView.m in Sources */,
 				8F089B011CFC17F400A37815 /* TestViewController.m in Sources */,
 				8F07620B1D3474960013238C /* JMTool.m in Sources */,
-				8FFB4A931D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m in Sources */,
 				D1369ED91F3BFC9F008092F6 /* JMMapSkip.m in Sources */,
 				8FAD5F2B1D518216003EA152 /* JMView.m in Sources */,
 			);

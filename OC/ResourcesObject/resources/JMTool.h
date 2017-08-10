@@ -15,7 +15,6 @@
 #import "JMNavView.h"
 #import "Header.h"
 #import "MBProgressHUD+NJ.h"
-#import "UINavigationBar+CustomHeight.h"
 #import "UserInfo.h"
 #import "TextLimit.h"
 #import "JMHttp.h"
