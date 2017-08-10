@@ -9,12 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
 #import "MJRefresh.h"
-#import "MJExtension.h"
 #import "SDCycleScrollView.h"
 #import "UIImageView+WebCache.h"
 #import "JMTool.h"
-#import <YYText/YYText.h>
-#import <YYCategories/YYCategories.h>
 //#import <UMSocialCore/UMSocialCore.h>
 //#import <UMMobClick/MobClick.h>
 

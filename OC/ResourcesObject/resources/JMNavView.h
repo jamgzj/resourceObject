@@ -18,6 +18,8 @@
 
 @property (weak,nonatomic)UIButton *jmRightBarBtn;
 
+@property (weak,nonatomic)UIView *line;
+
 
 - (void)addJmLeftBarBtnWithTitle:(NSString *)title Target:(id)target;
 
@@ -61,5 +63,12 @@
  *  @return
  */
 - (void)addGrayShadow;
+
+/**
+ *  添加底部线条
+ *
+ *  @return
+ */
+- (void)addBottomLine;
 
 @end

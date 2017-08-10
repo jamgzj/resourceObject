@@ -6,9 +6,9 @@
 //  Copyright © 2016年 zhengxingxia. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <JSONModel/JSONModel.h>
 
-@interface UserInfo : NSObject
+@interface UserInfo : JSONModel
 ///**用户昵称*/
 //@property (nonatomic,copy)NSString * userNickname;
 //

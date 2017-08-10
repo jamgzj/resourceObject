@@ -21,7 +21,9 @@
 #import "JMHttp.h"
 #import <Masonry/Masonry.h>
 #import <objc/runtime.h>
-
+#import <YYCategories/YYCategories.h>
+#import <YYText/YYText.h>
+#import <JSONModel/JSONModel.h>
 
 #pragma mark - NSUserdefault 存储
 /**
@@ -66,6 +68,24 @@ static inline bool isLogin() {
     return userInfoDict?YES:NO;
 }
 
+/**
+ *  字符串是否为空
+ *
+ *  @return <#return value description#>
+ */
+static inline BOOL isStringEmpty(NSString *string) {
+    if ([string isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    if ([string isEqual:[NSNull null]]) {
+        return YES;
+    }
+    if (!string || [string isEqualToString:@""] || [string isEqualToString:@"null"] || [string isEqualToString:@"<null>"]) {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - NSKeyedArchiver 归档
 /**
  *  存储数据
@@ -95,7 +115,35 @@ static inline id archiveObject(NSString *key) {
     return [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 }
 
+/**
+ *  获取archive路径
+ *
+ *  @param key <#key description#>
+ *
+ *  @return <#return value description#>
+ */
+static inline NSString * getArchivePath(NSString *key) {
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.achiver",[key description]]];
+    return path;
+}
 
+/**
+ *  删除文件
+ *
+ *  @param path 路径
+ *
+ *  @return 是否成功
+ */
+static inline BOOL deleteFileWithPath(NSString *path) {
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSError *error;
+    BOOL isDelete = [manager removeItemAtPath:path error:&error];
+    if (error) {
+        NSLog(@"delete file error : %@",error);
+    }
+    return isDelete;
+}
 
 @interface JMTool : NSObject
 
@@ -220,6 +268,17 @@ static inline id archiveObject(NSString *key) {
  *  @return return value description
  */
 + (NSString *)transformToJsonString:(id)object;
+
+/*
+
+ * 把格式化的JSON格式的字符串转换成字典
+ 
+ * @param jsonString JSON格式的字符串
+ 
+ * @return 返回字典
+ 
+ */
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
 
 #pragma mark - 汉字转拼音
 
@@ -463,6 +522,11 @@ static inline id archiveObject(NSString *key) {
  *  压缩图片
  */
 + (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
+
+/**
+ *  压缩图片
+ */
++ (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength;
 
 /**
  *  裁剪图片

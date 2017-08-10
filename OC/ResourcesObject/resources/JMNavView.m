@@ -46,11 +46,11 @@
 }
 
 - (void)addJmLeftBarBtnWithTitle:(NSString *)title Target:(id)target {
-    float width = [title SizeWithFont:[UIFont systemFontOfSize:13]].width;
+    float width = [title SizeWithFont:[UIFont systemFontOfSize:15*coefficient]].width;
     float btnHeight = navHeight-20;
     float btnWidth = width>btnHeight?width:btnHeight;
     UIButton *JmLeftBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(5*coefficient, 20, btnWidth, btnHeight)];
-    JmLeftBarBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    JmLeftBarBtn.titleLabel.font = [UIFont systemFontOfSize:15*coefficient];
     [JmLeftBarBtn setTitle:title forState:UIControlStateNormal];
     [JmLeftBarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [JmLeftBarBtn addTarget:target action:@selector(ClickJmLeftBarBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -76,11 +76,11 @@
 }
 
 - (void)addJmRightBarBtnWithTitle:(NSString *)title Target:(id)target {
-    float width = [title SizeWithFont:[UIFont systemFontOfSize:13]].width;
+    float width = [title SizeWithFont:[UIFont systemFontOfSize:15*coefficient]].width;
     float btnHeight = navHeight-20;
     float btnWidth = width>btnHeight?width:btnHeight;
     UIButton *JmRightBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-5*coefficient-btnWidth, 20, btnWidth, btnHeight)];
-    JmRightBarBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    JmRightBarBtn.titleLabel.font = [UIFont systemFontOfSize:15*coefficient];
     [JmRightBarBtn setTitle:title forState:UIControlStateNormal];
     [JmRightBarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [JmRightBarBtn addTarget:target action:@selector(ClickJmRightBarBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -106,11 +106,11 @@
 }
 
 - (UIButton *)addButtonWithTitle:(NSString *)title OriginX:(float)originX {
-    float width = [title SizeWithFont:[UIFont systemFontOfSize:13]].width;
+    float width = [title SizeWithFont:[UIFont systemFontOfSize:15*coefficient]].width;
     float btnHeight = navHeight-20;
     float btnWidth = width>btnHeight?width:btnHeight;
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(originX, 20, btnWidth, btnHeight)];
-    button.titleLabel.font = [UIFont systemFontOfSize:13];
+    button.titleLabel.font = [UIFont systemFontOfSize:15*coefficient];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self addSubview:button];
@@ -138,6 +138,13 @@
     self.layer.shadowOffset = CGSizeMake(0, 1.5*coefficient);
     self.layer.shadowRadius = 0;
     self.layer.shadowOpacity = 1.f;
+}
+
+- (void)addBottomLine {
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, navHeight-coefficient, SCREEN_WIDTH, coefficient)];
+    lineView.backgroundColor = lineColor;
+    [self addSubview:lineView];
+    self.line = lineView;
 }
 
 /*

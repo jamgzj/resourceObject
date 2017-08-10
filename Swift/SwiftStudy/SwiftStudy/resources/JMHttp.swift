@@ -40,15 +40,15 @@ class JMHttp: NSObject {
         reachabilityManager!.startListening()
     }
     
-    final class func get(_ path:String, params:AnyObject?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
+    final class func get(_ path:String, params:[String:Any]?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
         request(path, method: "get", params: params, isHudShow: isHudShow, success: success, failure: failure)
     }
     
-    final class func post(_ path:String, params:AnyObject?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void),failure:@escaping ((_ error:Error)->Void)) {
+    final class func post(_ path:String, params:[String:Any]?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void),failure:@escaping ((_ error:Error)->Void)) {
         request(path, method: "post", params: params, isHudShow: isHudShow, success: success, failure: failure)
     }
     
-    class func request(_ path:String, method:String, params:AnyObject?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
+    class func request(_ path:String, method:String, params:[String:Any]?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
         
         var urlString = path.isLegal("^http://.*") ? path : (IP_ADDRESS_URL + path)
         urlString = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
@@ -65,7 +65,7 @@ class JMHttp: NSObject {
             }
         }
         if method == "get" {
-            sharedManager.request(url, method: .get, parameters: params as? [String : AnyObject]).responseData { (response) in
+            sharedManager.request(url, method: .get, parameters: params).responseData { (response) in
                 switch response.result {
                 case .success(let data):
                     let dict = JSON(data)
@@ -84,7 +84,7 @@ class JMHttp: NSObject {
             }
         }
         else if method == "post" {
-            sharedManager.request(url, method: .post, parameters: params as? [String : AnyObject]).responseData { (response) in
+            sharedManager.request(url, method: .post, parameters: params).responseData { (response) in
                 switch response.result {
                 case .success(let data):
                     let dict = JSON(data)
@@ -105,7 +105,7 @@ class JMHttp: NSObject {
     }
     
     // 上传单张图片
-    class func request(_ path:String, data:Data, keyName:String, params:AnyObject?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
+    class func request(_ path:String, data:Data, keyName:String, params:[String:Any]?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
         var urlString = path.isLegal("^http://.*") ? path : (IP_ADDRESS_URL + path)
         urlString = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let bgView = UIApplication.shared.windows.last
@@ -122,7 +122,7 @@ class JMHttp: NSObject {
         }
         sharedManager.upload(multipartFormData: { (formData) in
             formData.append(data, withName: keyName, fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
-        }, to: url, method: .post, headers: params as? [String : String], encodingCompletion: { (result) in
+        }, to: url, method: .post, headers: params as? HTTPHeaders, encodingCompletion: { (result) in
             switch result {
             case .success(let data):
                 let dict = JSON(data)
@@ -142,7 +142,7 @@ class JMHttp: NSObject {
     }
     
     // 上传多张图片
-    class func request<T>(_ path:String, imgArray:[T], keyNames:[String], params:AnyObject?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
+    class func request<T>(_ path:String, imgArray:[T], keyNames:[String], params:[String:Any]?, isHudShow:Bool, success:@escaping ((_ dict:JSON)->Void), failure:@escaping ((_ error:Error)->Void)) {
         var urlString = path.isLegal("^http://.*") ? path : (IP_ADDRESS_URL + path)
         urlString = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let bgView = UIApplication.shared.windows.last
@@ -174,7 +174,7 @@ class JMHttp: NSObject {
                     formData.append(object as! Data, withName: keyNames[index], fileName: String(describing: NSDate()) + ".png", mimeType: "image/jpeg")
                 }
             }
-        }, to: url, method: .post, headers: params as? [String:String], encodingCompletion: { (result) in
+        }, to: url, method: .post, headers: params as? HTTPHeaders, encodingCompletion: { (result) in
             switch result {
             case .success(let data):
                 let dict = JSON(data)

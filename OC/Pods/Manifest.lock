@@ -16,9 +16,9 @@ PODS:
     - AFNetworking/NSURLSession
   - BaiduMapKit (3.0.0)
   - IQKeyboardManager (3.3.7)
+  - JSONModel (1.7.0)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
-  - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
   - RongCloudIM/IMKit (2.8.8):
     - RongCloudIM/IMLib
@@ -38,9 +38,9 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - BaiduMapKit (~> 3.0.0)
   - IQKeyboardManager (~> 3.3.7)
+  - JSONModel (~> 1.7.0)
   - Masonry (~> 1.0.2)
   - MBProgressHUD (~> 1.0.0)
-  - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.12)
   - RongCloudIM/IMKit (~> 2.8.8)
   - SDCycleScrollView (~> 1.65)
@@ -53,9 +53,9 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BaiduMapKit: de2a726d5296d6b2dc0e974b683af73153608dcd
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RongCloudIM: bf728368e7bb0740eab72a175a9f8f4cc52e23b9
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
@@ -64,6 +64,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: d2f28457cda3fcfac43cfacbe306bee13a658ea9
+PODFILE CHECKSUM: 75091093a80b475da18eb80800848b1742ccac66
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

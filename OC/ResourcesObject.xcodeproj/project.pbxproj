@@ -34,6 +34,8 @@
 		8FFB4A931D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */; };
 		8FFE9AD31DED705100329FBA /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE9AD21DED705100329FBA /* UserInfo.m */; };
 		8FFE9AD61DED725400329FBA /* JMNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE9AD51DED725400329FBA /* JMNavView.m */; };
+		D1369ED91F3BFC9F008092F6 /* JMMapSkip.m in Sources */ = {isa = PBXBuildFile; fileRef = D1369ED81F3BFC9F008092F6 /* JMMapSkip.m */; };
+		D1369EDC1F3C022E008092F6 /* TextLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = D1369EDB1F3C022E008092F6 /* TextLimit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,10 @@
 		8FFE9AD21DED705100329FBA /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		8FFE9AD41DED725400329FBA /* JMNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMNavView.h; sourceTree = "<group>"; };
 		8FFE9AD51DED725400329FBA /* JMNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMNavView.m; sourceTree = "<group>"; };
+		D1369ED71F3BFC9F008092F6 /* JMMapSkip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMapSkip.h; sourceTree = "<group>"; };
+		D1369ED81F3BFC9F008092F6 /* JMMapSkip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMapSkip.m; sourceTree = "<group>"; };
+		D1369EDA1F3C022E008092F6 /* TextLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextLimit.h; sourceTree = "<group>"; };
+		D1369EDB1F3C022E008092F6 /* TextLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextLimit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,10 +148,14 @@
 				8F0761FD1D3474960013238C /* JMScrollView.m */,
 				8F0761FE1D3474960013238C /* JMTool.h */,
 				8F0761FF1D3474960013238C /* JMTool.m */,
+				D1369ED71F3BFC9F008092F6 /* JMMapSkip.h */,
+				D1369ED81F3BFC9F008092F6 /* JMMapSkip.m */,
 				8F0762001D3474960013238C /* MBProgressHUD+NJ.h */,
 				8F0762011D3474960013238C /* MBProgressHUD+NJ.m */,
 				8F0762021D3474960013238C /* PopoverView.h */,
 				8F0762031D3474960013238C /* PopoverView.m */,
+				D1369EDA1F3C022E008092F6 /* TextLimit.h */,
+				D1369EDB1F3C022E008092F6 /* TextLimit.m */,
 				8FFB4A911D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.h */,
 				8FFB4A921D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m */,
 			);
@@ -245,7 +255,7 @@
 				TargetAttributes = {
 					8F089ADF1CFBE4EB00A37815 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = QUKE3VDXD9;
+						DevelopmentTeam = DZ7CFV72D4;
 					};
 				};
 			};
@@ -313,7 +323,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ECD54FBCF70D4E34263B7F7D /* [CP] Copy Pods Resources */ = {
@@ -348,6 +358,7 @@
 				8FC2DB7F1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m in Sources */,
 				8F089AE81CFBE4EB00A37815 /* AppDelegate.m in Sources */,
 				8FA4A5CD1DED8108002F6435 /* BaseTableViewCell.m in Sources */,
+				D1369EDC1F3C022E008092F6 /* TextLimit.m in Sources */,
 				8F1589311E5A7C37004C2FA7 /* JMHttp.m in Sources */,
 				8F0762051D3474960013238C /* JMTabBarController.m in Sources */,
 				8F0762071D3474960013238C /* JMAlertView.m in Sources */,
@@ -355,6 +366,7 @@
 				8F089B011CFC17F400A37815 /* TestViewController.m in Sources */,
 				8F07620B1D3474960013238C /* JMTool.m in Sources */,
 				8FFB4A931D93C6BB00BA9CEF /* UINavigationBar+CustomHeight.m in Sources */,
+				D1369ED91F3BFC9F008092F6 /* JMMapSkip.m in Sources */,
 				8FAD5F2B1D518216003EA152 /* JMView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,7 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = QUKE3VDXD9;
+				DEVELOPMENT_TEAM = DZ7CFV72D4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ResourcesObject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -481,7 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = QUKE3VDXD9;
+				DEVELOPMENT_TEAM = DZ7CFV72D4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ResourcesObject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

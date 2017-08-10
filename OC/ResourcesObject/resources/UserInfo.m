@@ -9,13 +9,15 @@
 #import "UserInfo.h"
 #import "JMTool.h"
 #import "Header.h"
-#import "MJExtension/MJExtension.h"
+
 @implementation UserInfo
 
-+ (instancetype)getUserInfo
-{
-    UserInfo *info = [UserInfo mj_objectWithKeyValues:getObject(USER_INFO_KEY)];
-    
++ (instancetype)getUserInfo {
+    NSError *error;
+    UserInfo *info = [[UserInfo alloc]initWithDictionary:getObject(USER_INFO_KEY) error:&error];
+    if (error) {
+        return nil;
+    }
     return info;
 }
 
