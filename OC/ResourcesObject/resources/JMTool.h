@@ -10,7 +10,6 @@
 #import <AFNetworking/AFNetworking.h>
 #import "JMScrollView.h"
 #import "JMAlertView.h"
-#import "PopoverView.h"
 #import "JMView.h"
 #import "JMNavView.h"
 #import "Header.h"
