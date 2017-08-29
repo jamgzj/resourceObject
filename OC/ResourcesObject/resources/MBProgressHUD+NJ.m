@@ -26,16 +26,16 @@
 //    dispatch_async(dispatch_get_main_queue(), ^{
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.bezelView.backgroundColor = [UIColor blackColor];
-    hud.contentColor = [UIColor whiteColor];
-    hud.detailsLabel.textColor = [UIColor whiteColor];
-    hud.detailsLabel.text = text;
-    hud.detailsLabel.font = [UIFont boldSystemFontOfSize:15*coefficient];
-//    hud.labelText = text;
-//    hud.labelColor = [UIColor blackColor];
+//    hud.bezelView.backgroundColor = [UIColor blackColor];
+//    hud.contentColor = [UIColor whiteColor];
+//    hud.detailsLabel.textColor = [UIColor whiteColor];
+//    hud.detailsLabel.text = text;
+//    hud.detailsLabel.font = [UIFont boldSystemFontOfSize:15*coefficient];
+    hud.labelText = text;
+    hud.labelColor = [UIColor blackColor];
     /*图片加文字提示 */
     // 设置图片ycf 去除图片
-    //hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
+    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
     hud.mode = MBProgressHUDModeCustomView;
     // 再设置模式
 //    hud.mode =  MBProgressHUDModeText;

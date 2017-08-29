@@ -164,7 +164,7 @@ static AFHTTPSessionManager *_manager;
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hud = [MBProgressHUD showMessage:@"loading..." toView:topView];
             
-            [hud hideAnimated:YES afterDelay:_manager.requestSerializer.timeoutInterval];
+            [hud hide:YES afterDelay:_manager.requestSerializer.timeoutInterval];
         });
     }
     
@@ -250,7 +250,7 @@ static AFHTTPSessionManager *_manager;
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hud = [MBProgressHUD showMessage:@"loading..." toView:topView];
             
-            [hud hideAnimated:YES afterDelay:_manager.requestSerializer.timeoutInterval];
+            [hud hide:YES afterDelay:_manager.requestSerializer.timeoutInterval];
         });
     }
     
@@ -318,7 +318,7 @@ static AFHTTPSessionManager *_manager;
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hud = [MBProgressHUD showMessage:@"loading..." toView:topView];
             
-            [hud hideAnimated:YES afterDelay:_manager.requestSerializer.timeoutInterval];
+            [hud hide:YES afterDelay:_manager.requestSerializer.timeoutInterval];
         });
     }
     
