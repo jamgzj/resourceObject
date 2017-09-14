@@ -53,7 +53,7 @@
 #define MAIN_FONT(a)  isIOS9?[UIFont fontWithName:ping_fang_regular size:(a)]:[UIFont fontWithName:@"HelveticaNeue" size:(a)]
 #define MAIN_BOLD_FONT(a)  isIOS9?[UIFont fontWithName:ping_fang_bold size:(a)]:[UIFont fontWithName:@"HelveticaNeue-Bold" size:(a)]
 
-#define navHeight (40*coefficient+20)
+#define navHeight (40*coefficient+[UIApplication sharedApplication].statusBarFrame.size.height)
 
 // 用户信息KEY
 #define USER_INFO_KEY @"userInfoKey"

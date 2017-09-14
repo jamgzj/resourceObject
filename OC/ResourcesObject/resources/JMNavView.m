@@ -11,10 +11,18 @@
 #import "Header.h"
 #import "NSString+Extension.h"
 
+@interface JMNavView ()
+
+@property (assign,nonatomic)CGFloat statusbarHeight;
+
+@end
+
 @implementation JMNavView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        self.statusbarHeight = [self statusbarHeight];
+        
         UILabel *titleL = [[UILabel alloc]init];
         [self addSubview:titleL];
         self.titleLabel = titleL;
@@ -47,9 +55,9 @@
 
 - (void)addJmLeftBarBtnWithTitle:(NSString *)title Target:(id)target {
     float width = [title SizeWithFont:[UIFont systemFontOfSize:15*coefficient]].width;
-    float btnHeight = navHeight-20;
+    float btnHeight = navHeight-self.statusbarHeight;
     float btnWidth = width>btnHeight?width:btnHeight;
-    UIButton *JmLeftBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(5*coefficient, 20, btnWidth, btnHeight)];
+    UIButton *JmLeftBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(5*coefficient, self.statusbarHeight, btnWidth, btnHeight)];
     JmLeftBarBtn.titleLabel.font = [UIFont systemFontOfSize:15*coefficient];
     [JmLeftBarBtn setTitle:title forState:UIControlStateNormal];
     [JmLeftBarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -60,10 +68,10 @@
 
 - (void)addJmLeftBarBtnWithImage:(UIImage *)image Target:(id)target {
     CGSize size = image.size;
-    float btnHeight = navHeight-20;
+    float btnHeight = navHeight-self.statusbarHeight;
     float imgHeight = 17*coefficient;
     float imgWidth = imgHeight*size.width/size.height;
-    UIButton *JmLeftBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(5*coefficient, 20, btnHeight, btnHeight)];
+    UIButton *JmLeftBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(5*coefficient, self.statusbarHeight, btnHeight, btnHeight)];
     [JmLeftBarBtn setImage:image forState:UIControlStateNormal];
     [JmLeftBarBtn addTarget:target action:@selector(ClickJmLeftBarBtn:) forControlEvents:UIControlEventTouchUpInside];
     if (imgWidth > btnHeight) {
@@ -77,9 +85,9 @@
 
 - (void)addJmRightBarBtnWithTitle:(NSString *)title Target:(id)target {
     float width = [title SizeWithFont:[UIFont systemFontOfSize:15*coefficient]].width;
-    float btnHeight = navHeight-20;
+    float btnHeight = navHeight-self.statusbarHeight;
     float btnWidth = width>btnHeight?width:btnHeight;
-    UIButton *JmRightBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-5*coefficient-btnWidth, 20, btnWidth, btnHeight)];
+    UIButton *JmRightBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-5*coefficient-btnWidth, self.statusbarHeight, btnWidth, btnHeight)];
     JmRightBarBtn.titleLabel.font = [UIFont systemFontOfSize:15*coefficient];
     [JmRightBarBtn setTitle:title forState:UIControlStateNormal];
     [JmRightBarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -90,10 +98,10 @@
 
 - (void)addJmRightBarBtnWithImage:(UIImage *)image Target:(id)target {
     CGSize size = image.size;
-    float btnHeight = navHeight-20;
+    float btnHeight = navHeight-self.statusbarHeight;
     float imgHeight = 17*coefficient;
     float imgWidth = imgHeight*size.width/size.height;
-    UIButton *JmRightBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-5*coefficient-btnHeight, 20, btnHeight, btnHeight)];
+    UIButton *JmRightBarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-5*coefficient-btnHeight, self.statusbarHeight, btnHeight, btnHeight)];
     [JmRightBarBtn setImage:image forState:UIControlStateNormal];
     [JmRightBarBtn addTarget:target action:@selector(ClickJmRightBarBtn:) forControlEvents:UIControlEventTouchUpInside];
     if (imgWidth > btnHeight) {
@@ -107,9 +115,9 @@
 
 - (UIButton *)addButtonWithTitle:(NSString *)title OriginX:(float)originX {
     float width = [title SizeWithFont:[UIFont systemFontOfSize:15*coefficient]].width;
-    float btnHeight = navHeight-20;
+    float btnHeight = navHeight-self.statusbarHeight;
     float btnWidth = width>btnHeight?width:btnHeight;
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(originX, 20, btnWidth, btnHeight)];
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(originX, self.statusbarHeight, btnWidth, btnHeight)];
     button.titleLabel.font = [UIFont systemFontOfSize:15*coefficient];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -119,10 +127,10 @@
 
 - (UIButton *)addButtonWithImage:(UIImage *)image OriginX:(float)originX {
     CGSize size = image.size;
-    float btnHeight = navHeight-20;
+    float btnHeight = navHeight-self.statusbarHeight;
     float imgHeight = 17*coefficient;
     float imgWidth = imgHeight*size.width/size.height;
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(originX, 20, btnHeight, btnHeight)];
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(originX, self.statusbarHeight, btnHeight, btnHeight)];
     [button setImage:image forState:UIControlStateNormal];
     if (imgWidth > btnHeight) {
         imgWidth = btnHeight;
@@ -145,6 +153,11 @@
     lineView.backgroundColor = lineColor;
     [self addSubview:lineView];
     self.line = lineView;
+}
+
+
+- (CGFloat)statusbarHeight {
+    return [UIApplication sharedApplication].statusBarFrame.size.height;
 }
 
 /*
