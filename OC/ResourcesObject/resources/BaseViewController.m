@@ -23,12 +23,12 @@
 
 //- (void)viewWillAppear:(BOOL)animated {
 //    [super viewWillAppear:animated];
-//    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@--%@",self.description,_jmNavigationView.title.text]];
+//    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@--%@",NSStringFromClass(self.class),_jmNavigationView.title.text]];
 //}
 //
 //- (void)viewWillDisappear:(BOOL)animated {
 //    [super viewWillDisappear:animated];
-//    [MobClick endLogPageView:[NSString stringWithFormat:@"%@--%@",self.description,_jmNavigationView.title.text]];
+//    [MobClick endLogPageView:[NSString stringWithFormat:@"%@--%@",NSStringFromClass(self.class),_jmNavigationView.title.text]];
 //}
 
 - (UIView *)jmCover {

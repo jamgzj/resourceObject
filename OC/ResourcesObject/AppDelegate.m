@@ -47,7 +47,8 @@
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     // 设置根视图控制器
 //    [ChooseRootTool chooseRootViewController:self.window];
-    self.window.rootViewController = [[TestViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:[[TestViewController alloc]init]];
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
     // 设置键盘管理

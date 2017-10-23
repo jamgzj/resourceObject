@@ -23,6 +23,18 @@
 #import <YYText/YYText.h>
 #import <JSONModel/JSONModel.h>
 
+static inline BOOL isIphoneX() {
+    return SCREEN_HEIGHT == 812 ? YES : NO;
+}
+
+static inline CGFloat statusbarHeight() {
+    CGFloat height = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if (height != 0) {
+        return height;
+    }
+    return isIphoneX() ? 44 : 20;
+}
+
 #pragma mark - NSUserdefault 存储
 /**
  *  写入本地
@@ -545,6 +557,15 @@ static inline BOOL deleteFileWithPath(NSString *path) {
  *  @return 尺寸大小
  */
 + (CGSize)downloadImageSizeWithURL:(id)imageURL;
+
+
+/**
+ *  根据图片获取图片的主色调
+ *
+ *  @param image 图片
+ *  @return 颜色
+ */
++ (UIColor *)getImageMainColor:(UIImage *)image;
 
 #pragma mark - 对图片进行滤镜处理
 

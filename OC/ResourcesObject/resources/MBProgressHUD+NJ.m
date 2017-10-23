@@ -20,7 +20,7 @@
  */
 + (void)show:(NSString *)text icon:(NSString *)icon view:(UIView *)view
 {
-    if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
+    if (view == nil) view = [UIApplication sharedApplication].keyWindow;
     // 快速显示一个提示信息
     
 //    dispatch_async(dispatch_get_main_queue(), ^{
@@ -97,7 +97,7 @@
 + (void)showLoadingWithImages:(NSArray *)imgArray ToView:(UIView *)view {
     BOOL isViewExist = YES;
     if (!view) {
-        view = [UIApplication sharedApplication].windows.lastObject;
+        view = [UIApplication sharedApplication].keyWindow;
         isViewExist = NO;
     }
     
@@ -195,7 +195,7 @@
  *  @return 直接返回一个MBProgressHUD，需要手动关闭
  */
 + (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view {
-    if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
+    if (view == nil) view = [UIApplication sharedApplication].keyWindow;
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.labelText = message;
@@ -224,7 +224,7 @@
  */
 + (void)hideHUDForView:(UIView *)view
 {
-    if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
+    if (view == nil) view = [UIApplication sharedApplication].keyWindow;
 //    dispatch_async(dispatch_get_main_queue(), ^{
         [self hideHUDForView:view animated:YES];
 //    });

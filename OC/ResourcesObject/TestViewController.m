@@ -12,7 +12,7 @@
 #import "RCDCustomerServiceViewController.h"
 #import <RongIMKit/RongIMKit.h>
 
-@interface TestViewController ()<JMSwitchViewDatasource,JMSwitchViewDelegate,UIWebViewDelegate>
+@interface TestViewController ()<JMSwitchViewDatasource,JMSwitchViewDelegate,UIWebViewDelegate,UISearchBarDelegate>
 {
     int countNum;
 //    UIView *view;
@@ -32,11 +32,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor yellowColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.navigationBar.hidden = NO;
+//    [self initNavView];
+    UITextField *textfield = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+    textfield.placeholder = @"1235667";
     
-    [self getSheepNumberByYear:100];
-    
+    UISearchBar *searchbar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+    searchbar.delegate = self;
+    searchbar.placeholder = @"1235667";
+    self.navigationItem.titleView = searchbar;
     
     
     
@@ -193,6 +199,17 @@
 //    [rongClould addTarget:self action:@selector(ClickRongClould) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:rongClould];
     
+}
+
+- (CGSize)intrinsicContentSize {
+    return UILayoutFittingExpandedSize;
+}
+
+- (void)initNavView {
+    self.jmNavigationView.title = @"iOS11测试标题";
+    self.jmNavigationView.backgroundColor = [UIColor redColor];
+    [self.jmNavigationView addBottomLine];
+    NSLog(@"navheight----->%f\nstatusbar_height------->%f",navHeight,statusbarHeight());
 }
 
 - (int)getSheepNumberByYear:(int)year {

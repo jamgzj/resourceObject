@@ -1,5 +1,5 @@
 //
-// IQBarButtonItem.h
+// IQPreviousNextView.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-16 Iftekhar Qurashi.
 //
@@ -21,32 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
-#import <UIKit/UIBarButtonItem.h>
-
-@class NSInvocation;
-
+#import <UIKit/UIView.h>
 /**
- IQBarButtonItem used for IQToolbar.
+ If you need to enable previous/next toolbar button with some complex hierarchy where your textFields are not in same view, then make the top view as IQPreviousNextView.
  */
-@interface IQBarButtonItem : UIBarButtonItem
-
-/**
- Boolean to know if it's a system item or custom item
- */
-@property (nonatomic, readonly) BOOL isSystemItem;
-
-/**
- Additional target & action to do get callback action. Note that setting custom target & selector doesn't affect native functionality, this is just an additional target to get a callback.
- 
- @param target Target object.
- @param action Target Selector.
- */
--(void)setTarget:(nullable id)target action:(nullable SEL)action;
-
-/**
- Customized Invocation to be called when button is pressed. invocation is internally created using setTarget:action: method.
- */
-@property (nullable, strong, nonatomic) NSInvocation *invocation;
+@interface IQPreviousNextView : UIView
 
 @end
