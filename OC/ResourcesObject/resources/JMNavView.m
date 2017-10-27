@@ -35,7 +35,7 @@
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self);
-        make.centerY.mas_equalTo(self).with.offset(10);
+        make.centerY.mas_equalTo(self).with.offset(self.statusbarHeight/2.f);
         make.top.mas_greaterThanOrEqualTo(0);
         make.bottom.mas_lessThanOrEqualTo(0);
     }];

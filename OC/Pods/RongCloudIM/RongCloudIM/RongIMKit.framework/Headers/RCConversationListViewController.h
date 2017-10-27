@@ -76,6 +76,7 @@
  列表中会话数据模型的数据源
 
  @discussion 数据源中存放的元素为会话Cell的数据模型，即RCConversationModel对象。
+ @warning 非线程安全，请在主线程操作此属性
  */
 @property(nonatomic, strong) NSMutableArray *conversationListDataSource;
 
@@ -200,6 +201,16 @@
  */
 - (void)willDisplayConversationTableCell:(RCConversationBaseCell *)cell
                              atIndexPath:(NSIndexPath *)indexPath;
+
+
+/**
+ Cell状态更新时的回调
+
+ @param indexPath 该Cell对应的会话Cell数据模型在数据源中的索引值
+ 
+ @discussion 当Cell的阅读状态等信息发生改变时的回调，您可以在此回调中更新Cell的显示。
+ */
+- (void)updateCellAtIndexPath:(NSIndexPath *)indexPath;
 
 #pragma mark - 自定义会话列表Cell
 

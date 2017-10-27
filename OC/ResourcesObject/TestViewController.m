@@ -45,7 +45,6 @@
     self.navigationItem.titleView = searchbar;
     
     
-    
 //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
 //    {
 //        self.edgesForExtendedLayout = UIRectEdgeNone;

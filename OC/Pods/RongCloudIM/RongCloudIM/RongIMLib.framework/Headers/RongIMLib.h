@@ -53,11 +53,11 @@ FOUNDATION_EXPORT const unsigned char RongIMLibVersionString[];
 #import <RongIMLib/RCCSPullLeaveMessage.h>
 #import <RongIMLib/RCCSLeaveMessage.h>
 /// 工具类
-#import <RongIMLib/RCAmrDataConverter.h>
+#import <RongIMLib/RCAMRDataConverter.h>
 #import <RongIMLib/RCUtilities.h>
 #import <RongIMLib/interf_dec.h>
 #import <RongIMLib/interf_enc.h>
-
+#import <RongIMLib/RCTSMutableDictionary.h>
 ///客服
 #import <RongIMLib/RCCustomerServiceInfo.h>
 #import <RongIMLib/RCEvaluateItem.h>
@@ -79,3 +79,4 @@ FOUNDATION_EXPORT const unsigned char RongIMLibVersionString[];
 #import <RongIMLib/RCFileUtility.h>
 #import <RongIMLib/RCReadReceiptInfo.h>
 #import <RongIMLib/RCUserOnlineStatusInfo.h>
+

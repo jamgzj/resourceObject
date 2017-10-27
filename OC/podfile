@@ -16,5 +16,19 @@ target 'ResourcesObject' do
     pod 'YYCategories', '~> 1.0.4'
     pod 'JSONModel', '~> 1.7.0'
     pod 'JZLocationConverter', '~> 1.0.0'
+    
+    
+    # Your 'node_modules' directory is probably in the root of your project,
+    # but if not, adjust the `:path` accordingly
+    #pod 'React', :path => './react-native/node_modules/react-native', :subspecs => [
+    #'Core',
+    #'DevSupport', # Include this to enable In-App Devmenu if RN >= 0.43
+    #'RCTText',
+    #'RCTNetwork',
+    #'RCTWebSocket', # needed for debugging
+    # Add any other subspecs you want to use in your project
+    #]
+    # Explicitly include Yoga if you are using RN >= 0.42.0
+    #pod 'yoga', :path => './react-native/node_modules/react-native/ReactCommon/yoga'
 end
 
