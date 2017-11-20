@@ -41,6 +41,8 @@
 
 #define isIOS10  (([[[UIDevice currentDevice]systemVersion] floatValue] >= 10.0)?YES:NO)
 
+#define isIOS11  (([[[UIDevice currentDevice]systemVersion] floatValue] >= 11.0)?YES:NO)
+
 
 #define iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
 
@@ -53,7 +55,7 @@
 #define MAIN_FONT(a)  isIOS9?[UIFont fontWithName:ping_fang_regular size:(a)]:[UIFont fontWithName:@"HelveticaNeue" size:(a)]
 #define MAIN_BOLD_FONT(a)  isIOS9?[UIFont fontWithName:ping_fang_bold size:(a)]:[UIFont fontWithName:@"HelveticaNeue-Bold" size:(a)]
 
-#define navHeight (40*coefficient+[UIApplication sharedApplication].statusBarFrame.size.height)
+#define navHeight (40*coefficient+statusbarHeight())
 
 // 用户信息KEY
 #define USER_INFO_KEY @"userInfoKey"

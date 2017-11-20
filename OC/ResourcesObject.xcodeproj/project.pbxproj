@@ -34,6 +34,11 @@
 		8FFE9AD61DED725400329FBA /* JMNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE9AD51DED725400329FBA /* JMNavView.m */; };
 		D1369ED91F3BFC9F008092F6 /* JMMapSkip.m in Sources */ = {isa = PBXBuildFile; fileRef = D1369ED81F3BFC9F008092F6 /* JMMapSkip.m */; };
 		D1369EDC1F3C022E008092F6 /* TextLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = D1369EDB1F3C022E008092F6 /* TextLimit.m */; };
+		D15BF5981FBE8AD20031BD84 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = D15BF5951FBE8AD10031BD84 /* car.png */; };
+		D15BF5991FBE8AD20031BD84 /* car@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15BF5961FBE8AD20031BD84 /* car@3x.png */; };
+		D15BF59A1FBE8AD20031BD84 /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15BF5971FBE8AD20031BD84 /* car@2x.png */; };
+		D1731E301FBD9925006558CD /* DistanceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1731E2F1FBD9925006558CD /* DistanceTableViewCell.m */; };
+		D1A6A9E11FC2A45D0057B226 /* DistanceLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A6A9E01FC2A45D0057B226 /* DistanceLineTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +91,13 @@
 		D1369ED81F3BFC9F008092F6 /* JMMapSkip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMapSkip.m; sourceTree = "<group>"; };
 		D1369EDA1F3C022E008092F6 /* TextLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextLimit.h; sourceTree = "<group>"; };
 		D1369EDB1F3C022E008092F6 /* TextLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextLimit.m; sourceTree = "<group>"; };
+		D15BF5951FBE8AD10031BD84 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
+		D15BF5961FBE8AD20031BD84 /* car@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car@3x.png"; sourceTree = "<group>"; };
+		D15BF5971FBE8AD20031BD84 /* car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car@2x.png"; sourceTree = "<group>"; };
+		D1731E2E1FBD9925006558CD /* DistanceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistanceTableViewCell.h; sourceTree = "<group>"; };
+		D1731E2F1FBD9925006558CD /* DistanceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistanceTableViewCell.m; sourceTree = "<group>"; };
+		D1A6A9DF1FC2A45D0057B226 /* DistanceLineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistanceLineTableViewCell.h; sourceTree = "<group>"; };
+		D1A6A9E01FC2A45D0057B226 /* DistanceLineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistanceLineTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +186,9 @@
 		8F089AE21CFBE4EB00A37815 /* ResourcesObject */ = {
 			isa = PBXGroup;
 			children = (
+				D15BF5951FBE8AD10031BD84 /* car.png */,
+				D15BF5971FBE8AD20031BD84 /* car@2x.png */,
+				D15BF5961FBE8AD20031BD84 /* car@3x.png */,
 				8FDB1EB01D1A240D005DE5B6 /* lead_1.png */,
 				8FDB1EB11D1A240D005DE5B6 /* lead_2.png */,
 				8FDB1EB21D1A240D005DE5B6 /* lead_3.png */,
@@ -185,6 +200,10 @@
 				8F0761F21D3474960013238C /* resources */,
 				8F089AFF1CFC17F400A37815 /* TestViewController.h */,
 				8F089B001CFC17F400A37815 /* TestViewController.m */,
+				D1731E2E1FBD9925006558CD /* DistanceTableViewCell.h */,
+				D1731E2F1FBD9925006558CD /* DistanceTableViewCell.m */,
+				D1A6A9DF1FC2A45D0057B226 /* DistanceLineTableViewCell.h */,
+				D1A6A9E01FC2A45D0057B226 /* DistanceLineTableViewCell.m */,
 				8FC2DB7D1D6AEF0F004D0893 /* RCDCustomerServiceViewController.h */,
 				8FC2DB7E1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m */,
 				8F089AEF1CFBE4EB00A37815 /* Assets.xcassets */,
@@ -275,11 +294,14 @@
 				8F089AF31CFBE4EB00A37815 /* LaunchScreen.storyboard in Resources */,
 				8FDB1EB31D1A240D005DE5B6 /* lead_1.png in Resources */,
 				8F7716D01D755E2C0087BA67 /* iphone6Pic.jpg in Resources */,
+				D15BF5981FBE8AD20031BD84 /* car.png in Resources */,
 				8F089AF01CFBE4EB00A37815 /* Assets.xcassets in Resources */,
 				8F089B031CFC186B00A37815 /* login2_03.png in Resources */,
 				8F089AFE1CFC093000A37815 /* podfile in Resources */,
 				8FDB1EB41D1A240D005DE5B6 /* lead_2.png in Resources */,
+				D15BF5991FBE8AD20031BD84 /* car@3x.png in Resources */,
 				8FDB1EB51D1A240D005DE5B6 /* lead_3.png in Resources */,
+				D15BF59A1FBE8AD20031BD84 /* car@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +368,7 @@
 				8FFE9AD31DED705100329FBA /* UserInfo.m in Sources */,
 				8FC2DB7F1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m in Sources */,
 				8F089AE81CFBE4EB00A37815 /* AppDelegate.m in Sources */,
+				D1731E301FBD9925006558CD /* DistanceTableViewCell.m in Sources */,
 				8FA4A5CD1DED8108002F6435 /* BaseTableViewCell.m in Sources */,
 				D1369EDC1F3C022E008092F6 /* TextLimit.m in Sources */,
 				8F1589311E5A7C37004C2FA7 /* JMHttp.m in Sources */,
@@ -353,6 +376,7 @@
 				8F0762071D3474960013238C /* JMAlertView.m in Sources */,
 				8F07620A1D3474960013238C /* JMScrollView.m in Sources */,
 				8F089B011CFC17F400A37815 /* TestViewController.m in Sources */,
+				D1A6A9E11FC2A45D0057B226 /* DistanceLineTableViewCell.m in Sources */,
 				8F07620B1D3474960013238C /* JMTool.m in Sources */,
 				D1369ED91F3BFC9F008092F6 /* JMMapSkip.m in Sources */,
 				8FAD5F2B1D518216003EA152 /* JMView.m in Sources */,

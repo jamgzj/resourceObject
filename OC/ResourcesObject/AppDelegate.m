@@ -62,6 +62,9 @@
     
     [JMHttp checkNetStatus];
     
+    [self adaptForiOS11];
+    
+    
 //    //请先启动BaiduMapManager
 //    _mapManager = [[BMKMapManager alloc]init];
 //    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
@@ -158,6 +161,15 @@
 
     
     return YES;
+}
+
+- (void)adaptForiOS11 {
+    if (isIOS11) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        [UITableView appearance].estimatedRowHeight = 0;
+        [UITableView appearance].estimatedSectionHeaderHeight = 0;
+        [UITableView appearance].estimatedSectionFooterHeight = 0;
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

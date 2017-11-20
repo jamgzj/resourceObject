@@ -11,6 +11,7 @@
 #import "Masonry.h"
 #import "RCDCustomerServiceViewController.h"
 #import <RongIMKit/RongIMKit.h>
+#import "DistanceTableViewCell.h"
 
 @interface TestViewController ()<JMSwitchViewDatasource,JMSwitchViewDelegate,UIWebViewDelegate,UISearchBarDelegate>
 {
@@ -32,17 +33,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor yellowColor];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBar.hidden = NO;
-//    [self initNavView];
-    UITextField *textfield = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
-    textfield.placeholder = @"1235667";
     
-    UISearchBar *searchbar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
-    searchbar.delegate = self;
-    searchbar.placeholder = @"1235667";
-    self.navigationItem.titleView = searchbar;
+    [self initTableView];
+    [self initNavView];
+//    UITextField *textfield = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+//    textfield.placeholder = @"1235667";
+//
+//    UISearchBar *searchbar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+//    searchbar.delegate = self;
+//    searchbar.placeholder = @"1235667";
+//    self.navigationItem.titleView = searchbar;
     
     
 //    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
@@ -200,8 +200,15 @@
     
 }
 
-- (CGSize)intrinsicContentSize {
-    return UILayoutFittingExpandedSize;
+
+
+//- (CGSize)intrinsicContentSize {
+//    return UILayoutFittingExpandedSize;
+//}
+
+- (void)initTableView {
+    self.tableView.frame = CGRectMake(0, navHeight, SCREEN_WIDTH, SCREEN_HEIGHT-navHeight-(isIphoneX()?34:0));
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (void)initNavView {
@@ -210,6 +217,46 @@
     [self.jmNavigationView addBottomLine];
     NSLog(@"navheight----->%f\nstatusbar_height------->%f",navHeight,statusbarHeight());
 }
+
+#pragma mark - tableview datasource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 50;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellId = @"DistanceTableView_cellId";
+    DistanceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (!cell) {
+        cell = [[DistanceTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    
+    switch (indexPath.row%4) {
+        case 0:
+            [cell getAnimationLayerToRightWithString:[NSString stringWithFormat:@"%ld.4 KM",indexPath.row]];
+            break;
+        case 1:
+            [cell getAnimationLayerToLeftWithString:[NSString stringWithFormat:@"%ld.4 KM",indexPath.row]];
+            break;
+        case 2:
+            [cell getAnimationLayerToRight];
+            break;
+        case 3:
+            [cell getAnimationLayerToLeft];
+            break;
+        default:
+            break;
+    }
+    
+    return cell;
+}
+
+#pragma mark - tableview delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 40*coefficient;
+}
+
 
 - (int)getSheepNumberByYear:(int)year {
     //存放还有几只羊

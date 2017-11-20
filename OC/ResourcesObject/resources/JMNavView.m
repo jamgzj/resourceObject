@@ -8,7 +8,7 @@
 
 #import "JMNavView.h"
 #import <Masonry/Masonry.h>
-#import "Header.h"
+#import "JMTool.h"
 #import "NSString+Extension.h"
 
 @interface JMNavView ()
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.statusbarHeight = [self statusbarHeight];
+        self.statusbarHeight = statusbarHeight();
         
         UILabel *titleL = [[UILabel alloc]init];
         [self addSubview:titleL];
@@ -156,9 +156,6 @@
 }
 
 
-- (CGFloat)statusbarHeight {
-    return [UIApplication sharedApplication].statusBarFrame.size.height;
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.
