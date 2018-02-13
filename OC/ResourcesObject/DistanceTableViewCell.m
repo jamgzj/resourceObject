@@ -149,6 +149,8 @@
     // Line1
     
     UIBezierPath *linePath1 = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(47*coefficient, 0, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    [linePath1 addArcWithCenter:CGPointMake(50*coefficient, 3*coefficient) radius:2*coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [linePath1 addArcWithCenter:CGPointMake(50*coefficient, 3*coefficient) radius:coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
     [linePath1 moveToPoint:CGPointMake(50*coefficient, 6*coefficient)];
     
     [linePath1 addQuadCurveToPoint:CGPointMake(70*coefficient, 20*coefficient) controlPoint:CGPointMake(50*coefficient, 20*coefficient)];
@@ -161,9 +163,11 @@
     UIBezierPath *linePath2 = [UIBezierPath bezierPath];
     [linePath2 moveToPoint:CGPointMake(SCREEN_WIDTH - pointX, 20*coefficient)];
     [linePath2 addLineToPoint:CGPointMake(SCREEN_WIDTH-70*coefficient, 20*coefficient)];
-    [linePath2 addQuadCurveToPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 33*coefficient) controlPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 20*coefficient)];
+    [linePath2 addQuadCurveToPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 34*coefficient) controlPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 20*coefficient)];
     
-    UIBezierPath *round2Path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(SCREEN_WIDTH-53*coefficient, 33*coefficient, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    UIBezierPath *round2Path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(SCREEN_WIDTH-53*coefficient, 34*coefficient, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    [round2Path addArcWithCenter:CGPointMake(SCREEN_WIDTH-50*coefficient, 37*coefficient) radius:2*coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [round2Path addArcWithCenter:CGPointMake(SCREEN_WIDTH-50*coefficient, 37*coefficient) radius:coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
     [linePath2 appendPath:round2Path];
     
     _lineLayer2.path = linePath2.CGPath;
@@ -241,6 +245,8 @@
     // Line1
     
     UIBezierPath *linePath1 = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(SCREEN_WIDTH - 53*coefficient, 0, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    [linePath1 addArcWithCenter:CGPointMake(SCREEN_WIDTH - 50*coefficient, 3*coefficient) radius:2*coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [linePath1 addArcWithCenter:CGPointMake(SCREEN_WIDTH - 50*coefficient, 3*coefficient) radius:coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
     [linePath1 moveToPoint:CGPointMake(SCREEN_WIDTH - 50*coefficient, 6*coefficient)];
     
     [linePath1 addQuadCurveToPoint:CGPointMake(SCREEN_WIDTH - 70*coefficient, 20*coefficient) controlPoint:CGPointMake(SCREEN_WIDTH - 50*coefficient, 20*coefficient)];
@@ -253,9 +259,11 @@
     UIBezierPath *linePath2 = [UIBezierPath bezierPath];
     [linePath2 moveToPoint:CGPointMake(pointX, 20*coefficient)];
     [linePath2 addLineToPoint:CGPointMake(70*coefficient, 20*coefficient)];
-    [linePath2 addQuadCurveToPoint:CGPointMake(50*coefficient, 33*coefficient) controlPoint:CGPointMake(50*coefficient, 20*coefficient)];
+    [linePath2 addQuadCurveToPoint:CGPointMake(50*coefficient, 34*coefficient) controlPoint:CGPointMake(50*coefficient, 20*coefficient)];
     
-    UIBezierPath *round2Path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(47*coefficient, 33*coefficient, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    UIBezierPath *round2Path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(47*coefficient, 34*coefficient, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    [round2Path addArcWithCenter:CGPointMake(50*coefficient, 37*coefficient) radius:2*coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [round2Path addArcWithCenter:CGPointMake(50*coefficient, 37*coefficient) radius:coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
     [linePath2 appendPath:round2Path];
     
     _lineLayer2.path = linePath2.CGPath;
@@ -306,13 +314,18 @@
     self.animationLayer1.hidden = NO;
     
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(47*coefficient, 0, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    [path addArcWithCenter:CGPointMake(50*coefficient, 3*coefficient) radius:2*coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [path addArcWithCenter:CGPointMake(50*coefficient, 3*coefficient) radius:coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    
     [path moveToPoint:CGPointMake(50*coefficient, 6*coefficient)];
     
     [path addQuadCurveToPoint:CGPointMake(70*coefficient, 20*coefficient) controlPoint:CGPointMake(50*coefficient, 20*coefficient)];
     [path addLineToPoint:CGPointMake(SCREEN_WIDTH-70*coefficient, 20*coefficient)];
-    [path addQuadCurveToPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 33*coefficient) controlPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 20*coefficient)];
+    [path addQuadCurveToPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 34*coefficient) controlPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 20*coefficient)];
     
-    UIBezierPath *roundPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(SCREEN_WIDTH-53*coefficient, 33*coefficient, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    UIBezierPath *roundPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(SCREEN_WIDTH-53*coefficient, 34*coefficient, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    [roundPath addArcWithCenter:CGPointMake(SCREEN_WIDTH-50*coefficient, 37*coefficient) radius:2*coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [roundPath addArcWithCenter:CGPointMake(SCREEN_WIDTH-50*coefficient, 37*coefficient) radius:coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
     [path appendPath:roundPath];
     
     self.animationLayer1.path = path.CGPath;
@@ -325,13 +338,18 @@
     self.animationLayer1.hidden = NO;
     
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(SCREEN_WIDTH-53*coefficient, 0, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    [path addArcWithCenter:CGPointMake(SCREEN_WIDTH-50*coefficient, 3*coefficient) radius:2*coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [path addArcWithCenter:CGPointMake(SCREEN_WIDTH-50*coefficient, 3*coefficient) radius:coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    
     [path moveToPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 6*coefficient)];
     
     [path addQuadCurveToPoint:CGPointMake(SCREEN_WIDTH-70*coefficient, 20*coefficient) controlPoint:CGPointMake(SCREEN_WIDTH-50*coefficient, 20*coefficient)];
     [path addLineToPoint:CGPointMake(70*coefficient, 20*coefficient)];
-    [path addQuadCurveToPoint:CGPointMake(50*coefficient, 33*coefficient) controlPoint:CGPointMake(50*coefficient, 20*coefficient)];
+    [path addQuadCurveToPoint:CGPointMake(50*coefficient, 34*coefficient) controlPoint:CGPointMake(50*coefficient, 20*coefficient)];
     
-    UIBezierPath *roundPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(47*coefficient, 33*coefficient, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    UIBezierPath *roundPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(47*coefficient, 34*coefficient, 6*coefficient, 6*coefficient) cornerRadius:3*coefficient];
+    [roundPath addArcWithCenter:CGPointMake(50*coefficient, 37*coefficient) radius:2*coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [roundPath addArcWithCenter:CGPointMake(50*coefficient, 37*coefficient) radius:coefficient startAngle:0 endAngle:M_PI*2 clockwise:YES];
     [path appendPath:roundPath];
     
     self.animationLayer1.path = path.CGPath;

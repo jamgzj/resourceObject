@@ -38,7 +38,6 @@
 		D15BF5991FBE8AD20031BD84 /* car@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15BF5961FBE8AD20031BD84 /* car@3x.png */; };
 		D15BF59A1FBE8AD20031BD84 /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15BF5971FBE8AD20031BD84 /* car@2x.png */; };
 		D1731E301FBD9925006558CD /* DistanceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1731E2F1FBD9925006558CD /* DistanceTableViewCell.m */; };
-		D1A6A9E11FC2A45D0057B226 /* DistanceLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A6A9E01FC2A45D0057B226 /* DistanceLineTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,8 +95,6 @@
 		D15BF5971FBE8AD20031BD84 /* car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car@2x.png"; sourceTree = "<group>"; };
 		D1731E2E1FBD9925006558CD /* DistanceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistanceTableViewCell.h; sourceTree = "<group>"; };
 		D1731E2F1FBD9925006558CD /* DistanceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistanceTableViewCell.m; sourceTree = "<group>"; };
-		D1A6A9DF1FC2A45D0057B226 /* DistanceLineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistanceLineTableViewCell.h; sourceTree = "<group>"; };
-		D1A6A9E01FC2A45D0057B226 /* DistanceLineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistanceLineTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +199,6 @@
 				8F089B001CFC17F400A37815 /* TestViewController.m */,
 				D1731E2E1FBD9925006558CD /* DistanceTableViewCell.h */,
 				D1731E2F1FBD9925006558CD /* DistanceTableViewCell.m */,
-				D1A6A9DF1FC2A45D0057B226 /* DistanceLineTableViewCell.h */,
-				D1A6A9E01FC2A45D0057B226 /* DistanceLineTableViewCell.m */,
 				8FC2DB7D1D6AEF0F004D0893 /* RCDCustomerServiceViewController.h */,
 				8FC2DB7E1D6AEF0F004D0893 /* RCDCustomerServiceViewController.m */,
 				8F089AEF1CFBE4EB00A37815 /* Assets.xcassets */,
@@ -376,7 +371,6 @@
 				8F0762071D3474960013238C /* JMAlertView.m in Sources */,
 				8F07620A1D3474960013238C /* JMScrollView.m in Sources */,
 				8F089B011CFC17F400A37815 /* TestViewController.m in Sources */,
-				D1A6A9E11FC2A45D0057B226 /* DistanceLineTableViewCell.m in Sources */,
 				8F07620B1D3474960013238C /* JMTool.m in Sources */,
 				D1369ED91F3BFC9F008092F6 /* JMMapSkip.m in Sources */,
 				8FAD5F2B1D518216003EA152 /* JMView.m in Sources */,

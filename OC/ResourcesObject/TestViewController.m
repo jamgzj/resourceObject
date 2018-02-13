@@ -25,6 +25,7 @@
     
     UIView *green;
     UIView *red;
+    NSMutableArray *_datasource;
 }
 @end
 
@@ -33,9 +34,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _datasource = [NSMutableArray array];
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:@"1",@"2",@"3", nil];
+    [_datasource addObject:array];
+    NSArray *datasource = [NSArray arrayWithArray:[_datasource copy]];
+    for (NSMutableArray *array1 in _datasource) {
+        [_datasource insertObject:[NSMutableArray arrayWithObject:@""] atIndex:0];
+        [_datasource addObject:[NSMutableArray arrayWithObject:@""]];
+        if (_datasource.count > 2) {
+            break;
+        }
+    }
+//    for (int i = 0; i < datasource.count; i++) {
+////        [array insertObject:[NSString stringWithFormat:@"%ld",array.count] atIndex:i];
+////        NSLog(@"array------------------->%@",array);
+//        NSMutableArray *array1 = datasource[i];
+//        [array1 removeObjectsInArray:@[@"1"]];
+//        NSLog(@"%@",_datasource);
+//    }
     
-    [self initTableView];
-    [self initNavView];
+//    [self initTableView];
+//    [self initNavView];
 //    UITextField *textfield = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
 //    textfield.placeholder = @"1235667";
 //
