@@ -8,6 +8,7 @@
 
 #import "JMMapSkip.h"
 #import <JZLocationConverter/JZLocationConverter.h>
+#import <MapKit/MapKit.h>
 
 @implementation JMMapSkip
 
@@ -85,8 +86,10 @@ static inline BOOL canOpenQQMap(){
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alertVC addAction:cancelAction];
     
-    UIViewController *currentVC = [self getCurrentVC];
-    [currentVC presentViewController:alertVC animated:YES completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIViewController *currentVC = [self getCurrentVC];
+        [currentVC presentViewController:alertVC animated:YES completion:nil];
+    });
 }
 
 /**
@@ -107,6 +110,7 @@ static inline BOOL canOpenQQMap(){
  @param destTitle <#destTitle description#>
  */
 + (void)skipAMapToLocation:(CLLocationCoordinate2D)location WithTitle:(NSString *)destTitle {
+    location = [JZLocationConverter bd09ToGcj02:location];
     NSString *urlString = [[NSString stringWithFormat:@"iosamap://navi?sourceApplication=%@&backScheme=%@&lat=%f&lon=%f&dev=0&style=2",@"看到啦",@"openSeen",location.latitude, location.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
@@ -118,6 +122,7 @@ static inline BOOL canOpenQQMap(){
  @param destTitle <#destTitle description#>
  */
 + (void)skipGoogleMapToLocation:(CLLocationCoordinate2D)location WithTitle:(NSString *)destTitle {
+    location = [JZLocationConverter bd09ToGcj02:location];
     NSString *urlString = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=&daddr=%f,%f&directionsmode=driving",@"看到啦",@"openSeen",location.latitude, location.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
@@ -131,6 +136,8 @@ static inline BOOL canOpenQQMap(){
 + (void)skipQQMapToLocation:(CLLocationCoordinate2D)location WithTitle:(NSString *)destTitle {
     MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
     CLLocationCoordinate2D currentCoor = [JZLocationConverter wgs84ToGcj02:currentLocation.placemark.coordinate];
+    
+    location = [JZLocationConverter bd09ToGcj02:location];
     NSString *urlString = [[NSString stringWithFormat:@"qqmap://map/routeplan?type=drive&from=%@&fromcoord=%f,%f&to=%@&tocoord=%f,%f&policy=1&referer=%@",@"当前位置",currentCoor.latitude,currentCoor.longitude,destTitle,location.latitude, location.longitude,@"看到啦"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
@@ -146,7 +153,7 @@ static inline BOOL canOpenQQMap(){
     MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
     
     //目的地的位置
-    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:location addressDictionary:nil]];
+    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:[JZLocationConverter bd09ToWgs84:location] addressDictionary:nil]];
     toLocation.name = destTitle;
     
     NSArray *items = [NSArray arrayWithObjects:currentLocation, toLocation, nil];

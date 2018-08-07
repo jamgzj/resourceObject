@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 // 跳转第三方地图导航 封装类
 @interface JMMapSkip : NSObject
@@ -20,4 +20,26 @@
  */
 + (void)skipMapToDestination:(CLLocationCoordinate2D)location WithTitle:(NSString *)title;
 
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,6 @@
 //
 
 #import "JMNavController.h"
-#import "Header.h"
 
 @interface JMNavController ()
 

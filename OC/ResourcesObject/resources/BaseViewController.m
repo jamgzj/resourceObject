@@ -18,20 +18,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBar.hidden = YES;
+//    self.navigationController.navigationBar.hidden = YES;
+    self.view.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusDidChange) name:NetworkStatusDidChangeNotification object:nil];
 }
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@--%@",NSStringFromClass(self.class),_jmNavigationView.title.text]];
-//}
-//
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//    [MobClick endLogPageView:[NSString stringWithFormat:@"%@--%@",NSStringFromClass(self.class),_jmNavigationView.title.text]];
-//}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NetworkStatusDidChangeNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@--%@",NSStringFromClass(self.class),_jmTitle?:_jmNavigationView.title]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+//    [MobClick endLogPageView:[NSString stringWithFormat:@"%@--%@",NSStringFromClass(self.class),_jmTitle?:_jmNavigationView.title]];
+}
+
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 - (UIView *)jmCover {
     if (!_jmCover) {
@@ -46,8 +61,9 @@
 - (JMNavView *)jmNavigationView {
     if (!_jmNavigationView) {
         _jmNavigationView = [[JMNavView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, navHeight)];
+        _jmNavigationView.backgroundColor = [UIColor whiteColor];
         _jmNavigationView.titleLabel.textColor = MainFontColor;
-        _jmNavigationView.titleLabel.font = MAIN_BOLD_FONT(13*coefficient);
+        _jmNavigationView.titleLabel.font = [UIFont systemFontOfSize:17*coefficient];
         [self.view addSubview:_jmNavigationView];
     }
     return _jmNavigationView;
@@ -97,6 +113,17 @@
         [self.view addSubview:_scrollView];
     }
     return _scrollView;
+}
+
+- (UIView *)creatStatusBackgroudView {
+    UIView *statusBackgroundV = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, statusbarHeight())];
+    statusBackgroundV.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:statusBackgroundV];
+    return statusBackgroundV;
+}
+
+- (void)networkStatusDidChange {
+    
 }
 
 #pragma mark - 创建navigationbar上的按钮

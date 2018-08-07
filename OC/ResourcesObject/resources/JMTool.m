@@ -8,6 +8,7 @@
 
 #import "JMTool.h"
 #import <CommonCrypto/CommonDigest.h>
+//#import "LoginViewController.h"
 
 static const char base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 static const short base64DecodingTable[256] = {
@@ -33,41 +34,59 @@ static const short base64DecodingTable[256] = {
 
 + (UIViewController *)getCurrentVC {
     
-    UIViewController *result = nil;
-    
-    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-    if (window.windowLevel != UIWindowLevelNormal)
-    {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow * tmpWin in windows)
-        {
-            if (tmpWin.windowLevel == UIWindowLevelNormal)
-            {
-                window = tmpWin;
-                break;
-            }
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    UIViewController *topViewController = [window rootViewController];
+    while (true) {
+        if (topViewController.presentedViewController) {
+            topViewController = topViewController.presentedViewController;
+        } else if ([topViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController*)topViewController topViewController]) {
+            topViewController = [(UINavigationController *)topViewController topViewController];
+        } else if ([topViewController isKindOfClass:[UITabBarController class]]) {
+            UITabBarController *tab = (UITabBarController *)topViewController;
+            topViewController = tab.selectedViewController;
+        } else {
+            break;
         }
     }
-    
-    UIView *frontView = [[window subviews] objectAtIndex:0];
-    id nextResponder = [frontView nextResponder];
-    
-    if ([nextResponder isKindOfClass:[UIViewController class]])
-        result = nextResponder;
-    else
-        result = window.rootViewController;
-    
-    return result;
+    return topViewController;
+//    UIViewController *result = nil;
+//    
+//    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+//    if (window.windowLevel != UIWindowLevelNormal)
+//    {
+//        NSArray *windows = [[UIApplication sharedApplication] windows];
+//        for(UIWindow * tmpWin in windows)
+//        {
+//            if (tmpWin.windowLevel == UIWindowLevelNormal)
+//            {
+//                window = tmpWin;
+//                break;
+//            }
+//        }
+//    }
+//    
+//    UIView *frontView = [[window subviews] objectAtIndex:0];
+//    id nextResponder = [frontView nextResponder];
+//    
+//    if ([nextResponder isKindOfClass:[UIViewController class]])
+//        result = nextResponder;
+//    else
+//        result = window.rootViewController;
+//    
+//    return result;
 }
 
 // 清除UITableView底部多余的分割线
-+ (void)setExtraCellLineHidden: (UITableView *)_tableView{
++ (void)setExtraCellLineHidden: (UITableView *)_tableView {
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor clearColor];
     [_tableView setTableFooterView:view];
 }
 
 + (void)resetLabel:(UILabel *)label ContentOffsetX:(float)width {
+    if (!label.text) {
+        return;
+    }
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:label.text];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
     paragraphStyle.alignment = NSTextAlignmentLeft;
@@ -314,7 +333,7 @@ static const short base64DecodingTable[256] = {
 
 //获取字符串(或汉字)首字母
 
-+ (NSString *)firstCharacterWithString:(NSString *)string{
++ (NSString *)firstCharacterWithString:(NSString *)string {
     
     NSMutableString *str = [NSMutableString stringWithString:string];
     
@@ -474,7 +493,8 @@ static const short base64DecodingTable[256] = {
                          ChangeLocation2:(float)float2 {
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = frame;
-    [view.layer addSublayer:gradientLayer];
+//    [view.layer addSublayer:gradientLayer];
+    [view.layer insertSublayer:gradientLayer atIndex:0];
     
     gradientLayer.colors = @[(__bridge id)color1.CGColor,(__bridge id)color2.CGColor];
     gradientLayer.locations = @[@(float1),@(float2)];
@@ -606,46 +626,6 @@ static const short base64DecodingTable[256] = {
     
     // Return the new image.
     return newImage;
-}
-
-// 压缩图片到指定大小
-+ (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength {
-    // Compress by quality
-    CGFloat compression = 1;
-    NSData *data = UIImageJPEGRepresentation(image, compression);
-    if (data.length < maxLength) return image;
-    
-    CGFloat max = 1;
-    CGFloat min = 0;
-    for (int i = 0; i < 6; ++i) {
-        compression = (max + min) / 2;
-        data = UIImageJPEGRepresentation(image, compression);
-        if (data.length < maxLength * 0.9) {
-            min = compression;
-        } else if (data.length > maxLength) {
-            max = compression;
-        } else {
-            break;
-        }
-    }
-    UIImage *resultImage = [UIImage imageWithData:data];
-    if (data.length < maxLength) return resultImage;
-    
-    // Compress by size
-    NSUInteger lastDataLength = 0;
-    while (data.length > maxLength && data.length != lastDataLength) {
-        lastDataLength = data.length;
-        CGFloat ratio = (CGFloat)maxLength / data.length;
-        CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
-                                 (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
-        UIGraphicsBeginImageContext(size);
-        [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
-        resultImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        data = UIImageJPEGRepresentation(resultImage, compression);
-    }
-    
-    return resultImage;
 }
 
 + (UIImage *)handleImage:(UIImage *)originalImage withSize:(CGSize)size {
@@ -885,8 +865,48 @@ static const short base64DecodingTable[256] = {
     }
 }
 
+// 压缩图片到指定大小
++ (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength {
+    // Compress by quality
+    CGFloat compression = 1;
+    NSData *data = UIImageJPEGRepresentation(image, compression);
+    if (data.length < maxLength) return image;
+    
+    CGFloat max = 1;
+    CGFloat min = 0;
+    for (int i = 0; i < 6; ++i) {
+        compression = (max + min) / 2;
+        data = UIImageJPEGRepresentation(image, compression);
+        if (data.length < maxLength * 0.9) {
+            min = compression;
+        } else if (data.length > maxLength) {
+            max = compression;
+        } else {
+            break;
+        }
+    }
+    UIImage *resultImage = [UIImage imageWithData:data];
+    if (data.length < maxLength) return resultImage;
+    
+    // Compress by size
+    NSUInteger lastDataLength = 0;
+    while (data.length > maxLength && data.length != lastDataLength) {
+        lastDataLength = data.length;
+        CGFloat ratio = (CGFloat)maxLength / data.length;
+        CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
+                                 (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
+        UIGraphicsBeginImageContext(size);
+        [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        resultImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        data = UIImageJPEGRepresentation(resultImage, compression);
+    }
+    
+    return resultImage;
+}
+
 //根据图片获取图片的主色调
-+ (UIColor *)getImageMainColor:(UIImage *)image {
++ (UIColor*)getImageMainColor:(UIImage*)image {
     
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
     int bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast;
@@ -1092,7 +1112,7 @@ static const short base64DecodingTable[256] = {
 
 //Avilable in iOS 8.0 and later
 
-+ (UIVisualEffectView *)effectViewWithFrame:(CGRect)frame{
++ (UIVisualEffectView *)effectViewWithFrame:(CGRect)frame {
     
     UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     
@@ -1181,6 +1201,72 @@ static const short base64DecodingTable[256] = {
     return [priceStr floatValue];
 }
 
++ (UIButton *)configPlayBtnWithBackgroundView:(UIView *)bgView ImageUrl:(NSURL *)imageUrl PlayAction:(BOOL(^)())playAction {
+    AFNetworkReachabilityStatus status = [JMHttp currentNetStatus];
+    
+    UIButton *playBtn = [[UIButton alloc]initWithFrame:bgView.bounds];
+    [playBtn sd_setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
+    [playBtn setImage:[UIImage imageNamed:@"play_down"] forState:UIControlStateNormal];
+    [playBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        UIButton *button = (UIButton *)sender;
+        
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"当前使用数据流量，播放视频视频将消耗大量流量哦" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *sure = [UIAlertAction actionWithTitle:@"继续播放" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            playAction();
+            button.hidden = YES;
+        }];
+        [alertVC addAction:sure];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertVC addAction:cancel];
+        
+        AFNetworkReachabilityStatus status = [JMHttp currentNetStatus];
+        switch (status) {
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+            {
+                BOOL hidden = playAction();
+                button.hidden = hidden;
+            }
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[self getCurrentVC] presentViewController:alertVC animated:YES completion:nil];
+                });
+            }
+                break;
+            default:
+                [MBProgressHUD showError:@"当前网络未知，请检查网络再试"];
+                break;
+        }
+    }];
+    playBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [bgView addSubview:playBtn];
+    
+    if (status == AFNetworkReachabilityStatusReachableViaWiFi) {
+        BOOL hidden = playAction();
+        playBtn.hidden = hidden;
+    }
+    return playBtn;
+}
+
+//+ (void)alertToLogin {
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        UIViewController *currentVC = [self getCurrentVC];
+//        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"登录提示" message:@"你还没有登录哦~" preferredStyle:UIAlertControllerStyleAlert];
+//
+//        UIAlertAction *sure = [UIAlertAction actionWithTitle:@"去登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            LoginViewController *loginVC = [[LoginViewController alloc]init];
+//            [currentVC.navigationController pushViewController:loginVC animated:YES];
+//        }];
+//        [alertVC addAction:sure];
+//
+//        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"再看看" style:UIAlertActionStyleCancel handler:nil];
+//        [alertVC addAction:cancel];
+//        [currentVC presentViewController:alertVC animated:YES completion:nil];
+//    });
+//}
+
 @end
 
 
@@ -1228,6 +1314,65 @@ static const short base64DecodingTable[256] = {
     }
     NSLog(@"resultString----->%@",resultString);
     return resultString;
+}
+
+- (NSUInteger)byteLength {
+    if (!self) {
+        return 0;
+    }
+//    int strlength = 0;
+//    char* p = (char*)[self cStringUsingEncoding:NSUnicodeStringEncoding];
+//    for (int i = 0 ; i<[self lengthOfBytesUsingEncoding:NSUnicodeStringEncoding] ;i++) {
+//        if (*p) {
+//            p++;
+//            strlength++;
+//        }
+//        else {
+//            p++;
+//        }
+//    }
+//    return (strlength+1)/2;
+    NSStringEncoding encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSData *data = [self dataUsingEncoding:encode];
+    return [data length];
+}
+
+- (BOOL)containsEmoji {
+    __block BOOL returnValue = NO;
+    
+    [self enumerateSubstringsInRange:NSMakeRange(0, [self length])
+                               options:NSStringEnumerationByComposedCharacterSequences
+                            usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                                const unichar hs = [substring characterAtIndex:0];
+                                if (0xd800 <= hs && hs <= 0xdbff) {
+                                    if (substring.length > 1) {
+                                        const unichar ls = [substring characterAtIndex:1];
+                                        const int uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
+                                        if (0x1d000 <= uc && uc <= 0x1f77f) {
+                                            returnValue = YES;
+                                        }
+                                    }
+                                } else if (substring.length > 1) {
+                                    const unichar ls = [substring characterAtIndex:1];
+                                    if (ls == 0x20e3) {
+                                        returnValue = YES;
+                                    }
+                                } else {
+                                    if (0x2100 <= hs && hs <= 0x27ff) {
+                                        returnValue = YES;
+                                    } else if (0x2B05 <= hs && hs <= 0x2b07) {
+                                        returnValue = YES;
+                                    } else if (0x2934 <= hs && hs <= 0x2935) {
+                                        returnValue = YES;
+                                    } else if (0x3297 <= hs && hs <= 0x3299) {
+                                        returnValue = YES;
+                                    } else if (hs == 0xa9 || hs == 0xae || hs == 0x303d || hs == 0x3030 || hs == 0x2b55 || hs == 0x2b1c || hs == 0x2b1b || hs == 0x2b50) {
+                                        returnValue = YES;
+                                    }
+                                }
+                            }];
+    
+    return returnValue;
 }
 
 @end
@@ -1510,47 +1655,56 @@ static const void *badgeValueKey = &badgeValueKey;
         if ([badgeValue isEqualToString:@"0"]) {
             self.badgeView.hidden = YES;
         }else {
-            if (self.badgeView) {
-                self.badgeView.text = badgeValue;
-            }else {
-                self.badgeView = [[UILabel alloc]init];
-                self.badgeView.text = badgeValue;
-                self.badgeView.font = [UIFont systemFontOfSize:11];
-                self.badgeView.textColor = [UIColor whiteColor];
-                self.badgeView.textAlignment = NSTextAlignmentCenter;
-                self.badgeView.backgroundColor = [UIColor redColor];
-                [self addSubview:self.badgeView];
-                [self.badgeView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.right.mas_equalTo(self.mas_right);
-                    make.top.mas_equalTo(self.mas_top);
-                    if (self.width>self.height) {
-                        make.width.height.mas_equalTo(self.mas_height).multipliedBy(0.3);
-                    }else {
-                        make.width.height.mas_equalTo(self.mas_width).multipliedBy(0.3);
-                    }
-                }];
-                [self setNeedsLayout];
-                [self layoutIfNeeded];
-                self.badgeView.layer.cornerRadius = self.badgeView.width/2.f;
-                self.badgeView.layer.masksToBounds = YES;
-            }
+            self.badgeView.text = badgeValue;
         }
     }
     objc_setAssociatedObject(self, badgeValueKey, badgeValue, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (UILabel *)badgeView {
-    return objc_getAssociatedObject(self, badgeViewKey);
+    UILabel *label = objc_getAssociatedObject(self, badgeViewKey);
+    if (!label) {
+        label = [[UILabel alloc]init];
+        label.font = [UIFont systemFontOfSize:11];
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.backgroundColor = [UIColor colorWithHexString:@"#e96e5d"];
+        [self addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(5*coefficient);
+            make.top.mas_equalTo(-5*coefficient);
+            if (self.width>=self.height) {
+                make.width.height.mas_equalTo(self.mas_height).multipliedBy(0.34);
+            }else {
+                make.width.height.mas_equalTo(self.mas_width).multipliedBy(0.34);
+            }
+        }];
+        [self setNeedsLayout];
+        [self layoutIfNeeded];
+        label.layer.cornerRadius = label.width>label.height?label.width/2.f:label.height/2.f;
+        label.layer.masksToBounds = YES;
+        self.badgeView = label;
+    }
+    return label;
 }
 
 - (void)setBadgeView:(UILabel *)badgeView {
-    if (!self.badgeView) {
+//    if (!self.badgeView) {
         objc_setAssociatedObject(self, badgeViewKey, badgeView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
+//    }
 }
 
 - (void)removeBadge {
     self.badgeView.hidden = YES;
+}
+
+- (void)addScaleSpringAnimation {
+    self.transform = CGAffineTransformMakeScale(.7f, .7f);
+    [UIView animateWithDuration:.7f delay:0.f usingSpringWithDamping:.4f initialSpringVelocity:.8f options:UIViewAnimationOptionCurveLinear animations:^{
+        self.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 @end

@@ -12,6 +12,8 @@
 
 typedef void(^HttpSuccessBlock)(id JSON);
 typedef void(^HttpFailureBlock)(id Error);
+typedef void(^HttpConstructingBody)(id<AFMultipartFormData>  _Nonnull formData);
+typedef void(^HttpProgressBlock)(NSProgress *uploadProgress);
 
 @interface JMHttp : NSObject
 
@@ -25,6 +27,11 @@ typedef void(^HttpFailureBlock)(id Error);
  *  @return <#return value description#>
  */
 + (BOOL)isHttpRequestStatusOK:(NSDictionary *)dict;
+
+/**
+ *  获取当前网络状态
+ */
++ (AFNetworkReachabilityStatus)currentNetStatus;
 
 /**
  *  监测网络状态
@@ -84,6 +91,23 @@ typedef void(^HttpFailureBlock)(id Error);
                    Failure:(HttpFailureBlock)failure;
 
 /**
+ *  Creates and runs an `NSURLSessionDataTask` with a multipart `POST` request.
+ *
+ *  @param path                 urlString
+ *  @param params               参数
+ *  @param constructingBody     请求体
+ *  @param progress             progress description
+ *  @param success              <#success description#>
+ *  @param failure              <#failure description#>
+ */
++ (void)multPostWithThePath:(NSString *)path
+                     Params:(NSDictionary *)params
+           ConstructingBody:(HttpConstructingBody)constructingBody
+                   Progress:(HttpProgressBlock)progress
+                    Success:(HttpSuccessBlock)success
+                    Failure:(HttpFailureBlock)failure;
+
+/**
  *  上传图片
  *
  *  @param path    urlString
@@ -91,14 +115,37 @@ typedef void(^HttpFailureBlock)(id Error);
  *  @param kName   图片对应的key值
  *  @param params  参数
  *  @param isShow  是否显示MB
- *  @param success success description
- *  @param failure failure description
+ *  @param success <#success description#>
+ *  @param failure <#failure description#>
  */
 + (void)requestWithThePath:(NSString *)path
                       Data:(NSData *)data
                    KeyName:(NSString *)kName
                     Params:(NSDictionary *)params
                  isHudShow:(BOOL)isShow
+                   Success:(HttpSuccessBlock)success
+                   Failure:(HttpFailureBlock)failure;
+
+/**
+ *  上传图片(带progress)
+ *
+ *  @param path     urlString
+ *  @param data     图片data
+ *  @param kName    图片对应的key值
+ *  @param fileName 图片名
+ *  @param params   参数
+ *  @param isShow   是否显示MB
+ *  @param progress progress description
+ *  @param success  success description
+ *  @param failure  failure description
+ */
++ (void)requestWithThePath:(NSString *)path
+                      Data:(NSData *)data
+                   KeyName:(NSString *)kName
+                  FileName:(NSString *)fileName
+                    Params:(NSDictionary *)params
+                 isHudShow:(BOOL)isShow
+                  Progress:(HttpProgressBlock)progress
                    Success:(HttpSuccessBlock)success
                    Failure:(HttpFailureBlock)failure;
 
@@ -121,12 +168,114 @@ typedef void(^HttpFailureBlock)(id Error);
                    Success:(HttpSuccessBlock)success
                    Failure:(HttpFailureBlock)failure;
 
+/**
+ *  上传多张图片(带progress)
+ *
+ *  @param path       urlString
+ *  @param imgArray   图片数组(数组存放的可以是NSData,NSString,UIImage三种类型之一)
+ *  @param kNameArray 对应上传图片的key值(字符串数组)
+ *  @param params     参数列表
+ *  @param isShow     是否显示MB
+ *  @param progress   progress description
+ *  @param success    success description
+ *  @param failure    failure description
+ */
++ (void)requestWithThePath:(NSString *)path
+                  imgArray:(NSArray *)imgArray
+              KeyNameArray:(NSArray *)kNameArray
+                    Params:(NSDictionary *)params
+                 isHudShow:(BOOL)isShow
+                  Progress:(HttpProgressBlock)progress
+                   Success:(HttpSuccessBlock)success
+                   Failure:(HttpFailureBlock)failure;
 
+/**
+ *  上传视频
+ *
+ *  @param path     urlString
+ *  @param data     视频data
+ *  @param kName    视频对应的key值
+ *  @param params   参数
+ *  @param isShow   是否显示MB
+ *  @param success  success description
+ *  @param failure  failure description
+ */
++ (void)requestVideoWithThePath:(NSString *)path
+                           Data:(NSData *)data
+                        KeyName:(NSString *)kName
+                         Params:(NSDictionary *)params
+                      isHudShow:(BOOL)isShow
+                        Success:(HttpSuccessBlock)success
+                        Failure:(HttpFailureBlock)failure;
 
+/**
+ *  上传视频(带progress)
+ *
+ *  @param path     urlString
+ *  @param data     视频data
+ *  @param kName    视频对应的key值
+ *  @param params   参数
+ *  @param isShow   是否显示MB
+ *  @param progress progress description
+ *  @param success  success description
+ *  @param failure  failure description
+ */
++ (void)requestVideoWithThePath:(NSString *)path
+                           Data:(NSData *)data
+                        KeyName:(NSString *)kName
+                         Params:(NSDictionary *)params
+                      isHudShow:(BOOL)isShow
+                       Progress:(HttpProgressBlock)progress
+                        Success:(HttpSuccessBlock)success
+                        Failure:(HttpFailureBlock)failure;
 
+/**
+ *  上传视频(带封面)
+ *
+ *  @param path    urlString
+ *  @param imgData 图片data
+ *  @param imgName 图片对应的key值
+ *  @param videoData 视频data
+ *  @param videoName 视频对应的key值
+ *  @param params  参数
+ *  @param isShow  是否显示MB
+ *  @param success success description
+ *  @param failure failure description
+ */
++ (void)requestVideoWithThePath:(NSString *)path
+                        imgData:(NSData *)imgData
+                        imgName:(NSString *)imgName
+                      videoData:(NSData *)videoData
+                      videoName:(NSString *)videoName
+                         Params:(NSDictionary *)params
+                      isHudShow:(BOOL)isShow
+                        Success:(HttpSuccessBlock)success
+                        Failure:(HttpFailureBlock)failure;
 
-
-
+/**
+ *  上传视频(带封面、带progress)
+ *
+ *  @param path    urlString
+ *  @param imgData 图片data
+ *  @param imgName 图片对应的key值
+ *  @param videoData 视频data
+ *  @param videoName 视频对应的key值
+ *  @param params  参数
+ *  @param isShow  是否显示MB
+ *  @param progress progress description
+ *  @param success success description
+ *  @param failure failure description
+ */
++ (void)requestVideoWithThePath:(NSString *)path
+                        imgData:(NSData *)imgData
+                        imgName:(NSString *)imgName
+                      videoData:(NSData *)videoData
+                      videoName:(NSString *)videoName
+                         Params:(NSDictionary *)params
+                      isHudShow:(BOOL)isShow
+                       Progress:(HttpProgressBlock)progress
+                        Success:(HttpSuccessBlock)success
+                        Failure:(HttpFailureBlock)failure;
 
 
 

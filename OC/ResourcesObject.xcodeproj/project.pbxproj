@@ -50,7 +50,6 @@
 		8F0761F11D3474960013238C /* JMTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTabBarController.m; sourceTree = "<group>"; };
 		8F0761F31D3474960013238C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8F0761F41D3474960013238C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		8F0761F51D3474960013238C /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		8F0761F61D3474960013238C /* JMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAlertView.h; sourceTree = "<group>"; };
 		8F0761F71D3474960013238C /* JMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAlertView.m; sourceTree = "<group>"; };
 		8F0761FC1D3474960013238C /* JMScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMScrollView.h; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		D15BF5971FBE8AD20031BD84 /* car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car@2x.png"; sourceTree = "<group>"; };
 		D1731E2E1FBD9925006558CD /* DistanceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistanceTableViewCell.h; sourceTree = "<group>"; };
 		D1731E2F1FBD9925006558CD /* DistanceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistanceTableViewCell.m; sourceTree = "<group>"; };
+		D1A803F32119393E003D2A80 /* Header.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,6 @@
 				8F0761F41D3474960013238C /* BaseViewController.m */,
 				8FA4A5CB1DED8108002F6435 /* BaseTableViewCell.h */,
 				8FA4A5CC1DED8108002F6435 /* BaseTableViewCell.m */,
-				8F0761F51D3474960013238C /* Header.h */,
 				8F15892F1E5A7C37004C2FA7 /* JMHttp.h */,
 				8F1589301E5A7C37004C2FA7 /* JMHttp.m */,
 				8FFE9AD11DED705100329FBA /* UserInfo.h */,
@@ -157,6 +156,7 @@
 				8F0762011D3474960013238C /* MBProgressHUD+NJ.m */,
 				D1369EDA1F3C022E008092F6 /* TextLimit.h */,
 				D1369EDB1F3C022E008092F6 /* TextLimit.m */,
+				D1A803F32119393E003D2A80 /* Header.pch */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -481,6 +481,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DZ7CFV72D4;
 				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ResourcesObject/resources/Header.pch;
 				INFOPLIST_FILE = ResourcesObject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -501,6 +503,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = DZ7CFV72D4;
 				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ResourcesObject/resources/Header.pch;
 				INFOPLIST_FILE = ResourcesObject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

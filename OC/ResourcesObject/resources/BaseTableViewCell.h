@@ -10,6 +10,8 @@
 #import "Masonry.h"
 #import "JMTool.h"
 #import "UIImageView+WebCache.h"
+#import <IQKeyboardManager/IQTextView.h>
+
 
 @interface BaseTableViewCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 
@@ -43,6 +45,9 @@
 @property (weak,nonatomic)UIImageView *imageView2;
 @property (weak,nonatomic)UIImageView *imageView3;
 @property (weak,nonatomic)UIImageView *imageView4;
+
+@property (weak,nonatomic)UITextField *textfield;
+@property (weak,nonatomic)IQTextView *textView;
 
 @property (strong,nonatomic)UITableView *tableView;
 @property (strong,nonatomic)UIScrollView *scrollView;

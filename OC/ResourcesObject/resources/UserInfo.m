@@ -8,7 +8,6 @@
 
 #import "UserInfo.h"
 #import "JMTool.h"
-#import "Header.h"
 
 @implementation UserInfo
 

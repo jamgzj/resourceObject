@@ -7,7 +7,6 @@
 //
 
 #import "MBProgressHUD+NJ.h"
-#import "Header.h"
 
 @implementation MBProgressHUD (NJ)
 
@@ -32,15 +31,15 @@
 //    hud.detailsLabel.text = text;
 //    hud.detailsLabel.font = [UIFont boldSystemFontOfSize:15*coefficient];
     hud.labelText = text;
-    hud.labelColor = [UIColor blackColor];
+    
     /*图片加文字提示 */
     // 设置图片ycf 去除图片
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
+    //hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
     hud.mode = MBProgressHUDModeCustomView;
     // 再设置模式
 //    hud.mode =  MBProgressHUDModeText;
-
     
+            
     // 隐藏时候从父控件中移除
     hud.removeFromSuperViewOnHide = YES;
     
@@ -48,6 +47,18 @@
     [hud hide:YES afterDelay:2.0];
 //    [hud hideAnimated:YES afterDelay:1.f];
 //    });
+}
+
++ (MBProgressHUD *)showProgressWithText:(NSString *)text toView:(UIView *)view {
+    if (view == nil) view = [UIApplication sharedApplication].keyWindow;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.labelText = text;
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    
+    // 隐藏时候从父控件中移除
+    hud.removeFromSuperViewOnHide = YES;
+    
+    return hud;
 }
 
 //+ (void)showText:(NSString *)text ToView:(UIView *)view {
@@ -94,11 +105,9 @@
  *  @param imgArray <#imgArray description#>
  *  @param view     <#view description#>
  */
-+ (void)showLoadingWithImages:(NSArray *)imgArray ToView:(UIView *)view {
-    BOOL isViewExist = YES;
++ (MBProgressHUD *)showLoadingWithImages:(NSArray *)imgArray ToView:(UIView *)view {
     if (!view) {
         view = [UIApplication sharedApplication].keyWindow;
-        isViewExist = NO;
     }
     
 //    dispatch_async(dispatch_get_main_queue(), ^{
@@ -111,26 +120,29 @@
     // 设置hud宽高相等
     hud.square = YES;
     
-    // 设置页面动画
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 120)];
-    imgView.animationImages = imgArray;
-    imgView.animationDuration = 1.f;
-    imgView.animationRepeatCount = 0;
-    [imgView startAnimating];
+    if (imgArray.count > 0) {
+        UIImage *image = imgArray[0];
+        CGFloat width = image.size.width;
+        CGFloat rate = width==0 ? 0:image.size.height/width;
+        // 设置页面动画
+        UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 100*rate)];
+        imgView.animationImages = imgArray;
+        imgView.animationDuration = 1.f;
+        imgView.animationRepeatCount = 0;
+        [imgView startAnimating];
+        
+        hud.customView = imgView;
+    }
     
-    hud.customView = imgView;
     
     // 设置hud文字
-    hud.labelText = @"loading...";
+    hud.labelText = @"Loading...";
     
     // 设置hud隐藏时从父视图移除
     hud.removeFromSuperViewOnHide = YES;
     
-    if (!isViewExist) {
-        [hud hide:YES afterDelay:2.f];
-    }
 //    });
-    
+    return hud;
 }
 
 /**

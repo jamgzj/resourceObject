@@ -33,6 +33,8 @@
  */
 + (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view;
 
++ (MBProgressHUD *)showProgressWithText:(NSString *)text toView:(UIView *)view;
+
 ///**
 // *  （废弃）
 // */
@@ -50,7 +52,8 @@
  *
  *  @param imgArray <#imgArray description#>
  *  @param view     <#view description#>
+ *  @return <#return value description#>
  */
-+ (void)showLoadingWithImages:(NSArray *)imgArray ToView:(UIView *)view;
++ (MBProgressHUD *)showLoadingWithImages:(NSArray *)imgArray ToView:(UIView *)view;
 
 @end

@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
 #import "JMScrollView.h"
 #import "JMAlertView.h"
+#import "PopoverView.h"
 #import "JMView.h"
 #import "JMNavView.h"
-#import "Header.h"
 #import "MBProgressHUD+NJ.h"
+#import "UINavigationBar+CustomHeight.h"
 #import "UserInfo.h"
 #import "TextLimit.h"
 #import "JMHttp.h"
@@ -22,18 +22,7 @@
 #import <YYCategories/YYCategories.h>
 #import <YYText/YYText.h>
 #import <JSONModel/JSONModel.h>
-
-static inline BOOL isIphoneX() {
-    return SCREEN_HEIGHT == 812 ? YES : NO;
-}
-
-static inline CGFloat statusbarHeight() {
-    CGFloat height = [UIApplication sharedApplication].statusBarFrame.size.height;
-    if (height != 0) {
-        return height;
-    }
-    return isIphoneX() ? 44 : 20;
-}
+#import <SDWebImage/SDWebImage-umbrella.h>
 
 #pragma mark - NSUserdefault 存储
 /**
@@ -73,9 +62,9 @@ static inline void removeAllNSUserdefaultObject() {
  *
  *  @return <#return value description#>
  */
-static inline bool isLogin() {
-    NSDictionary *userInfoDict = getObject(USER_INFO_KEY);
-    return userInfoDict?YES:NO;
+static inline BOOL isLogin() {
+    NSString *userInfoJson = getObject(USER_INFO_KEY);
+    return userInfoJson?YES:NO;
 }
 
 /**
@@ -419,6 +408,10 @@ static inline BOOL deleteFileWithPath(NSString *path) {
     36.匹配空格:                                                ^(\\s|\\n|\\r)*$
  
                                                  评注：可以监测当前字符串是否为纯空格或为空
+ 
+    37.匹配用户昵称                                              [\\w\u4e00-\u9fa5]+
+ 
+                                                 评注：只能为数字字母_和汉字
 
 */
 
@@ -558,14 +551,7 @@ static inline BOOL deleteFileWithPath(NSString *path) {
  */
 + (CGSize)downloadImageSizeWithURL:(id)imageURL;
 
-
-/**
- *  根据图片获取图片的主色调
- *
- *  @param image 图片
- *  @return 颜色
- */
-+ (UIColor *)getImageMainColor:(UIImage *)image;
++ (UIColor*)getImageMainColor:(UIImage*)image;
 
 #pragma mark - 对图片进行滤镜处理
 
@@ -655,6 +641,20 @@ static inline BOOL deleteFileWithPath(NSString *path) {
  */
 + (float)getRealPriceWithPrice:(float)price;
 
+/**
+ 添加playBtn(播放器播放按钮)
+
+ @param bgView <#bgView description#>
+ @param imageUrl <#imageUrl description#>
+ @param playAction <#playAction description#>
+ @return <#return value description#>
+ */
++ (UIButton *)configPlayBtnWithBackgroundView:(UIView *)bgView ImageUrl:(NSURL *)imageUrl PlayAction:(BOOL(^)())playAction;
+
+
++ (void)alertToLogin;
+
+
 @end
 
 
@@ -663,6 +663,8 @@ static inline BOOL deleteFileWithPath(NSString *path) {
 
 @property (readonly,copy,nonatomic)NSString *md5String;
 @property (readonly,copy,nonatomic)NSString *MD5String;
+@property (readonly,assign,nonatomic)NSUInteger byteLength;
+@property (readonly,assign,nonatomic)BOOL containsEmoji;
 
 @end
 
@@ -777,8 +779,9 @@ typedef NS_ENUM(NSUInteger, MKButtonEdgeInsetsStyle) {
 
 - (void)removeBadge;
 
-@end
+- (void)addScaleSpringAnimation;
 
+@end
 
 
 

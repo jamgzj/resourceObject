@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
-#import "MJRefresh.h"
+#import <MJRefresh/MJRefresh.h>
 #import "SDCycleScrollView.h"
-#import "UIImageView+WebCache.h"
 #import "JMTool.h"
+#import <YYText/YYText.h>
+#import <YYCategories/YYCategories.h>
 //#import <UMSocialCore/UMSocialCore.h>
 //#import <UMMobClick/MobClick.h>
+//#import <UMAnalytics/MobClick.h>
 
 typedef void(^HttpSuccessBlock)(id JSON);
 typedef void(^HttpFailureBlock)(id Error);
@@ -25,6 +27,14 @@ typedef void(^HttpFailureBlock)(id Error);
 @property (strong,nonatomic)UIScrollView *scrollView;
 @property (strong,nonatomic)JMNavView *jmNavigationView;
 @property (strong,nonatomic)UIView *jmCover;
+@property (copy,nonatomic)NSString *jmTitle;
+
+/**
+ *  创建状态栏的视图
+ *
+ *  @return view 返回
+ */
+- (UIView *)creatStatusBackgroudView;
 
 /**
  *  创建navigationbar上的右按钮
@@ -78,6 +88,11 @@ typedef void(^HttpFailureBlock)(id Error);
  *  重设self.view的frame(当frame不在nav下方时使用,不是很好用)
  */
 - (void)resetViewFrame;
+
+/**
+ *  网络状态变化会有的通知
+ */
+- (void)networkStatusDidChange;
 
 //#pragma mark - 分享
 //

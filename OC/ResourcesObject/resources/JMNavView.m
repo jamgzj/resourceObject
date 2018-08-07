@@ -8,7 +8,6 @@
 
 #import "JMNavView.h"
 #import <Masonry/Masonry.h>
-#import "JMTool.h"
 #import "NSString+Extension.h"
 
 @interface JMNavView ()
@@ -154,7 +153,6 @@
     [self addSubview:lineView];
     self.line = lineView;
 }
-
 
 
 /*
