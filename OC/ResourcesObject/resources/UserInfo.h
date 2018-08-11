@@ -63,4 +63,20 @@
 
 + (instancetype)getUserInfo;
 
+// 存储个人信息到本地 (userInfo可以为字典或者UserInfo)
++ (BOOL)saveUserInfo:(id)userInfo;
+
+// 存储个人信息到本地
+- (void)save;
+
+
+
+
 @end
+
+
+
+
+
+
+
