@@ -149,7 +149,7 @@
 
 - (void)addBottomLine {
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, navHeight-coefficient, SCREEN_WIDTH, coefficient)];
-    lineView.backgroundColor = lineColor;
+    lineView.backgroundColor = line_Color;
     [self addSubview:lineView];
     self.line = lineView;
 }

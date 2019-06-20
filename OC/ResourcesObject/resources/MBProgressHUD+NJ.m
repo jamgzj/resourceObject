@@ -38,8 +38,7 @@
     hud.mode = MBProgressHUDModeCustomView;
     // 再设置模式
 //    hud.mode =  MBProgressHUDModeText;
-    
-            
+
     // 隐藏时候从父控件中移除
     hud.removeFromSuperViewOnHide = YES;
     
