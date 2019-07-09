@@ -25,12 +25,19 @@
 		1924FB50229E6DB000AB49BB /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1924FB4B229E6DB000AB49BB /* UIImage+RSKImageCropper.m */; };
 		1924FB51229E6DB000AB49BB /* UIImage+JMImageCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1924FB4E229E6DB000AB49BB /* UIImage+JMImageCategory.m */; };
 		1924FB52229E6DB000AB49BB /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 1924FB4F229E6DB000AB49BB /* UIImage+Resize.m */; };
-		19AA9CB922BB5B9E00EA28EF /* NSArray+JMPrevent.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AA9CB822BB5B9E00EA28EF /* NSArray+JMPrevent.m */; };
+		198AEA9222BC730B001B1FDF /* NSMutableDictionary+JMCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AEA9122BC730B001B1FDF /* NSMutableDictionary+JMCrash.m */; };
+		198AEA9622BC737A001B1FDF /* NSMutableSet+JMCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AEA9522BC737A001B1FDF /* NSMutableSet+JMCrash.m */; };
+		198AEA9D22BC7DBA001B1FDF /* NSObject+JMCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AEA9C22BC7DBA001B1FDF /* NSObject+JMCrash.m */; };
+		19AA9CB922BB5B9E00EA28EF /* NSArray+JMCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AA9CB822BB5B9E00EA28EF /* NSArray+JMCrash.m */; };
+		19C2005E22C076FD00038DBD /* JMBaseServiceAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C2005D22C076FD00038DBD /* JMBaseServiceAgent.m */; };
+		19C2006122C0CB4500038DBD /* JMBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C2006022C0CB4500038DBD /* JMBaseRequest.m */; };
 		19C2C83F22A668E500DA7C17 /* NSBundle+JMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C2C83E22A668E500DA7C17 /* NSBundle+JMExtension.m */; };
 		19C2C84322A66AD400DA7C17 /* UIDevice+iOSVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C2C84222A66AD400DA7C17 /* UIDevice+iOSVersionUtil.m */; };
 		19C2C84722A66FB000DA7C17 /* NSNumber+JMBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C2C84522A66FB000DA7C17 /* NSNumber+JMBase.m */; };
 		19C2C84B22A6703500DA7C17 /* NSObject+JMSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C2C84A22A6703500DA7C17 /* NSObject+JMSwizzle.m */; };
 		19C2C84F22A6710900DA7C17 /* JMInfoPlistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C2C84D22A6710900DA7C17 /* JMInfoPlistHelper.m */; };
+		19F63BCF22CB37BD00707B99 /* JMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F63BCE22CB37BD00707B99 /* JMBaseViewController.m */; };
+		19F63BD322CB5CC700707B99 /* UINavigationController+JMFullScreenSwipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F63BD222CB5CC700707B99 /* UINavigationController+JMFullScreenSwipe.m */; };
 		6F605230A0B7E85C4BAA943D /* Pods_ResourcesObject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0497C566FBC10E12F6AEF8F0 /* Pods_ResourcesObject.framework */; };
 		8F0762041D3474960013238C /* JMNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0761EF1D3474960013238C /* JMNavController.m */; };
 		8F0762051D3474960013238C /* JMTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0761F11D3474960013238C /* JMTabBarController.m */; };
@@ -102,8 +109,18 @@
 		1924FB4D229E6DB000AB49BB /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
 		1924FB4E229E6DB000AB49BB /* UIImage+JMImageCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JMImageCategory.m"; sourceTree = "<group>"; };
 		1924FB4F229E6DB000AB49BB /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
-		19AA9CB722BB5B9E00EA28EF /* NSArray+JMPrevent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+JMPrevent.h"; sourceTree = "<group>"; };
-		19AA9CB822BB5B9E00EA28EF /* NSArray+JMPrevent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JMPrevent.m"; sourceTree = "<group>"; };
+		198AEA9022BC730B001B1FDF /* NSMutableDictionary+JMCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+JMCrash.h"; sourceTree = "<group>"; };
+		198AEA9122BC730B001B1FDF /* NSMutableDictionary+JMCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+JMCrash.m"; sourceTree = "<group>"; };
+		198AEA9422BC737A001B1FDF /* NSMutableSet+JMCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+JMCrash.h"; sourceTree = "<group>"; };
+		198AEA9522BC737A001B1FDF /* NSMutableSet+JMCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+JMCrash.m"; sourceTree = "<group>"; };
+		198AEA9B22BC7DBA001B1FDF /* NSObject+JMCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+JMCrash.h"; sourceTree = "<group>"; };
+		198AEA9C22BC7DBA001B1FDF /* NSObject+JMCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JMCrash.m"; sourceTree = "<group>"; };
+		19AA9CB722BB5B9E00EA28EF /* NSArray+JMCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+JMCrash.h"; sourceTree = "<group>"; };
+		19AA9CB822BB5B9E00EA28EF /* NSArray+JMCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JMCrash.m"; sourceTree = "<group>"; };
+		19C2005C22C076FD00038DBD /* JMBaseServiceAgent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMBaseServiceAgent.h; sourceTree = "<group>"; };
+		19C2005D22C076FD00038DBD /* JMBaseServiceAgent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMBaseServiceAgent.m; sourceTree = "<group>"; };
+		19C2005F22C0CB4500038DBD /* JMBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMBaseRequest.h; sourceTree = "<group>"; };
+		19C2006022C0CB4500038DBD /* JMBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMBaseRequest.m; sourceTree = "<group>"; };
 		19C2C83D22A668E500DA7C17 /* NSBundle+JMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+JMExtension.h"; sourceTree = "<group>"; };
 		19C2C83E22A668E500DA7C17 /* NSBundle+JMExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+JMExtension.m"; sourceTree = "<group>"; };
 		19C2C84122A66AD400DA7C17 /* UIDevice+iOSVersionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+iOSVersionUtil.h"; sourceTree = "<group>"; };
@@ -114,6 +131,10 @@
 		19C2C84A22A6703500DA7C17 /* NSObject+JMSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JMSwizzle.m"; sourceTree = "<group>"; };
 		19C2C84D22A6710900DA7C17 /* JMInfoPlistHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMInfoPlistHelper.m; sourceTree = "<group>"; };
 		19C2C84E22A6710900DA7C17 /* JMInfoPlistHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMInfoPlistHelper.h; sourceTree = "<group>"; };
+		19F63BCD22CB37BD00707B99 /* JMBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMBaseViewController.h; sourceTree = "<group>"; };
+		19F63BCE22CB37BD00707B99 /* JMBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMBaseViewController.m; sourceTree = "<group>"; };
+		19F63BD122CB5CC700707B99 /* UINavigationController+JMFullScreenSwipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+JMFullScreenSwipe.h"; sourceTree = "<group>"; };
+		19F63BD222CB5CC700707B99 /* UINavigationController+JMFullScreenSwipe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JMFullScreenSwipe.m"; sourceTree = "<group>"; };
 		7BD8ED787A8F0D695ABFEF29 /* Pods-ResourcesObject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourcesObject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ResourcesObject/Pods-ResourcesObject.debug.xcconfig"; sourceTree = "<group>"; };
 		8F0761EE1D3474960013238C /* JMNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMNavController.h; sourceTree = "<group>"; };
 		8F0761EF1D3474960013238C /* JMNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMNavController.m; sourceTree = "<group>"; };
@@ -192,8 +213,6 @@
 			children = (
 				1904247A229F7AF500536DBA /* NSArray+JSON.h */,
 				1904247B229F7AF500536DBA /* NSArray+JSON.m */,
-				19AA9CB722BB5B9E00EA28EF /* NSArray+JMPrevent.h */,
-				19AA9CB822BB5B9E00EA28EF /* NSArray+JMPrevent.m */,
 			);
 			path = NSArray;
 			sourceTree = "<group>";
@@ -210,6 +229,7 @@
 		191307C722B76B77000E722D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				19C2005B22C076CB00038DBD /* Base */,
 				191307CB22B77434000E722D /* Reachability */,
 			);
 			path = Network;
@@ -232,6 +252,7 @@
 				191307C322B75F0A000E722D /* WebImage */,
 				19042475229F784300536DBA /* ResourceManager */,
 				1924FB41229E680E00AB49BB /* Utility */,
+				198AEA9722BC7D06001B1FDF /* Crash */,
 			);
 			path = JMFoundation;
 			sourceTree = "<group>";
@@ -332,6 +353,89 @@
 			path = UIImage;
 			sourceTree = "<group>";
 		};
+		198AEA9322BC733F001B1FDF /* NSMutableSet */ = {
+			isa = PBXGroup;
+			children = (
+				198AEA9422BC737A001B1FDF /* NSMutableSet+JMCrash.h */,
+				198AEA9522BC737A001B1FDF /* NSMutableSet+JMCrash.m */,
+			);
+			path = NSMutableSet;
+			sourceTree = "<group>";
+		};
+		198AEA9722BC7D06001B1FDF /* Crash */ = {
+			isa = PBXGroup;
+			children = (
+				198AEA9A22BC7D95001B1FDF /* Selector */,
+				198AEA9922BC7D67001B1FDF /* NSArray */,
+				198AEA9822BC7D45001B1FDF /* NSMutableDictionary */,
+				198AEA9322BC733F001B1FDF /* NSMutableSet */,
+			);
+			path = Crash;
+			sourceTree = "<group>";
+		};
+		198AEA9822BC7D45001B1FDF /* NSMutableDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				198AEA9022BC730B001B1FDF /* NSMutableDictionary+JMCrash.h */,
+				198AEA9122BC730B001B1FDF /* NSMutableDictionary+JMCrash.m */,
+			);
+			path = NSMutableDictionary;
+			sourceTree = "<group>";
+		};
+		198AEA9922BC7D67001B1FDF /* NSArray */ = {
+			isa = PBXGroup;
+			children = (
+				19AA9CB722BB5B9E00EA28EF /* NSArray+JMCrash.h */,
+				19AA9CB822BB5B9E00EA28EF /* NSArray+JMCrash.m */,
+			);
+			path = NSArray;
+			sourceTree = "<group>";
+		};
+		198AEA9A22BC7D95001B1FDF /* Selector */ = {
+			isa = PBXGroup;
+			children = (
+				198AEA9B22BC7DBA001B1FDF /* NSObject+JMCrash.h */,
+				198AEA9C22BC7DBA001B1FDF /* NSObject+JMCrash.m */,
+			);
+			path = Selector;
+			sourceTree = "<group>";
+		};
+		198D65C122CC874200C6DC40 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				19F63BCD22CB37BD00707B99 /* JMBaseViewController.h */,
+				19F63BCE22CB37BD00707B99 /* JMBaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		198D65C222CC876200C6DC40 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				19F63BD122CB5CC700707B99 /* UINavigationController+JMFullScreenSwipe.h */,
+				19F63BD222CB5CC700707B99 /* UINavigationController+JMFullScreenSwipe.m */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		198D65C322CC878A00C6DC40 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		19C2005B22C076CB00038DBD /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				19C2005C22C076FD00038DBD /* JMBaseServiceAgent.h */,
+				19C2005D22C076FD00038DBD /* JMBaseServiceAgent.m */,
+				19C2005F22C0CB4500038DBD /* JMBaseRequest.h */,
+				19C2006022C0CB4500038DBD /* JMBaseRequest.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		19C2C83C22A668C200DA7C17 /* NSBundle */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +481,24 @@
 			path = InfoPlist;
 			sourceTree = "<group>";
 		};
+		19D1CDAF22C5EDA0009DDDBF /* JMUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				19F63BD022CB46BC00707B99 /* Controller */,
+			);
+			path = JMUIKit;
+			sourceTree = "<group>";
+		};
+		19F63BD022CB46BC00707B99 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				198D65C122CC874200C6DC40 /* Base */,
+				198D65C222CC876200C6DC40 /* Navigation */,
+				198D65C322CC878A00C6DC40 /* TabBar */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		3F60B6A4EC1BCEEC8BF5903A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +522,7 @@
 		8F0761F21D3474960013238C /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				19D1CDAF22C5EDA0009DDDBF /* JMUIKit */,
 				1924FAA7229E2D7900AB49BB /* JMFoundation */,
 				8F0761F31D3474960013238C /* BaseViewController.h */,
 				8F0761F41D3474960013238C /* BaseViewController.m */,
@@ -658,10 +781,12 @@
 				1924FB50229E6DB000AB49BB /* UIImage+RSKImageCropper.m in Sources */,
 				1924FB51229E6DB000AB49BB /* UIImage+JMImageCategory.m in Sources */,
 				1924FB52229E6DB000AB49BB /* UIImage+Resize.m in Sources */,
+				198AEA9D22BC7DBA001B1FDF /* NSObject+JMCrash.m in Sources */,
 				8FFE9AD61DED725400329FBA /* JMNavView.m in Sources */,
 				8F07620C1D3474960013238C /* MBProgressHUD+NJ.m in Sources */,
 				8F0762041D3474960013238C /* JMNavController.m in Sources */,
 				8F0762061D3474960013238C /* BaseViewController.m in Sources */,
+				19F63BD322CB5CC700707B99 /* UINavigationController+JMFullScreenSwipe.m in Sources */,
 				1924FB48229E685D00AB49BB /* JMWeakRefArray.m in Sources */,
 				8FFE9AD31DED705100329FBA /* UserInfo.m in Sources */,
 				191307CE22B77457000E722D /* JMReachability.m in Sources */,
@@ -671,14 +796,16 @@
 				D1731E301FBD9925006558CD /* DistanceTableViewCell.m in Sources */,
 				19C2C84722A66FB000DA7C17 /* NSNumber+JMBase.m in Sources */,
 				8FA4A5CD1DED8108002F6435 /* BaseTableViewCell.m in Sources */,
+				19F63BCF22CB37BD00707B99 /* JMBaseViewController.m in Sources */,
 				1904247C229F7AF500536DBA /* NSArray+JSON.m in Sources */,
 				1924FB47229E685D00AB49BB /* JMWeakRefObject.m in Sources */,
 				1924FAB5229E372B00AB49BB /* NSDate+JMBase.m in Sources */,
 				D1369EDC1F3C022E008092F6 /* TextLimit.m in Sources */,
 				8F1589311E5A7C37004C2FA7 /* JMHttp.m in Sources */,
 				8F0762051D3474960013238C /* JMTabBarController.m in Sources */,
+				198AEA9222BC730B001B1FDF /* NSMutableDictionary+JMCrash.m in Sources */,
 				19042478229F786800536DBA /* JMResourceManager.m in Sources */,
-				19AA9CB922BB5B9E00EA28EF /* NSArray+JMPrevent.m in Sources */,
+				19AA9CB922BB5B9E00EA28EF /* NSArray+JMCrash.m in Sources */,
 				8F0762071D3474960013238C /* JMAlertView.m in Sources */,
 				1924FAC9229E5C5F00AB49BB /* NSDictionary+JMBase.m in Sources */,
 				8F07620A1D3474960013238C /* JMScrollView.m in Sources */,
@@ -688,14 +815,17 @@
 				19C2C83F22A668E500DA7C17 /* NSBundle+JMExtension.m in Sources */,
 				19C2C84322A66AD400DA7C17 /* UIDevice+iOSVersionUtil.m in Sources */,
 				8F07620B1D3474960013238C /* JMTool.m in Sources */,
+				198AEA9622BC737A001B1FDF /* NSMutableSet+JMCrash.m in Sources */,
 				1924FAAD229E2F6800AB49BB /* JMMacro.m in Sources */,
 				1924FAB1229E351A00AB49BB /* JMUtilities.m in Sources */,
 				1924FAB8229E531800AB49BB /* NSString+DisplayFormat.m in Sources */,
 				D1369ED91F3BFC9F008092F6 /* JMMapSkip.m in Sources */,
 				1924FAC6229E5C1300AB49BB /* NSDictionary+JMGetValueUtil.m in Sources */,
 				19C2C84F22A6710900DA7C17 /* JMInfoPlistHelper.m in Sources */,
+				19C2005E22C076FD00038DBD /* JMBaseServiceAgent.m in Sources */,
 				8FAD5F2B1D518216003EA152 /* JMView.m in Sources */,
 				191307C622B75F4E000E722D /* JMWebImage.m in Sources */,
+				19C2006122C0CB4500038DBD /* JMBaseRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

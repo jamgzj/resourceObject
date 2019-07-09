@@ -9,13 +9,28 @@
 #import <Foundation/Foundation.h>
 
 typedef enum : NSInteger {
-    JMReachbilityNetworkStatusNotReachable = 0,
-    JMReachbilityNetworkStatusReachableViaWiFi,
-    JMReachbilityNetworkStatusReachableViaWWAN
+    JMReachbilityNetworkStatusNotUnknown       = -1,
+    JMReachbilityNetworkStatusNotReachable     = 0,
+    JMReachbilityNetworkStatusReachableViaWWAN = 1,
+    JMReachbilityNetworkStatusReachableViaWiFi = 2,
 } JMReachbilityNetworkStatus;
 
-extern NSString *JMReachabilityChangedNotification;
+extern NSString * const JMReachabilityChangedNotification;
 
 @interface JMReachability : NSObject
+
++ (JMReachbilityNetworkStatus)networkReachabilityStatus;
+
++ (BOOL)reachable;
+
++ (BOOL)reachableViaWWAN;
+
++ (BOOL)reachableViaWiFi;
+
++ (void)startMonitoring;
+
++ (void)stopMonitoring;
+
++ (void)reachbilityNetworkStatusDidChanged:(void(^)(JMReachbilityNetworkStatus status))callback;
 
 @end

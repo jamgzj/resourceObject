@@ -17,6 +17,7 @@
 + (NSString*)queryStringByAppendingArrayURLQueryValue: (NSArray*)array withKey: (NSString*)key;
 + (BOOL)isString: (NSString*)string equalToAnotherString: (NSString*)anotherString;
 
+- (BOOL)isMatch:(NSString *)regEx;
 - (NSNumber *)isNumberGreaterThanZero;
 - (BOOL)containsString:(NSString *)string options:(NSStringCompareOptions)options;
 - (BOOL)containsString:(NSString *)string;
@@ -58,8 +59,6 @@
 - (NSInteger)integerValueByParseAsDecimalString;
 
 - (NSString*)stringByRemovingPhoneNumberSpecialChars;
-
-- (NSString*)removeSubfixAllZeroDigits;
 
 - (NSRange)rangeOfStringByTrimmingCharactersNotInSet: (NSCharacterSet*)charset;
 

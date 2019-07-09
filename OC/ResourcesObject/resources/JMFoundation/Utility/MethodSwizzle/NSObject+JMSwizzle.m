@@ -41,7 +41,14 @@
         return NO;
     }
     
-    method_exchangeImplementations(originMethod, alterMethod);
+    Class metaClass = object_getClass(class);
+    BOOL didAddMethod = class_addMethod(metaClass, originSel, method_getImplementation(alterMethod), method_getTypeEncoding(alterMethod));
+    
+    if (didAddMethod) {
+        class_replaceMethod(metaClass, alterSel, method_getImplementation(originMethod), method_getTypeEncoding(originMethod));
+    }else {
+        method_exchangeImplementations(originMethod, alterMethod);
+    }
     return YES;
 }
 
@@ -49,6 +56,11 @@
 {
     if (!originSel) {
         NSLog(@"originSel is empty");
+        return NO;
+    }
+    
+    if (!alterSel) {
+        NSLog(@"alterSel is empty");
         return NO;
     }
     
@@ -61,9 +73,15 @@
     Method originMethod = class_getInstanceMethod(class, originSel);
     if (!originMethod) {
         NSLog(@"cannot find original method impl by originSel: %@", NSStringFromSelector(originSel));
+        return NO;
     }
+    BOOL didAddMethod = class_addMethod(class, originSel, method_getImplementation(alterMethod), method_getTypeEncoding(alterMethod));
     
-    method_exchangeImplementations(originMethod, alterMethod);
+    if (didAddMethod) {
+        class_replaceMethod(class, alterSel, method_getImplementation(originMethod), method_getTypeEncoding(originMethod));
+    }else {
+        method_exchangeImplementations(originMethod, alterMethod);
+    }
     return YES;
 }
 

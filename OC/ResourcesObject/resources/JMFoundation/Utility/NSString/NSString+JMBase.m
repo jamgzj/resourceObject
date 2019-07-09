@@ -72,11 +72,16 @@
     return [url absoluteString];
 }
 
+- (BOOL)isMatch:(NSString *)regEx
+{
+    NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regEx];
+    return [pred evaluateWithObject:self];
+}
+
 - (NSNumber *)isNumberGreaterThanZero
 {
     NSString *regEx = @"^[1-9]\\d*|0$";
-    NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regEx];
-    BOOL isMatch = [pred evaluateWithObject:self];
+    BOOL isMatch = [self isMatch:regEx];
     if (isMatch) {
         return [NSNumber numberWithDouble:[self integerValue]];
     }
@@ -444,26 +449,6 @@
     }
     
     return [phone copy];
-}
-
-- (NSString*)removeSubfixAllZeroDigits
-{
-    static NSString *const DECIMAL_POINT = @".";
-    if (![self containsString:DECIMAL_POINT]) {
-        return self;
-    }
-    NSString *text = self;
-    NSRange range = [text rangeOfString:DECIMAL_POINT];
-    NSString *zeroDigits = DECIMAL_POINT;
-    for (int i = 0; i < text.length - 1 - range.location; i++) {
-        zeroDigits = [zeroDigits stringByAppendingString:@"0"];
-        if ([text hasSuffix:zeroDigits]) {
-            NSRange range = [text rangeOfString:zeroDigits];
-            text = [text substringToIndex:range.location];
-            break;
-        }
-    }
-    return text;
 }
 
 - (NSRange)rangeOfStringByTrimmingCharactersNotInSet: (NSCharacterSet*)charset

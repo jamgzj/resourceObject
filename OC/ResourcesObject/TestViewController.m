@@ -43,6 +43,17 @@
             break;
         }
     }
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
+    scrollView.bounces = NO;
+    scrollView.contentSize = CGSizeMake(SCREEN_WIDTH*2, SCREEN_HEIGHT);
+    scrollView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:scrollView];
+    
+    UIButton *pushBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [pushBtn setTitle:@"push" forState:UIControlStateNormal];
+    pushBtn.frame = CGRectMake(100, 100, 60, 30);
+    [pushBtn addTarget:self action:@selector(clickPushBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:pushBtn];
 //    for (int i = 0; i < datasource.count; i++) {
 ////        [array insertObject:[NSString stringWithFormat:@"%ld",array.count] atIndex:i];
 ////        NSLog(@"array------------------->%@",array);
@@ -217,7 +228,11 @@
     
 }
 
-
+- (void)clickPushBtn
+{
+    TestViewController *testVC = [[TestViewController alloc]init];
+    [self.navigationController pushViewController:testVC animated:YES];
+}
 
 //- (CGSize)intrinsicContentSize {
 //    return UILayoutFittingExpandedSize;

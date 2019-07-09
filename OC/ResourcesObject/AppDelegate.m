@@ -10,6 +10,7 @@
 #import "JMTabBarController.h"
 #import "IQKeyboardManager/IQKeyboardManager.h"
 #import "JMTool.h"
+#import "UINavigationController+JMFullScreenSwipe.h"
 //#import "ChooseRootTool.h"
 //#import <BaiduMapAPI_Base/BMKMapManager.h>
 //#import <AlipaySDK/AlipaySDK.h>

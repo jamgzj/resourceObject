@@ -12,5 +12,6 @@
 
 + (BOOL)jm_trySwizzleMethod: (SEL)originSel withMethod: (SEL)alterSel;
 + (BOOL)jm_trySwizzleClassMethod: (SEL)originSel withMethod: (SEL)alterSel;
++ (BOOL)jm_trySwizzleMethod: (SEL)originSel withMethod: (SEL)alterSel inClass: (Class)class;
 
 @end
